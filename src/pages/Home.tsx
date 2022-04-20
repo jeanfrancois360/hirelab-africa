@@ -1,4 +1,5 @@
 import React from 'react'
+import { CallOut } from '../components/CallOut'
 import { CategoryBoxes } from '../components/CategoryBoxes'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
@@ -14,6 +15,7 @@ export const Home = () => {
         <IntroBanner/>
         <CategoryBoxes/>
         <JobLists/>
+        <CallOut/>
         <NeedHelp/>
         <Subscribe/>
         <Footer/>
