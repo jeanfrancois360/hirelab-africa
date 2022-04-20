@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 export const CategoryBoxes = () => {
   return (
@@ -16,73 +15,73 @@ export const CategoryBoxes = () => {
 			<p className="utf-slogan-text">Lorem Ipsum is simply dummy text printing and type setting industry Lorem Ipsum been industry standard dummy text ever since when unknown printer took a galley.</p>
           </div>
           <div className="utf-categories-container-block"> 
-            <Link to="jobs-list-layout-leftside.html" className="utf-category-box">
+            <a href="jobs-list-layout-leftside.html" className="utf-category-box">
 				<div className="utf-opening-position-counter-item">10 Openings</div>
 				<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-bullhorn"></i> </div>
 				<div className="utf-category-box-content">
 				  <h3>Design, Art & Multimedia</h3>
 				</div>
 				<div className="utf-category-box-counter-item">8,188 Jobs</div>
-            </Link> 
-            <Link to="jobs-list-layout-leftside.html" className="utf-category-box">
+            </a> 
+            <a href="jobs-list-layout-leftside.html" className="utf-category-box">
 				<div className="utf-opening-position-counter-item">15 Openings</div>
 				<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-graduation-cap"></i> </div>
 				<div className="utf-category-box-content">
 				  <h3>Education & Training</h3>
 				</div>
 				<div className="utf-category-box-counter-item">5,244 Jobs</div>
-            </Link> 
-            <Link to="jobs-list-layout-leftside.html" className="utf-category-box">
+            </a> 
+            <a href="jobs-list-layout-leftside.html" className="utf-category-box">
 				<div className="utf-opening-position-counter-item">12 Openings</div>
 				<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-line-chart"></i> </div>
 				<div className="utf-category-box-content">
 				  <h3>Accounting / Finance</h3>
 				</div>
 				<div className="utf-category-box-counter-item">6,258 Jobs</div>
-            </Link> 
-            <Link to="jobs-list-layout-leftside.html" className="utf-category-box">
+            </a> 
+            <a href="jobs-list-layout-leftside.html" className="utf-category-box">
 				<div className="utf-opening-position-counter-item">20 Openings</div>
 				<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-users"></i> </div>
 				<div className="utf-category-box-content">
 				  <h3>Human Resource</h3>
 				</div>
 				<div className="utf-category-box-counter-item">1,224 Jobs</div>
-            </Link> 
-            <Link to="jobs-list-layout-leftside.html" className="utf-category-box">
+            </a> 
+            <a href="jobs-list-layout-leftside.html" className="utf-category-box">
 				<div className="utf-opening-position-counter-item">25 Openings</div>
 				<div className="utf-category-box-icon-item"> <i className="icon-feather-phone-call"></i> </div>
 				<div className="utf-category-box-content">
 				  <h3>Telecommunications</h3>
 				</div>
 				<div className="utf-category-box-counter-item">3,258 Jobs</div>
-            </Link> 
-            <Link to="jobs-list-layout-leftside.html" className="utf-category-box">
+            </a> 
+            <a href="jobs-list-layout-leftside.html" className="utf-category-box">
 				<div className="utf-opening-position-counter-item">18 Openings</div>
 				<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-cutlery"></i> </div>
 				<div className="utf-category-box-content">
 				  <h3>Restaurant / Food Service</h3>
 				</div>
 				<div className="utf-category-box-counter-item">5,138 Jobs</div>
-            </Link> 
-            <Link to="jobs-list-layout-leftside.html" className="utf-category-box">
+            </a> 
+            <a href="jobs-list-layout-leftside.html" className="utf-category-box">
 				<div className="utf-opening-position-counter-item">38 Openings</div>
 				<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-building"></i> </div>
 				<div className="utf-category-box-content">
 				  <h3>Construction / Facilities</h3>
 				</div>
 				<div className="utf-category-box-counter-item">2,580 Jobs</div>
-            </Link> 
-            <Link to="jobs-list-layout-leftside.html" className="utf-category-box">
+            </a> 
+            <a href="jobs-list-layout-leftside.html" className="utf-category-box">
 				<div className="utf-opening-position-counter-item">23 Openings</div>
 				<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-user-md"></i> </div>
 				<div className="utf-category-box-content">
 				  <h3>Health</h3>
 				</div>
 				<div className="utf-category-box-counter-item">2,360 Jobs</div>
-            </Link> 
+            </a> 
 		  </div>
 		  <div className="utf-centered-button margin-top-10">
-			<Link to="jobs-categorie-one.html" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-20">View All Categories <i className="icon-feather-chevron-right"></i></Link> 
+			<a href="jobs-categorie-one.html" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-20">View All Categories <i className="icon-feather-chevron-right"></i></a> 
 		  </div>
         </div>
       </div>

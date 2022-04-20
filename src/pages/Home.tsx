@@ -8,7 +8,7 @@ export const Home = () => {
     <>
         <Header/>
         <IntroBanner/>
-        {/* <CategoryBoxes/> */}
+        <CategoryBoxes/>
     </>
   )
 }

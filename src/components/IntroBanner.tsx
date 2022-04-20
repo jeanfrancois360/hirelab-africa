@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 export const IntroBanner = () => {
   return (
@@ -23,20 +22,6 @@ export const IntroBanner = () => {
 			  <i className="icon-feather-search"></i>
               <input id="intro-keywords" type="text" placeholder="Search Jobs Keywords..." />
             </div>
-			{/* <div className="utf-intro-search-field-item">
-              <select className="selectpicker default" data-live-search="true" data-selected-text-format="count" data-size="5" title="Select Location">
-                <option>Afghanistan</option>
-                <option>Albania</option>
-                <option>Algeria</option>
-                <option>Brazil</option>
-                <option>Burundi</option>
-                <option>Bulgaria</option>
-                <option>Germany</option>
-                <option>Grenada</option>
-                <option>Guatemala</option>
-                <option>Iceland</option>
-              </select>
-            </div> */}
 			<div className="utf-intro-search-field-item">
               <select className="selectpicker default" data-live-search="true" data-selected-text-format="count" data-size="5" title="All Categories">
                 <option>Customer Service</option>
@@ -51,7 +36,7 @@ export const IntroBanner = () => {
               <button className="button ripple-effect" onClick={()=>window.location.href='jobs-list-layout-leftside.html'}><i className="icon-material-outline-search"></i> Search Jobs</button>
             </div>
           </div>
-		  <p className="utf-trending-silver-item"><span className="utf-trending-black-item">Trending Jobs Keywords:</span> <Link to="#">Web Designer</Link>  <Link to="#">Web Developer</Link>  <Link to="#">Graphic Designer</Link>  <Link to="#">PHP Developer</Link>  <Link to="#">IOS Developer</Link>  <Link to="#">Android Developer</Link></p>
+		  <p className="utf-trending-silver-item"><span className="utf-trending-black-item">Trending Jobs Keywords:</span> <a href="/">Web Designer</a>  <a href="/">Web Developer</a>  <a href="/">Graphic Designer</a>  <a href="/">PHP Developer</a>  <a href="/">IOS Developer</a>  <a href="/">Android Developer</a></p>
         </div>
       </div>
 	  
