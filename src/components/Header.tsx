@@ -5,8 +5,15 @@ export const Header = () => {
         <>
             {/* Header Container */}
             <header id="utf-header-container-block">
+                <div className="top-bar">
+            <div className='container'>
+              <span>Topbar</span>
+            </div>
+            </div>
                 <div id="header">
+               
                     <div className="container">
+                    
                         <div className="utf-left-side">
                             <div id="logo"> <a href="index-1.html"><img src="assets/images/logo.png" alt="" /></a> </div>
                             <nav id="navigation">

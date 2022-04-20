@@ -18968,3 +18968,9 @@ a.apply-now-button:hover {
 .text-blue{
 	color: #1E63CF !important;
 }
+
+.top-bar{
+  background: #1E63CF;
+  color: #fff;
+  padding: 10px;
+}
