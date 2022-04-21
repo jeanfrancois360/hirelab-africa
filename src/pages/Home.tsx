@@ -11,7 +11,7 @@ import { Subscribe } from '../components/Subscribe'
 export const Home = () => {
   return (
     <>
-        <Header/>
+        <Header current={'home'}/>
         <IntroBanner/>
         <CategoryBoxes/>
         <JobLists/>

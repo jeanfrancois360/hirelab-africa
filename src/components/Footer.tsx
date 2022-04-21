@@ -74,7 +74,7 @@ export const Footer = () => {
     <div className="utf-footer-copyright-item">
       <div className="container">
         <div className="row">
-          <div className="col-xl-12">{`Copyright &copy; ${new Date().getFullYear()} All Rights Reserved.`}</div>
+          <div className="col-xl-12">Copyright &copy; {`${new Date().getFullYear()} Hirelab Africa All Rights Reserved.`}</div>
         </div>
       </div>
     </div>
