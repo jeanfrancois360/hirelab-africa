@@ -318,8 +318,28 @@ header.fullwidth .container {
   text-align: center;
   line-height: 26px;
 }
+.utf-header-widget-item .bank-cv-button {
+  background: transparent;
+  position: relative;
+  top: 50%;
+  border-radius: 40px;
+  transform: translateY(-50%);
+  transition: 0.3s;
+  color: #1e63cf;
+  border: 2px solid #1e63cf;
+  padding: 7px 15px;
+  display: block;
+  margin: 0 -3px;
+  min-width: 116px;
+  text-align: center;
+  line-height: 26px;
+}
 .utf-header-widget-item .log-in-button:hover {
   background: transparent;
+  border: 2px solid #1e63cf;
+}
+.utf-header-widget-item .bank-cv-button:hover {
+  background: #1e63cf;
   border: 2px solid #1e63cf;
 }
 body .utf-transparent-header-block .utf-header-widget-item .log-in-button {
@@ -327,7 +347,15 @@ body .utf-transparent-header-block .utf-header-widget-item .log-in-button {
   color: #1e63cf;
   border: 2px solid #ffffff;
 }
+body .utf-transparent-header-block .utf-header-widget-item .bank-cv-button {
+  background: #ffffff;
+  color: #1e63cf;
+  border: 2px solid #ffffff;
+}
 body .utf-transparent-header-block .utf-header-widget-item .log-in-button i {
+  color: #1e63cf;
+}
+body .utf-transparent-header-block .utf-header-widget-item .bank-cv-button i {
   color: #1e63cf;
 }
 body
@@ -341,7 +369,23 @@ body
 body
   .utf-transparent-header-block
   .utf-header-widget-item
+  .bank-cv-button:hover
+  i {
+  color: #ffffff;
+  background: transparent;
+}
+body
+  .utf-transparent-header-block
+  .utf-header-widget-item
   .log-in-button:hover {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+body
+  .utf-transparent-header-block
+  .utf-header-widget-item
+  .bank-cv-button:hover {
   background: transparent;
   color: #ffffff;
   border: 2px solid #ffffff;
@@ -356,13 +400,31 @@ body
   color: #ffffff;
   transition: 0.3s;
 }
+.utf-header-widget-item .bank-cv-button i {
+  font-size: 18px;
+  line-height: 0;
+  position: relative;
+  top: 2px;
+  margin-right: 4px;
+  margin-left: 0px;
+  color: #1e63cf;
+  transition: 0.3s;
+}
 .utf-header-widget-item .log-in-button:hover,
 .utf-header-widget-item .log-in-button:hover i {
   color: #66676b;
 }
+.utf-header-widget-item .bank-cv-button:hover,
+.utf-header-widget-item .bank-cv-button:hover i {
+  color: #fff;
+}
 .utf-transparent-header-block .utf-header-widget-item .log-in-button,
 .utf-transparent-header-block .utf-header-widget-item .log-in-button i {
   color: #fff;
+}
+.utf-transparent-header-block .utf-header-widget-item .bank-cv-button,
+.utf-transparent-header-block .utf-header-widget-item .bank-cv-button i {
+  color: #1e63cf;
 }
 @media (max-width: 767px) {
   .utf-header-widget-item .log-in-button span {
@@ -3098,7 +3160,7 @@ body #backtotop a {
   height: 100%;
   left: 0;
   top: 0;
-  background: rgba(48, 48, 48, 1);
+  background: rgb(36 41 49);
   opacity: 0.85;
 }
 #titlebar.white {
@@ -13408,7 +13470,7 @@ body .pac-container {
   text-align: center;
 }
 .callout-bg-1 {
-  background-image: url('../images/callout-1.jpg');
+  background-image: url('../images/callout/callout-1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -13418,7 +13480,7 @@ body .pac-container {
   text-align: center;
 }
 .callout-bg-2 {
-  background-image: url('../images/callout-2.jpg');
+  background-image: url('../images/callout/callout-2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }

@@ -9,7 +9,6 @@ export const Header = ({current}: {current:string}) => {
     return (
         <>
             {/* Header Container */}
-            
             <header id="utf-header-container-block">
                 <TopBar/>
                 <div id="header">
@@ -21,7 +20,6 @@ export const Header = ({current}: {current:string}) => {
                                     <li><a href="/" className={current === 'home' ? 'current' : ''}>Home</a></li>
                                     <li><a href="/jobs" className={current === 'jobs' ? 'current' : ''}>Find Jobs</a></li>
                                     <li><a href="/about" className={current === 'about' ? 'current' : ''}>About Us</a></li>
-                                    <li><a href="/bank-cv" className={current === 'bank_cv' ? 'current' : ''}>Bank Your CV</a></li>
                                     <li><a href="/blog" className={current === 'blog' ? 'current' : ''}>Blog</a></li>
                                     <li><a href="/contact" className={current === 'contact' ? 'current' : ''}>Contact</a></li>
                                 </ul>
@@ -30,6 +28,7 @@ export const Header = ({current}: {current:string}) => {
                         </div>
 
                         <div className="utf-right-side">
+                        <div className="utf-header-widget-item"> <a href="/bank-cv" className="popup-with-zoom-anim bank-cv-button"><i className="icon-feather-upload-cloud"></i> <span>Bank your CV</span></a> </div>
                             {!isAuth ? (<div className="utf-header-widget-item"> <a href="#utf-signin-dialog-block" className="popup-with-zoom-anim log-in-button"><i className="icon-feather-log-in"></i> <span>Sign In</span></a> </div>):
                             (<div className="utf-header-widget-item">
                                 <div className="utf-header-notifications user-menu">
