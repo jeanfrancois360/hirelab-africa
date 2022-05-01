@@ -1,4 +1,5 @@
 import React from 'react'
+import { AboutSection } from '../components/AboutSection'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { Subscribe } from '../components/Subscribe'
@@ -9,6 +10,7 @@ export const About = () => {
     <>
       <Header current={'about'}/>
       <TitleBar current={'About Us'} prev={'Home'} url={'/'} />
+      <AboutSection/>
       <Subscribe/>
       <Footer/>
     </>

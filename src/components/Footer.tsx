@@ -11,7 +11,7 @@ export const Footer = () => {
 		  <div className="col-xl-4 col-md-12">
 			<div className="utf-footer-item-links">
 				<a href="index-1.html"><img className="footer-logo" src="assets/images/footer_logo.png" alt="" /></a>
-				<p>Lorem Ipsum is simply dummy text of printing and type setting industry. Lorem Ipsum been industry standard dummy text ever since, when unknown printer took a galley type scrambled.</p>								
+				<p>HireLab Africa Ltd is a leading private Human Resources Consulting firm that provides HR solutions to Companies all over Africa.</p>								
 			</div>
           </div>
 		  

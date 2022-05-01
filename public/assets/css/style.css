@@ -2266,7 +2266,7 @@ em.mm-counter + a.mm-fullsubopen + span {
       rgba(12, 16, 23, 0.85) 100%,
       rgba(12, 16, 23, 0.85) 100%
     ),
-    url('../images/subscribe_bg.jpg');
+    url('../images/subscribe/subscribe_bg.jpg');
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -4826,6 +4826,9 @@ ul.utf-job-deatails-content-item li i {
   );
   margin-bottom: 70px;
 }
+/* .intro-banner{
+  background-image: url('assets/images/home-background-01.jpg');
+} */
 .intro-banner .utf-trending-silver-item {
   text-align: center;
   color: #cecece;
@@ -19103,4 +19106,27 @@ a.apply-now-button:hover {
   padding: 8px;
   color: #fff;
   border-radius:50px;
+}
+
+
+/* ---------------------------------- */
+/* About Us
+------------------------------------- */
+.about-section{
+ padding-top: 60px;
+ padding-bottom:60px;
+}
+.about-image img{
+  border-radius: 10px;
+  margin-bottom: 50px;
+}
+.about-title{
+  font-size: 50px;
+}
+.about-icon{
+  background: #1E63CF;
+  padding: 5px;
+  color: #fff;
+  border-radius:50px;
+  font-size:12px;
 }

@@ -125,7 +125,7 @@ export const JobLists = () => {
             </a>
 		  </div>
 		  <div className="utf-centered-button margin-top-10">
-			<a href="jobs-list-layout-leftside.html" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-20">Browse All Jobs <i className="icon-feather-chevron-right"></i></a> 
+			<a href="/jobs" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-20">Browse All Jobs <i className="icon-feather-chevron-right"></i></a> 
 		  </div>
         </div>
       </div>

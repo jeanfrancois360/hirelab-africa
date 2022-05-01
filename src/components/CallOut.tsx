@@ -14,7 +14,7 @@ export const CallOut = () => {
 						<h2>Find Your Browse Companies</h2>
 						<span className="section-tit-line"></span>
 						<p>Lorem Ipsum is simply dummy text of printing and type setting industry. Lorem Ipsum been industry standard dummy text ever since, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
-						<a href="browse-companies.html" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Browse Companies <i className="icon-feather-chevrons-right"></i></a>
+						<a href="/jobs" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Browse Companies <i className="icon-feather-chevrons-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -25,7 +25,7 @@ export const CallOut = () => {
 						<h2>Find Your Browse Jobs</h2>
 						<span className="section-tit-line"></span>
 						<p>Lorem Ipsum is simply dummy text of printing and type setting industry. Lorem Ipsum been industry standard dummy text ever since, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
-						<a href="jobs-list-layout-leftside.html" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Browse Jobs <i className="icon-feather-chevrons-right"></i></a>
+						<a href="/jobs" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Browse Jobs <i className="icon-feather-chevrons-right"></i></a>
 					</div>
 				</div>
 			</div>
