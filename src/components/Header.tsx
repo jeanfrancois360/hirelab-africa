@@ -1,19 +1,19 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import { TopBar } from './TopBar';
 
 export const Header = ({current}: {current:string}) => {
+    const [isAuth, setIsAuth] = useState(false);
+    useEffect(()=>{
+      setIsAuth(false);
+    },[])
     return (
         <>
             {/* Header Container */}
+            
             <header id="utf-header-container-block">
-                <div className="top-bar">
-            <div className='container'>
-              <span>Topbar</span>
-            </div>
-            </div>
+                <TopBar/>
                 <div id="header">
-               
                     <div className="container">
-                    
                         <div className="utf-left-side">
                             <div id="logo"> <a href="/"><img src="assets/images/logo.png" alt="" /></a> </div>
                             <nav id="navigation">
@@ -30,8 +30,8 @@ export const Header = ({current}: {current:string}) => {
                         </div>
 
                         <div className="utf-right-side">
-                            <div className="utf-header-widget-item"> <a href="#utf-signin-dialog-block" className="popup-with-zoom-anim log-in-button"><i className="icon-feather-log-in"></i> <span>Sign In</span></a> </div>
-                            <div className="utf-header-widget-item">
+                            {!isAuth ? (<div className="utf-header-widget-item"> <a href="#utf-signin-dialog-block" className="popup-with-zoom-anim log-in-button"><i className="icon-feather-log-in"></i> <span>Sign In</span></a> </div>):
+                            (<div className="utf-header-widget-item">
                                 <div className="utf-header-notifications user-menu">
                                     <div className="utf-header-notifications-trigger user-profile-title">
                                         <a href="/">
@@ -50,7 +50,7 @@ export const Header = ({current}: {current:string}) => {
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </div>)}
                             <span className="mmenu-trigger">
                                 <button className="hamburger utf-hamburger-collapse-item" type="button"> <span className="utf-hamburger-box-item"> <span className="utf-hamburger-inner-item"></span> </span> </button>
                             </span>

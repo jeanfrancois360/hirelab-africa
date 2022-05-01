@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { About } from './pages/About';
 import { BankCV } from './pages/BankCV';

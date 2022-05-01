@@ -3,7 +3,7 @@ import React from 'react'
 export const TitleBar = ({current , prev, url}: {current:string, prev:string, url:string}) => {
   return (
     <>
-{/* Titlebar */}
+{/* TitleBar  Start*/}
   <div id="titlebar" className="gradient">
     <div className="container">
       <div className="row">
@@ -19,7 +19,7 @@ export const TitleBar = ({current , prev, url}: {current:string, prev:string, ur
       </div>
     </div>
   </div>
-  {/* Titlebar  / end */}
+  {/* TitleBar  End */}
     </>
   )
 }
