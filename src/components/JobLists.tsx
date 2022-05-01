@@ -17,7 +17,7 @@ export const JobLists = () => {
           <div className="utf-listings-container-part compact-list-layout margin-top-35"> 
             <a href="single-job-page.html" className="utf-job-listing utf-apply-button-item"> 
 				<div className="utf-job-listing-details"> 
-				  <div className="utf-job-listing-company-logo"> <img src="images/company_logo_1.png" alt="" /> </div>
+				  <div className="utf-job-listing-company-logo"> <img src="assets/images/company_logo_1.png" alt="" /> </div>
 				  <div className="utf-job-listing-description">
 				    <span className="dashboard-status-button utf-job-status-item green"><i className="icon-material-outline-business-center"></i> Full Time</span>
 					<h3 className="utf-job-listing-title">Web Designer, Graphic Designer, UI/UX Designer & Art</h3>
@@ -35,7 +35,7 @@ export const JobLists = () => {
             </a> 
             <a href="single-job-page.html" className="utf-job-listing utf-apply-button-item"> 
 				<div className="utf-job-listing-details"> 
-				  <div className="utf-job-listing-company-logo"> <img src="images/company_logo_2.png" alt="" /> </div>
+				  <div className="utf-job-listing-company-logo"> <img src="assets/images/company_logo_2.png" alt="" /> </div>
 				  <div className="utf-job-listing-description">
 				    <span className="dashboard-status-button utf-job-status-item green"><i className="icon-material-outline-business-center"></i> Full Time</span>
 					<h3 className="utf-job-listing-title">PHP Developer, Team of PHP & IT Co <span className="utf-verified-badge" title="Verified" data-tippy-placement="top"></span></h3>
@@ -53,7 +53,7 @@ export const JobLists = () => {
             </a> 
             <a href="single-job-page.html" className="utf-job-listing utf-apply-button-item"> 
 				<div className="utf-job-listing-details"> 
-				  <div className="utf-job-listing-company-logo"> <img src="images/company_logo_3.png" alt="" /> </div>
+				  <div className="utf-job-listing-company-logo"> <img src="assets/images/company_logo_3.png" alt="" /> </div>
 				  <div className="utf-job-listing-description">
 				    <span className="dashboard-status-button utf-job-status-item yellow"><i className="icon-material-outline-business-center"></i> Part Time</span>
 					<h3 className="utf-job-listing-title">Website Developer & Software Developer</h3>
@@ -71,7 +71,7 @@ export const JobLists = () => {
             </a> 
             <a href="single-job-page.html" className="utf-job-listing utf-apply-button-item"> 
 				<div className="utf-job-listing-details"> 
-				  <div className="utf-job-listing-company-logo"> <img src="images/company_logo_4.png" alt="" /> </div>
+				  <div className="utf-job-listing-company-logo"> <img src="assets/images/company_logo_4.png" alt="" /> </div>
 				  <div className="utf-job-listing-description">
 				    <span className="dashboard-status-button utf-job-status-item green"><i className="icon-material-outline-business-center"></i> Full Time</span>
 					<h3 className="utf-job-listing-title">Application Developer & Web Designer <span className="utf-verified-badge" title="Verified" data-tippy-placement="top"></span></h3>
@@ -89,7 +89,7 @@ export const JobLists = () => {
             </a> 
             <a href="single-job-page.html" className="utf-job-listing utf-apply-button-item"> 
 				<div className="utf-job-listing-details"> 
-				  <div className="utf-job-listing-company-logo"> <img src="images/company_logo_5.png" alt="" /> </div>
+				  <div className="utf-job-listing-company-logo"> <img src="assets/images/company_logo_5.png" alt="" /> </div>
 				  <div className="utf-job-listing-description">
 				    <span className="dashboard-status-button utf-job-status-item green"><i className="icon-material-outline-business-center"></i> Full Time</span>
 					<h3 className="utf-job-listing-title">IT Department Manager & Blogger-Entrepenour</h3>
@@ -107,7 +107,7 @@ export const JobLists = () => {
             </a> 
 			<a href="single-job-page.html" className="utf-job-listing utf-apply-button-item"> 
 				<div className="utf-job-listing-details"> 
-				  <div className="utf-job-listing-company-logo"> <img src="images/company_logo_6.png" alt="" /> </div>
+				  <div className="utf-job-listing-company-logo"> <img src="assets/images/company_logo_6.png" alt="" /> </div>
 				  <div className="utf-job-listing-description">
 				    <span className="dashboard-status-button utf-job-status-item green"><i className="icon-material-outline-business-center"></i> Full Time</span>
 					<h3 className="utf-job-listing-title">Frontend/Backendd Developer</h3>
@@ -125,7 +125,7 @@ export const JobLists = () => {
             </a>
 		  </div>
 		  <div className="utf-centered-button margin-top-10">
-			<a href="jobs-list-layout-leftside.html" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-20">Browse All Jobs <i className="icon-feather-chevron-right"></i></a> 
+			<a href="/jobs" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-20">Browse All Jobs <i className="icon-feather-chevron-right"></i></a> 
 		  </div>
         </div>
       </div>
