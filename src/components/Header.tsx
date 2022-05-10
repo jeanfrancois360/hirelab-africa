@@ -20,6 +20,7 @@ export const Header = ({current}: {current:string}) => {
                                     <li><a href="/" className={current === 'home' ? 'current' : ''}>Home</a></li>
                                     <li><a href="/jobs" className={current === 'jobs' ? 'current' : ''}>Find Jobs</a></li>
                                     <li><a href="/about" className={current === 'about' ? 'current' : ''}>About Us</a></li>
+                                    <li><a href="/services" className={current === 'services' ? 'current' : ''}>Services</a></li>
                                     <li><a href="/blog" className={current === 'blog' ? 'current' : ''}>Blog</a></li>
                                     <li><a href="/contact" className={current === 'contact' ? 'current' : ''}>Contact</a></li>
                                 </ul>
