@@ -7926,6 +7926,10 @@ input.keyword-input {
   color: #ffffff;
   background-color: #1e63cf;
 }
+.utf-tags-container-item input[type='checkbox'] + label:hover .service-sidebar-icon {
+  color: #1e63cf;
+  background-color: #EEF3FC;
+}
 .utf-tags-container-item input[type='checkbox']:checked + label {
   background-color: #66676b;
   color: #fff;
@@ -19129,4 +19133,13 @@ a.apply-now-button:hover {
   color: #fff;
   border-radius:50px;
   font-size:12px;
+}
+
+.service-sidebar-icon{
+  background: #1E63CF;
+  padding: 5px;
+  color: #fff;
+  border-radius:50px;
+  font-size:12px;
+  margin-right: 10px;
 }
