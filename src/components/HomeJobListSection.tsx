@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const JobLists = () => {
+export const HomeJobListSection = () => {
   return (
     <>
 {/* Latest Jobs */}

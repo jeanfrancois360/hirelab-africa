@@ -12348,11 +12348,11 @@ input.default-slider {
   border-radius: 50%;
   z-index: 30;
   display: block;
-  box-shadow: 0 0 0px 6px rgba(102, 103, 107, 0.12);
+  box-shadow: 0 0 0px 6px rgb(30 99 207 / 12%);
   transition: 0.2s;
 }
 .slider-handle:hover:after {
-  box-shadow: 0 0 0px 8px rgba(102, 103, 107, 0.12);
+  box-shadow: 0 0 0px 6px rgb(30 99 207 / 12%);
 }
 .slider-handle.custom {
   position: absolute;

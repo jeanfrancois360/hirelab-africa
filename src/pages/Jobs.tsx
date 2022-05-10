@@ -1,4 +1,5 @@
 import React from 'react'
+import { AllJobsListSection } from '../components/AllJobsListSection'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { SearchJobsSection } from '../components/SearchJobsSection'
@@ -11,6 +12,7 @@ export const Jobs = () => {
         <Header current={'jobs'}/>
         <TitleBar current={'Jobs'} prev={'Home'} url={'/'} />
         <SearchJobsSection/>
+        <AllJobsListSection/>
         <Subscribe/>
         <Footer/>
     </>

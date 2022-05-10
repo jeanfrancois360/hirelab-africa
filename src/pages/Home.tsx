@@ -4,7 +4,7 @@ import { CategoryBoxes } from '../components/CategoryBoxes'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { IntroBanner } from '../components/IntroBanner'
-import { JobLists } from '../components/JobLists'
+import { HomeJobListSection } from '../components/HomeJobListSection'
 import { NeedHelp } from '../components/NeedHelp'
 import { Subscribe } from '../components/Subscribe'
 
@@ -14,7 +14,7 @@ export const Home = () => {
         <Header current={'home'}/>
         <IntroBanner/>
         <CategoryBoxes/>
-        <JobLists/>
+        <HomeJobListSection/>
         <CallOut/>
         <NeedHelp/>
         <Subscribe/>
