@@ -1,7 +1,8 @@
-import React from 'react'
+import {useState} from 'react'
 import { Link } from 'react-router-dom'
 
 export const ServicesSection = () => {
+  const [tab, setTab] = useState(1)
   return (
     <div className="container">
     <div className="row">
@@ -9,39 +10,15 @@ export const ServicesSection = () => {
         <div className="utf-sidebar-container-aera">
           <div className="utf-sidebar-widget-item">
             <h3>All services</h3>
-            <div className="utf-tags-container-item">
-            <div className="tag">
-                <input type="checkbox" id="tag1"/>
-                <label htmlFor="tag1">Adverts</label>
-              </div>	
-              <div className="tag">
-                <input type="checkbox" id="tag2"/>
-                <label htmlFor="tag2">Employee Outsourcing</label>
-              </div>
-              <div className="tag">
-                <input type="checkbox" id="tag3"/>
-                <label htmlFor="tag3">CVs On Request</label>
-              </div>
-              <div className="tag">
-                <input type="checkbox" id="tag4"/>
-                <label htmlFor="tag4">Interns On Request</label>
-              </div>
-              <div className="tag">
-                <input type="checkbox" id="tag5"/>
-                <label htmlFor="tag5">Interview Trainings</label>
-              </div>
-              <div className="tag">
-                <input type="checkbox" id="tag6"/>
-                <label htmlFor="tag6">Human Resources Advisory</label>
-              </div>
-              <div className="tag">
-                <input type="checkbox" id="tag7"/>
-                <label htmlFor="tag7">Legal Advisory On HR Matters</label>
-              </div>
-              <div className="tag">
-                <input type="checkbox" id="tag8"/>
-                <label htmlFor="tag8">Maintenance Of Personnel Files</label>
-              </div>
+            <div className="utf-tags-container-item service-menu">
+            <a href="/" className="button dark ripple-effect utf-button-sliding-icon">Adverts <i className="icon-feather-arrow-right"></i></a> 
+            <a href="/" className="button dark ripple-effect utf-button-sliding-icon">Employee Outsourcing <i className="icon-feather-arrow-right"></i></a> 
+            <a href="/" className="button dark ripple-effect utf-button-sliding-icon">CVs On Request <i className="icon-feather-arrow-right"></i></a> 
+            <a href="/" className="button dark ripple-effect utf-button-sliding-icon">Interns On Request <i className="icon-feather-arrow-right"></i></a> 
+            <a href="/" className="button dark ripple-effect utf-button-sliding-icon">Interview Trainings <i className="icon-feather-arrow-right"></i></a> 
+            <a href="/" className="button dark ripple-effect utf-button-sliding-icon">Human Resources Advisory <i className="icon-feather-arrow-right"></i></a> 
+            <a href="/" className="button dark ripple-effect utf-button-sliding-icon">Legal Advisory On HR Matters <i className="icon-feather-arrow-right"></i></a> 
+            <a href="/" className="button dark ripple-effect utf-button-sliding-icon">Maintenance Of Personnel Files <i className="icon-feather-arrow-right"></i></a> 
               		  
             </div>
             <div className="clearfix"></div>
