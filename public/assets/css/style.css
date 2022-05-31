@@ -6661,8 +6661,8 @@ button.button.dark,
 input[type='button'].dark,
 input[type='submit'].dark,
 a.button.dark {
-  background-color: #1e63cf;
-  color: #fff;
+  background-color: #fff;
+  color: #1E63CF;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 a.button.dark i {
@@ -19147,4 +19147,13 @@ a.apply-now-button:hover {
 .service-menu a{
   width: 100% !important;
   text-align: left !important;
+}
+
+.tab_active{
+  background: #1E63CF !important;
+  color: #ffff !important;
+}
+
+.mt-70{
+  margin-top: 70px !important;
 }

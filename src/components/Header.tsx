@@ -30,7 +30,7 @@ export const Header = ({current}: {current:string}) => {
 
                         <div className="utf-right-side">
                         <div className="utf-header-widget-item"> <a href="/bank-cv" className="bank-cv-button"><i className="icon-feather-upload-cloud"></i> <span>Bank your CV</span></a> </div>
-                            {!isAuth ? (<div className="utf-header-widget-item"> <a href="#utf-signin-dialog-block" className="popup-with-zoom-anim log-in-button"><i className="icon-feather-log-in"></i> <span>Sign In</span></a> </div>):
+                            {!isAuth ? (<div className="utf-header-widget-item"> <a href="/login" className="log-in-button"><i className="icon-feather-log-in"></i> <span>Sign In</span></a> </div>):
                             (<div className="utf-header-widget-item">
                                 <div className="utf-header-notifications user-menu">
                                     <div className="utf-header-notifications-trigger user-profile-title">

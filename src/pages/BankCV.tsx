@@ -1,4 +1,5 @@
 import React from 'react'
+import { BankCVSection } from '../components/BankCVSection'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { Subscribe } from '../components/Subscribe'
@@ -9,6 +10,7 @@ export const BankCV = () => {
     <>
       <Header current={'bank_cv'}/>
       <TitleBar current={'Bank Your CV'} prev={'Home'} url={'/'} />
+      <BankCVSection/>
       <Subscribe/>
       <Footer/>
     </>
