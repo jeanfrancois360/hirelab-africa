@@ -5,6 +5,8 @@ import { Blog } from './pages/Blog';
 import { Contact } from './pages/Contact';
 import { Home } from './pages/Home';
 import { Jobs } from './pages/Jobs';
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
 import { Services } from './pages/Services';
 
 function App() {
@@ -30,7 +32,9 @@ function App() {
        <Route path="/jobs" element={<Jobs/>} />
        <Route path="/bank-cv" element={<BankCV/>} />
        <Route path="/blog" element={<Blog/>} />
-       <Route path="/contact" element={<Contact/>} />
+       <Route path="/contact" element={<Contact />} />
+       <Route path="/login" element={<Login />} />
+       <Route path="/register" element={<Register />} />       
        <Route path="*" element={<Navigate replace to="/"/>} />
      </Routes>
     </div>
