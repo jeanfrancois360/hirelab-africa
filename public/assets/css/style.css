@@ -8414,7 +8414,7 @@ input:checked + .switch-button:before {
   margin-top: 5px;
   display: inline-block;
 }
-.utf-banner-headline-text-part span.typed-words {
+.utf-banner-headline-text-part span.typed-words span span {
   font-size: 40px;
   color: #226bdd;
   font-weight: 700;
@@ -19142,4 +19142,9 @@ a.apply-now-button:hover {
   border-radius:50px;
   font-size:12px;
   margin-right: 10px;
+}
+
+.service-menu a{
+  width: 100% !important;
+  text-align: left !important;
 }

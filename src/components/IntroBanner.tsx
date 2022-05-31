@@ -1,4 +1,5 @@
 import React from 'react'
+import Typed from 'react-typed';
 
 export const IntroBanner = () => {
   return (
@@ -9,7 +10,19 @@ export const IntroBanner = () => {
             <div className="row">
                 <div className="col-md-12">
                 <div className="utf-banner-headline-text-part">
-                    <h3>Find Nearby Jobs <span className="typed-words"></span></h3>
+                    <h3>Find Nearby Jobs <span className="typed-words">
+                    <Typed
+                    typedRef={(typed: any) => typed }
+                    strings={[" Web Designer."," Graphic Designer."," Logo Designer."," Sales Marketing."]}
+                    typeSpeed={50}
+                    backSpeed={50}
+                    smartBackspace
+                    backDelay= {3000}
+                    startDelay= {1000}
+                    showCursor={true}
+                    loop
+                    />
+                        </span></h3>
                     <span>It is a Long Established Fact That a Reader Will be Distracted by The Readable.</span> 
                 </div>
                 </div>
