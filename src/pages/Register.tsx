@@ -7,12 +7,12 @@ import { TitleBar } from '../components/TitleBar'
 
 export const Register = () => {
     return (
-        <>
+        <div id="wrapper">
             <Header current={'register'} />
             <TitleBar current={'Register'} prev={'Home'} url={'/'} />
             <RegisterSection />
             <Subscribe />
             <Footer />
-        </>
+        </div>
     )
 }

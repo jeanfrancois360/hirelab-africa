@@ -7,12 +7,12 @@ import { TitleBar } from '../components/TitleBar'
 
 export const Blog = () => {
   return (
-    <>
+    <div id="wrapper">
       <Header current={'blog'}/>
       <TitleBar current={'Blog'} prev={'Home'} url={'/'} />
       <BlogSection/>
       <Subscribe/>
       <Footer/>
-    </>
+    </div>
   )
 }

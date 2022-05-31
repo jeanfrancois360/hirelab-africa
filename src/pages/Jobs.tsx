@@ -8,13 +8,13 @@ import { TitleBar } from '../components/TitleBar'
 
 export const Jobs = () => {
   return (
-    <>
+    <div id="wrapper">
         <Header current={'jobs'}/>
         <TitleBar current={'Jobs'} prev={'Home'} url={'/'} />
         <SearchJobsSection/>
         <AllJobsListSection/>
         <Subscribe/>
         <Footer/>
-    </>
+    </div>
   )
 }
