@@ -7,12 +7,12 @@ import { TitleBar } from '../components/TitleBar'
 
 export const BankCV = () => {
   return (
-    <>
+    <div id="wrapper">
       <Header current={'bank_cv'}/>
       <TitleBar current={'Bank Your CV'} prev={'Home'} url={'/'} />
       <BankCVSection/>
       <Subscribe/>
       <Footer/>
-    </>
+    </div>
   )
 }

@@ -10,7 +10,7 @@ import { Subscribe } from '../components/Subscribe'
 
 export const Home = () => {
   return (
-    <>
+    <div id="wrapper">
         <Header current={'home'}/>
         <IntroBanner/>
         <CategoryBoxes/>
@@ -19,6 +19,6 @@ export const Home = () => {
         <NeedHelp/>
         <Subscribe/>
         <Footer/>
-    </>
+    </div>
   )
 }

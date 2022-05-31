@@ -3,6 +3,7 @@ import { About } from './pages/About';
 import { BankCV } from './pages/BankCV';
 import { Blog } from './pages/Blog';
 import { Contact } from './pages/Contact';
+import { Dashboard } from './pages/Dashboard';
 import { Home } from './pages/Home';
 import { Jobs } from './pages/Jobs';
 import { Login } from './pages/Login';
@@ -12,7 +13,6 @@ import { Services } from './pages/Services';
 function App() {
   return (
     <>
- 
     {/* Preloader Start */}
     <div className="preloader">
         <div className="utf-preloader">
@@ -24,7 +24,6 @@ function App() {
     </div>
     {/* Preloader End  */}
     <Router>
-    <div id="wrapper">
      <Routes>
        <Route path="/" element={<Home/>} />
        <Route path="/about" element={<About/>} />
@@ -34,10 +33,10 @@ function App() {
        <Route path="/blog" element={<Blog/>} />
        <Route path="/contact" element={<Contact />} />
        <Route path="/login" element={<Login />} />
-       <Route path="/register" element={<Register />} />       
+       <Route path="/register" element={<Register />} />  
+       <Route path="/dashboard" element={<Dashboard />} />   
        <Route path="*" element={<Navigate replace to="/"/>} />
      </Routes>
-    </div>
     </Router>
     </>
   );

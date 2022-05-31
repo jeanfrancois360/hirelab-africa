@@ -13,7 +13,7 @@ export const IntroBanner = () => {
                     <h3>Find Nearby Jobs <span className="typed-words">
                     <Typed
                     typedRef={(typed: any) => typed }
-                    strings={[" Web Designer."," Graphic Designer."," Logo Designer."," Sales Marketing."]}
+                    strings={[" Web Designer."," Graphic Designer."," Accountant."," Sales Marketing."]}
                     typeSpeed={50}
                     backSpeed={50}
                     smartBackspace

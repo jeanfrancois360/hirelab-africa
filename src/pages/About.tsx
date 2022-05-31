@@ -7,12 +7,12 @@ import { TitleBar } from '../components/TitleBar'
 
 export const About = () => {
   return (
-    <>
+    <div id = "wrapper">
       <Header current={'about'}/>
       <TitleBar current={'About Us'} prev={'Home'} url={'/'} />
       <AboutSection/>
       <Subscribe/>
       <Footer/>
-    </>
+    </div>
   )
 }
