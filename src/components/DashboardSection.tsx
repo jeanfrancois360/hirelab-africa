@@ -361,8 +361,9 @@ export const DashboardSection = () => {
                             </div>
                         </div>
                     </div>
-
-                    <DashboardFooter/>
+                     {/* Footer Start */}
+                        <DashboardFooter />
+                     {/* Footer End */}
                 </div>
             </div>
             {/* <!-- Dashboard Content End --> */}
