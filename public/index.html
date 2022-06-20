@@ -1,133 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="author" content="">
-<meta name="theme-color" content="#1E63CF">
-<meta name="description" content="Job Portal">
-<meta name="keywords" content="Employment, Indeed, Job Posting, Job Provider">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hirelab Africa</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="" />
+    <meta name="theme-color" content="#1E63CF" />
+    <meta name="Description" content="Job Portal" />
+    <meta
+      name="keywords"
+      content="Employment, Indeed, Job Posting, Job Provider"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hirelab Africa</title>
 
-<!--  Favicon -->
-<link rel="shortcut icon" href="assets/images/favicon.ico">
+    <!--  Favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
 
-<!-- CSS -->
-<link rel="stylesheet" href="assets/css/bootstrap-grid.css">
-<link rel="stylesheet" href="assets/css/icons.css">
-<link rel="stylesheet" href="assets/css/style.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-grid.css" />
+    <link rel="stylesheet" href="assets/css/icons.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">   
-</head>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-   
+
     <!-- Sign In Popup -->
-<div id="utf-signin-dialog-block" class="zoom-anim-dialog mfp-hide dialog-with-tabs"> 
-  <div class="utf-signin-form-part">
-    <ul class="utf-popup-tabs-nav-item">
-      <li><a href="#login">Log In</a></li>
-      <li><a href="#register">Register</a></li>
-    </ul>
-    <div class="utf-popup-container-part-tabs"> 
-      <!-- Login -->
-      <div class="utf-popup-tab-content-item" id="login"> 
-        <div class="utf-welcome-text-item">
-          <h3>Welcome Back Sign in to Continue</h3>
-          <span>Don't Have an Account? <a href="#" class="register-tab">Sign Up!</a></span> 
-		</div>
-        <form method="post" id="login-form">
-          <div class="utf-no-border">
-            <input type="text" class="utf-with-border" name="emailaddress" id="emailaddress" placeholder="Email Address" required/>
+    <div
+      id="utf-signin-dialog-block"
+      class="zoom-anim-dialog mfp-hide dialog-with-tabs"
+    >
+      <div class="utf-signin-form-part">
+        <ul class="utf-popup-tabs-nav-item">
+          <li><a href="#login">Log In</a></li>
+          <li><a href="#register">Register</a></li>
+        </ul>
+        <div class="utf-popup-container-part-tabs">
+          <!-- Login -->
+          <div class="utf-popup-tab-content-item" id="login">
+            <div class="utf-welcome-text-item">
+              <h3>Welcome Back Sign in to Continue</h3>
+              <span
+                >Don't Have an Account?
+                <a href="#" class="register-tab">Sign Up!</a></span
+              >
+            </div>
+            <form method="post" id="login-form">
+              <div class="utf-no-border">
+                <input
+                  type="text"
+                  class="utf-with-border"
+                  name="emailaddress"
+                  id="emailaddress"
+                  placeholder="Email Address"
+                  required
+                />
+              </div>
+              <div class="utf-no-border">
+                <input
+                  type="password"
+                  class="utf-with-border"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <div class="checkbox margin-top-0">
+                <input type="checkbox" id="two-step" />
+                <label for="two-step"
+                  ><span class="checkbox-icon"></span> Remember Me</label
+                >
+              </div>
+              <a href="forgot-password.html" class="forgot-password"
+                >Forgot Password?</a
+              >
+            </form>
+            <button
+              class="button full-width utf-button-sliding-icon ripple-effect"
+              type="submit"
+              form="login-form"
+            >
+              Log In <i class="icon-feather-chevron-right"></i>
+            </button>
+            <div class="utf-social-login-separator-item">
+              <span>Or Login in With</span>
+            </div>
+            <div class="utf-social-login-buttons-block">
+              <button class="facebook-login ripple-effect">
+                <i class="icon-brand-facebook-f"></i> Facebook
+              </button>
+              <button class="google-login ripple-effect">
+                <i class="icon-brand-google"></i> Google
+              </button>
+              <button class="twitter-login ripple-effect">
+                <i class="icon-brand-twitter"></i> Twitter
+              </button>
+            </div>
           </div>
-          <div class="utf-no-border">
-            <input type="password" class="utf-with-border" name="password" id="password" placeholder="Password" required/>
+
+          <!-- Register -->
+          <div class="utf-popup-tab-content-item" id="register">
+            <div class="utf-welcome-text-item">
+              <h3>Create your Account!</h3>
+              <span
+                >Don't Have an Account?
+                <a href="#" class="register-tab">Sign Up!</a></span
+              >
+            </div>
+            <form method="post" id="utf-register-account-form">
+              <div class="utf-no-border">
+                <input
+                  type="text"
+                  class="utf-with-border"
+                  name="name"
+                  id="name"
+                  placeholder="User Name"
+                  required
+                />
+              </div>
+              <div class="utf-no-border">
+                <input
+                  type="text"
+                  class="utf-with-border"
+                  name="emailaddress-register"
+                  id="emailaddress-register"
+                  placeholder="Email Address"
+                  required
+                />
+              </div>
+              <div class="utf-no-border margin-bottom-20">
+                <select
+                  class="selectpicker utf-with-border"
+                  data-size="5"
+                  title="Select Jobs"
+                >
+                  <option>Web Designer</option>
+                  <option>Web Developer</option>
+                  <option>Graphic Designer</option>
+                  <option>Android Developer</option>
+                  <option>IOS Developer</option>
+                  <option>UI/UX Designer</option>
+                  <option>Graphics Designer</option>
+                </select>
+              </div>
+              <div
+                class="utf-no-border"
+                title="Should be at least 8 characters long"
+                data-tippy-placement="bottom"
+              >
+                <input
+                  type="password"
+                  class="utf-with-border"
+                  name="password-register"
+                  id="password-register"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <div class="utf-no-border">
+                <input
+                  type="password"
+                  class="utf-with-border"
+                  name="password-repeat-register"
+                  id="password-repeat-register"
+                  placeholder="Repeat Password"
+                  required
+                />
+              </div>
+              <div class="checkbox margin-top-0">
+                <input type="checkbox" id="two-step0" />
+                <label for="two-step0"
+                  ><span class="checkbox-icon"></span> I Have Read and Agree to
+                  the <a href="#">Terms &amp; Conditions</a></label
+                >
+              </div>
+            </form>
+            <button
+              class="margin-top-10 button full-width utf-button-sliding-icon ripple-effect"
+              type="submit"
+              form="utf-register-account-form"
+            >
+              Register <i class="icon-feather-chevron-right"></i>
+            </button>
           </div>
-		  <div class="checkbox margin-top-0">
-			<input type="checkbox" id="two-step">
-			<label for="two-step"><span class="checkbox-icon"></span> Remember Me</label>
-		  </div>
-          <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
-        </form>
-        <button class="button full-width utf-button-sliding-icon ripple-effect" type="submit" form="login-form">Log In <i class="icon-feather-chevron-right"></i></button>
-        <div class="utf-social-login-separator-item"><span>Or Login in With</span></div>
-        <div class="utf-social-login-buttons-block">
-          <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Facebook</button>
-		  <button class="google-login ripple-effect"><i class="icon-brand-google"></i> Google</button>
-		  <button class="twitter-login ripple-effect"><i class="icon-brand-twitter"></i> Twitter</button>
         </div>
       </div>
-      
-      <!-- Register -->
-      <div class="utf-popup-tab-content-item" id="register"> 
-        <div class="utf-welcome-text-item">
-          <h3>Create your Account!</h3>
-		  <span>Don't Have an Account? <a href="#" class="register-tab">Sign Up!</a></span> 
-        </div>        
-        <form method="post" id="utf-register-account-form">
-          <div class="utf-no-border">
-            <input type="text" class="utf-with-border" name="name" id="name" placeholder="User Name" required/>
-          </div>
-		  <div class="utf-no-border">
-            <input type="text" class="utf-with-border" name="emailaddress-register" id="emailaddress-register" placeholder="Email Address" required/>
-          </div>
-		  <div class="utf-no-border margin-bottom-20">
-			<select class="selectpicker utf-with-border" data-size="5" title="Select Jobs">
-				<option>Web Designer</option>
-				<option>Web Developer</option>
-				<option>Graphic Designer</option>
-				<option>Android Developer</option>
-				<option>IOS Developer</option>
-				<option>UI/UX Designer</option>
-				<option>Graphics Designer</option>				
-			</select>
-		  </div>
-          <div class="utf-no-border" title="Should be at least 8 characters long" data-tippy-placement="bottom">
-            <input type="password" class="utf-with-border" name="password-register" id="password-register" placeholder="Password" required/>
-          </div>
-          <div class="utf-no-border">
-            <input type="password" class="utf-with-border" name="password-repeat-register" id="password-repeat-register" placeholder="Repeat Password" required/>
-          </div>
-		  <div class="checkbox margin-top-0">
-			<input type="checkbox" id="two-step0">
-			<label for="two-step0"><span class="checkbox-icon"></span> I Have Read and Agree to the <a href="#">Terms &amp; Conditions</a></label>
-		  </div>
-        </form>
-        <button class="margin-top-10 button full-width utf-button-sliding-icon ripple-effect" type="submit" form="utf-register-account-form">Register <i class="icon-feather-chevron-right"></i></button>
-      </div>
     </div>
-  </div>
-</div>
-<!-- Sign In Popup / End --> 
+    <!-- Sign In Popup / End -->
 
-<!-- Scripts --> 
-<script src="assets/js/jquery-3.3.1.min.js"></script> 
-<script src="assets/js/jquery-migrate-3.0.0.min.js"></script> 
-<script src="assets/js/mmenu.min.js"></script> 
-<script src="assets/js/tippy.all.min.js"></script> 
-<script src="assets/js/simplebar.min.js"></script> 
-<script src="assets/js/bootstrap-slider.min.js"></script> 
-<script src="assets/js/bootstrap-select.min.js"></script> 
-<script src="assets/js/snackbar.js"></script> 
-<script src="assets/js/clipboard.min.js"></script> 
-<script src="assets/js/counterup.min.js"></script> 
-<script src="assets/js/magnific-popup.min.js"></script> 
-<script src="assets/js/slick.min.js"></script> 
-<script src="assets/js/typed.js"></script>
-<script src="assets/js/custom_jquery.js"></script> 
+    <!-- Scripts -->
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
+    <script src="assets/js/mmenu.min.js"></script>
+    <script src="assets/js/tippy.all.min.js"></script>
+    <script src="assets/js/simplebar.min.js"></script>
+    <script src="assets/js/bootstrap-slider.min.js"></script>
+    <script src="assets/js/bootstrap-select.min.js"></script>
+    <script src="assets/js/snackbar.js"></script>
+    <script src="assets/js/clipboard.min.js"></script>
+    <script src="assets/js/counterup.min.js"></script>
+    <script src="assets/js/magnific-popup.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/typed.js"></script>
+    <script src="assets/js/custom_jquery.js"></script>
 
-<script>
-if ($('.utf-intro-banner-search-form-block')[0]) {
-	setTimeout(function(){ 
-		$(".pac-container").prependTo(".utf-intro-search-field-item.with-autocomplete");
-	}, 300);
-}
-</script> 
-<!-- <script>
+    <script>
+      if ($('.utf-intro-banner-search-form-block')[0]) {
+        setTimeout(function () {
+          $('.pac-container').prependTo(
+            '.utf-intro-search-field-item.with-autocomplete'
+          );
+        }, 300);
+      }
+    </script>
+    <!-- <script>
 var typed = new Typed('.typed-words', {
 	strings: ["Web Designer."," Graphic Designer."," Logo Designer."," Sales Marketing."],
 	typeSpeed: 80,

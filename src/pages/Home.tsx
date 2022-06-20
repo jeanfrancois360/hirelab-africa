@@ -7,18 +7,26 @@ import { IntroBanner } from '../components/IntroBanner'
 import { HomeJobListSection } from '../components/HomeJobListSection'
 import { NeedHelp } from '../components/NeedHelp'
 import { Subscribe } from '../components/Subscribe'
+import { Helmet } from 'react-helmet-async'
 
 export const Home = () => {
   return (
-    <div id="wrapper">
-        <Header current={'home'}/>
-        <IntroBanner/>
-        <CategoryBoxes/>
-        <HomeJobListSection/>
-        <CallOut/>
-        <NeedHelp/>
-        <Subscribe/>
-        <Footer/>
-    </div>
+    <>
+      <Helmet prioritizeSeoTags>
+        <title>Hirelab Africa</title>
+        <link rel="canonical" href="/" />
+        <meta name="Description" content="HireLab Africa Ltd is a leading private Human Resources Consulting firm that provides HR solutions to Companies all over Africa." />
+      </Helmet>
+      <div id="wrapper">
+        <Header current={'home'} />
+        <IntroBanner />
+        <CategoryBoxes />
+        <HomeJobListSection />
+        <CallOut />
+        <NeedHelp />
+        <Subscribe />
+        <Footer />
+      </div>
+    </>
   )
 }
