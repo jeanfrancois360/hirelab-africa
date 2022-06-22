@@ -2,6 +2,7 @@ import React, {useState } from 'react'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { MsgText } from './MsgText';
+import { RegisterInt } from '../interfaces';
 
 
 export const RegisterSection = () => {
@@ -16,6 +17,8 @@ export const RegisterSection = () => {
       };
     
   const [currentForm, setCurrentForm] = useState('candidate')
+
+
     // All Validations
   const CandidateFormValidationSchema = Yup.object().shape({
     first_name: Yup.string().required().label('First name'),
@@ -51,11 +54,9 @@ export const RegisterSection = () => {
       'Passwords must match'
     ),
   });
-
-  const handleCreate = ()=>{
-
+  const handleCreate = (values:RegisterInt)=>{
+    
   }
-
   return (
       <div className="container">
           <div className="row">

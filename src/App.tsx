@@ -17,13 +17,14 @@ import { ViewApplication } from './pages/ViewApplication';
 import { AddCompany } from './pages/AddCompany';
 import { AddCategory } from './pages/AddCategory';
 import { ViewCategories } from './pages/ViewCategories';
-import { Provider } from 'react-redux';
-import store from './redux/store'
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 function App() {
   const helmetContext = {};
+  const queryClient = new QueryClient();
   return (
-    <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
       <HelmetProvider context={helmetContext}>
         {/* Preloader Start */}
         <div className="preloader">
@@ -59,7 +60,8 @@ function App() {
           </Routes>
         </Router>
       </HelmetProvider>
-    </Provider>
+      <ReactQueryDevtools/>
+    </QueryClientProvider>
   );
 }
 
