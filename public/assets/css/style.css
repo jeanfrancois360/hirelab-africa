@@ -19167,3 +19167,20 @@ a.apply-now-button:hover {
 .utf-dashboard-nav ul li:hover a:after {
   color: #ffffff !important;
 }
+
+.custom-tab-btn{
+  background-color: #f2f2f2 !important;
+  color: #888 !important;
+  box-shadow: none !important;
+}
+
+.custom-tab-btn:hover{
+  background-color: #1e63cf !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+.active-custom-tab-btn{
+  background-color: #1e63cf !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}

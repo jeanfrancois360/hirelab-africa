@@ -48,7 +48,7 @@ export const SignIn =
     dispatch(openLoader());
     clearMessage();
     try {
-      const response = await axios.post('/api/login', payload);
+      const response = await axios.post('api/login', payload);
       // Setting up temporary axios authorization token
       axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
 
