@@ -1,8 +1,13 @@
-import React, {useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useEffect, useState } from 'react'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { MsgText } from './MsgText';
 import { RegisterInt } from '../interfaces';
+import axios from '../axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bars } from  'react-loader-spinner'
 
 
 export const RegisterSection = () => {
@@ -15,8 +20,48 @@ export const RegisterSection = () => {
         password: '',
         password_confirmation: '',
       };
-    
-  const [currentForm, setCurrentForm] = useState('candidate')
+      
+  const [currentForm, setCurrentForm] = useState('Candidate')
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const notify = (msg_type: string) => {
+   if(msg_type === 'success')
+    toast.success(successMsg, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light'
+    });
+    if(msg_type === 'error')
+    toast.error(errorMsg, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light'
+    });
+  }
+
+
+  useEffect(()=>{
+   if(successMsg){
+    notify('success')
+   }
+  },[successMsg])
+
+  useEffect(()=>{
+    if(errorMsg){
+     notify('error')
+    }
+   },[errorMsg])
 
 
     // All Validations
@@ -54,10 +99,33 @@ export const RegisterSection = () => {
       'Passwords must match'
     ),
   });
-  const handleCreate = (values:RegisterInt)=>{
-    
+
+
+  const handleSignUp = async (payload:RegisterInt)=>{
+    if(isLoading){
+      return
+    }
+
+    setIsLoading(true);
+    setErrorMsg("")
+    setSuccessMsg("")
+
+    return await axios.post('/auth/signup/', {...payload, role: currentForm}).then((res) => {
+      setIsLoading(false)
+      if(res.data.hasOwnProperty('id')){
+        setSuccessMsg("Successfully registered!");
+      }
+    }).catch((error)=> {
+      setIsLoading(false)
+      console.error(error.response?.data?.message)
+      const errorMessage = error.response?.data?.message;
+      setErrorMsg(errorMessage || error.message);
+    })
   }
+
   return (
+    <>
+      <ToastContainer />
       <div className="container">
           <div className="row">
               <div className="col-xl-6 offset-xl-3">
@@ -68,29 +136,29 @@ export const RegisterSection = () => {
                       </div>
                       <div className="utf-account-type">
                           <div>
-                              <button className={`button full-width utf-ripple-effect-dark margin-top-10 custom-tab-btn ${currentForm === 'candidate' && 'active-custom-tab-btn'}`}
+                              <button className={`button full-width utf-ripple-effect-dark margin-top-10 custom-tab-btn ${currentForm === 'Candidate' && 'active-custom-tab-btn'}`}
                                type="button" title="Candidate" data-tippy-placement="top"
-                               onClick={()=> setCurrentForm('candidate')}>
+                               onClick={()=> setCurrentForm('Candidate')}>
                                <i className="icon-material-outline-account-circle"></i>
                                 Candidate
                              </button>
                           </div>
                           <div>
                               <button 
-                              className={`button full-width utf-ripple-effect-dark margin-top-10 custom-tab-btn ${currentForm === 'employer' && 'active-custom-tab-btn'}`} 
+                              className={`button full-width utf-ripple-effect-dark margin-top-10 custom-tab-btn ${currentForm === 'Employer' && 'active-custom-tab-btn'}`} 
                               type="button" title="Employer" data-tippy-placement="top" 
-                              onClick={()=> setCurrentForm('employer')}>
+                              onClick={()=> setCurrentForm('Employer')}>
                                 <i className="icon-material-outline-business-center"></i>
                                  Employer
                              </button>
                           </div>
                       </div>
 
-                      {currentForm === "employer" && (
+                      {currentForm === "Employer" && (
                         <Formik
                         enableReinitialize
                         initialValues={initialValues}
-                        onSubmit={handleCreate}
+                        onSubmit={handleSignUp}
                         validationSchema={EmployerFormValidationSchema}
                       >
                         {({
@@ -169,14 +237,24 @@ export const RegisterSection = () => {
                               <input type="checkbox" id="two-step0"/>
                                   <label htmlFor="two-step0"><span className="checkbox-icon"></span> I Have Read and Agree to the <a href="/">Terms &amp; Conditions</a></label>
                           </div>
-                      <button className="button full-width utf-button-sliding-icon ripple-effect margin-top-10" type="submit">Create An Account <i className="icon-feather-chevron-right"></i></button>
+                          <button className="button full-width utf-button-sliding-icon ripple-effect margin-top-10" type="submit">
+                          {isLoading ? <div style={{marginLeft: '225px'}}><Bars
+                            height="25"
+                            width="25"
+                            color='white'
+                            ariaLabel='loading'
+                          /> </div>: <div>
+                          Create An Account
+                          <i className="icon-feather-chevron-right"></i>
+                          </div>}
+                        </button>
                       </form>)}</Formik>)}
 
-                      {currentForm === "candidate" && (
+                      {currentForm === "Candidate" && (
                       <Formik
                         enableReinitialize
                         initialValues={initialValues}
-                        onSubmit={handleCreate}
+                        onSubmit={handleSignUp}
                         validationSchema={CandidateFormValidationSchema}
                       >
                         {({
@@ -253,12 +331,23 @@ export const RegisterSection = () => {
                               <input type="checkbox" id="two-step0"/>
                                   <label htmlFor="two-step0"><span className="checkbox-icon"></span> I Have Read and Agree to the <a href="/">Terms &amp; Conditions</a></label>
                           </div>
-                      <button className="button full-width utf-button-sliding-icon ripple-effect margin-top-10" type="submit">Create An Account <i className="icon-feather-chevron-right"></i></button>
+                      <button className="button full-width utf-button-sliding-icon ripple-effect margin-top-10" type="submit">
+                          {isLoading ? <div style={{marginLeft: '225px'}}><Bars
+                            height="25"
+                            width="25"
+                            color='white'
+                            ariaLabel='loading'
+                          /> </div>: <div>
+                          Create An Account
+                          <i className="icon-feather-chevron-right"></i>
+                          </div>}
+                        </button>
                       </form>)}</Formik>)}
             
                   </div>
               </div>
           </div>
       </div>
+    </>
   )
 }
