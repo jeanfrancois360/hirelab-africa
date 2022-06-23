@@ -1,6 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { logout } from '../api/auth';
 
 export const SidebarSection = () => {
+    const [userDetails, setUserDetails] = useState<any>(null);
+    useEffect(()=>{
+      // @ts-ignore
+      let user = JSON.parse(localStorage.getItem('user'));
+      if(user){
+        setUserDetails(user)
+      }
+      
+    },[])
+
+    const handleLogout = (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        logout()
+      }
     return (
         <div className="utf-dashboard-sidebar-item">
             <div className="utf-dashboard-sidebar-item-inner" data-simplebar>
@@ -15,8 +30,8 @@ export const SidebarSection = () => {
                                     <img alt="" src="assets/images/user_small_1.jpg" className="photo" />
                                 </span>
                                 <div className="user-profile-text">
-                                    <span className="fullname">John Williams</span>
-                                    <span className="user-role">Administrator</span>
+                                    <span className="fullname">{`${userDetails && userDetails.hasOwnProperty('profile') ? userDetails.profile.first_name: 'Anonymous'}`}</span>
+                                    <span className="user-role">{`${userDetails && userDetails.hasOwnProperty('role') ? userDetails.role.name: 'Administrator'}`}</span>
                                 </div>
                             </div>
                             <div className="clearfix"></div>
@@ -42,7 +57,7 @@ export const SidebarSection = () => {
                                 </li>
                                 <li><a href="/view-cvs"><i className="icon-material-outline-supervisor-account"></i> Manage CVs</a></li>
                                 <li><a href="/view-applications"><i className="icon-material-outline-file-copy"></i> Manage Applications</a></li>
-                                <li><a href="/login"><i className="icon-material-outline-power-settings-new"></i> Logout</a></li>
+                                <li><a href="/login" onClick={handleLogout}><i className="icon-material-outline-power-settings-new"></i> Logout</a></li>
                             </ul>
                         </div>
                     </div>

@@ -3,12 +3,13 @@ import { Helmet } from 'react-helmet-async'
 import { BankCVSection } from '../components/BankCVSection'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
+import Protected from '../components/Protected'
 import { Subscribe } from '../components/Subscribe'
 import { TitleBar } from '../components/TitleBar'
 
 export const BankCV = () => {
   return (
-    <>
+    <Protected>
       <Helmet prioritizeSeoTags>
         <title>Bank CV - Hirelab Africa</title>
         <link rel="canonical" href="/" />
@@ -21,6 +22,6 @@ export const BankCV = () => {
         <Subscribe />
         <Footer />
       </div>
-    </>
+    </Protected>
   )
 }

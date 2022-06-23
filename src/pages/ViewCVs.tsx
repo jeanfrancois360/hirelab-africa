@@ -1,10 +1,13 @@
 import React from 'react'
+import Protected from '../components/Protected'
 import { ViewCVsSection } from '../components/ViewCVsSection'
 
 export const ViewCVs = () => {
     return (
-        <div id="wrapper" style={{ paddingTop: "82px" }}>
-            <ViewCVsSection />
-        </div>
+        <Protected>
+            <div id="wrapper" style={{ paddingTop: "82px" }}>
+                <ViewCVsSection />
+            </div>
+        </Protected>
     )
 }

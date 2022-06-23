@@ -55,7 +55,8 @@ export const LoginSection = () => {
       
           return await axios.post('/auth/signin/', payload).then((res) => {
             setIsLoading(false)
-            localStorage.setItem('access_token', res.data.access_token)
+            localStorage.setItem('user', JSON.stringify(res.data.user))
+            localStorage.setItem('access_token', JSON.stringify(res.data.access_token))
             window.location.replace("/dashboard");
           }).catch((error)=> {
             setIsLoading(false)
