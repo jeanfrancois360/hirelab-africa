@@ -6507,6 +6507,12 @@ ul.utf-dashboard-box-list > li:hover:after,
   background-color: #fbf6dd;
   color: #1e63cf;
 }
+
+.utf-companies-list-aera .company .dashboard-status-button.blue {
+  background: #1e63cf21;
+  color: #1e63cf;
+}
+
 .utf-companies-list-aera .company .utf-job-status-item.yellow i {
   color: #1e63cf;
 }
@@ -15346,6 +15352,10 @@ ul.utf-dashboard-box-list
   background-color: #ffe6e6;
   color: #ea5252;
 }
+.dashboard-status-button.blue {
+  background: #1e63cf21;
+  color: #1e63cf;
+}
 /* ----------------------------------
 Dashboard Invoices List
 ------------------------------------- */
@@ -19235,6 +19245,6 @@ a.apply-now-button:hover {
   margin-right: 6px;
 }
 
-.tb-field{
+.tb-field {
   margin: 0px !important;
 }

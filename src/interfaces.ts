@@ -27,15 +27,17 @@ export interface IJobCategory {
 export interface IJobPost {
   [x: string]: any;
   id?: number;
-  name: string;
   slug?: string;
   uuid?: string;
   title: string;
   description: string;
   salary_range?: string;
+  address: string;
   type: string;
   workspace: string;
   status: string;
+  posted_by: number;
+  job_category_id: number;
   created_at?: Date;
   update_at?: Date;
 }

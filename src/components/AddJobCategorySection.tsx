@@ -76,7 +76,7 @@ export const AddJobCategorySection: FC = () => {
     const handleAddCategory = async (payload: IJobCategory) => {
         const newJobCategory = await createMutation.mutateAsync(payload)
         if (newJobCategory) {
-            setSuccessMsg("Added Successfully!");
+            setSuccessMsg("Saved Successfully!");
         }
         if (createMutation.isError) {
             setErrorMsg("Something went wrong!");
@@ -86,7 +86,7 @@ export const AddJobCategorySection: FC = () => {
         <>
             <ToastContainer />
             {/* < !--Header Container-- > */}
-            <DashboardHeader current={'Add Category'} />
+            <DashboardHeader current={'Add Job Category'} />
             {/* <!--Header Container / End-- >  */}
 
             {/* < !--Dashboard Container-- > */}
@@ -97,7 +97,7 @@ export const AddJobCategorySection: FC = () => {
 
                 {/* <!-- Dashboard Content --> */}
                 <div className="utf-dashboard-content-container-aera" data-simplebar>
-                    <DashboardTitlebar current={'Add Category'} prev={'Dashboard'} url={'/dashboard'} />
+                    <DashboardTitlebar current={'Add Job Category'} prev={'Dashboard'} url={'/dashboard'} />
                     <div className="utf-dashboard-content-inner-aera">
                         <div className="row">
                             <div className="col-xl-12">
@@ -159,7 +159,7 @@ export const AddJobCategorySection: FC = () => {
                                                         </div>
                                                     </div>
                                                     <div className="utf-centered-button">
-                                                        <button className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-0" type="submit">
+                                                        <button className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-0 margin-bottom-15" type="submit">
                                                             {createMutation.isLoading ? <div style={{ marginLeft: '225px' }}><Bars
                                                                 height="25"
                                                                 width="25"
