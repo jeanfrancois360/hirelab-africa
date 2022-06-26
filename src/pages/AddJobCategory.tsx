@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
+import { AddJobCategorySection } from '../components/AddJobCategorySection'
 import Protected from '../components/Protected'
-import { ViewApplicationsSection } from '../components/ViewApplicationsSection'
 
-export const ViewApplication: FC = () => {
+export const AddJobCategory: FC = () => {
     return (
         <Protected>
             <div id="wrapper" style={{ paddingTop: "82px" }}>
-                <ViewApplicationsSection />
+                <AddJobCategorySection />
             </div>
         </Protected>
     )

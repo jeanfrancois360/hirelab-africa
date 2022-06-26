@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { ContactSection } from '../components/ContactSection'
 import { Footer } from '../components/Footer'
@@ -6,7 +6,7 @@ import { Header } from '../components/Header'
 import { Subscribe } from '../components/Subscribe'
 import { TitleBar } from '../components/TitleBar'
 
-export const Contact = () => {
+export const Contact: FC = () => {
   return (
     <>
       <Helmet prioritizeSeoTags>

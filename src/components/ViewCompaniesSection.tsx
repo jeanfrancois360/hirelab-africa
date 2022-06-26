@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { DashboardFooter } from './DashboardFooter'
 import { DashboardHeader } from './DashboardHeader'
 import { DashboardTitlebar } from './DashboardTitlebar'
 import { SidebarSection } from './SidebarSection'
 
-export const ViewCompaniesSection = () => {
+export const ViewCompaniesSection: FC = () => {
     return (
         <>
             {/* < !--Header Container-- > */}

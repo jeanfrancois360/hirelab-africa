@@ -1,45 +1,45 @@
-import {useState} from 'react'
+import { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export const ServicesSection = () => {
+export const ServicesSection: FC = () => {
   const [tab, setTab] = useState('adverts')
   return (
     <div className="container">
-    <div className="row">
-      <div className="col-xl-4 col-lg-5">
-        <div className="utf-sidebar-container-aera">
-          <div className="utf-sidebar-widget-item">
-            <h3>All services</h3>
-            <div className="utf-tags-container-item service-menu">
-            <a href="/" onClick={(e)=>{e.preventDefault(); setTab('adverts')}} className={`${tab === "adverts" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Adverts <i className="icon-feather-arrow-right"></i></a> 
-            <a href="/" onClick={(e)=>{e.preventDefault(); setTab('employee_outsourcing')}} className={`${tab === "employee_outsourcing" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Employee Outsourcing <i className="icon-feather-arrow-right"></i></a> 
-            <a href="/" onClick={(e)=>{e.preventDefault(); setTab('cvs_on_request')}} className={`${tab === "cvs_on_request" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>CVs On Request <i className="icon-feather-arrow-right"></i></a> 
-            <a href="/" onClick={(e)=>{e.preventDefault(); setTab('interns_on_request')}} className={`${tab === "interns_on_request" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Interns On Request <i className="icon-feather-arrow-right"></i></a> 
-            <a href="/" onClick={(e)=>{e.preventDefault(); setTab('interview_trainings')}} className={`${tab === "interview_trainings" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Interview Trainings <i className="icon-feather-arrow-right"></i></a> 
-            <a href="/" onClick={(e)=>{e.preventDefault(); setTab('hr_advisory')}} className={`${tab === "hr_advisory" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Human Resources Advisory <i className="icon-feather-arrow-right"></i></a> 
-            <a href="/" onClick={(e)=>{e.preventDefault(); setTab('legal_advisor')}} className={`${tab === "legal_advisor" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Legal Advisory On HR Matters <i className="icon-feather-arrow-right"></i></a> 
-            <a href="/" onClick={(e)=>{e.preventDefault(); setTab('maintenance')}} className={`${tab === "maintenance" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Maintenance Of Personnel Files <i className="icon-feather-arrow-right"></i></a> 
-              		  
+      <div className="row">
+        <div className="col-xl-4 col-lg-5">
+          <div className="utf-sidebar-container-aera">
+            <div className="utf-sidebar-widget-item">
+              <h3>All services</h3>
+              <div className="utf-tags-container-item service-menu">
+                <a href="/" onClick={(e) => { e.preventDefault(); setTab('adverts') }} className={`${tab === "adverts" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Adverts <i className="icon-feather-arrow-right"></i></a>
+                <a href="/" onClick={(e) => { e.preventDefault(); setTab('employee_outsourcing') }} className={`${tab === "employee_outsourcing" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Employee Outsourcing <i className="icon-feather-arrow-right"></i></a>
+                <a href="/" onClick={(e) => { e.preventDefault(); setTab('cvs_on_request') }} className={`${tab === "cvs_on_request" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>CVs On Request <i className="icon-feather-arrow-right"></i></a>
+                <a href="/" onClick={(e) => { e.preventDefault(); setTab('interns_on_request') }} className={`${tab === "interns_on_request" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Interns On Request <i className="icon-feather-arrow-right"></i></a>
+                <a href="/" onClick={(e) => { e.preventDefault(); setTab('interview_trainings') }} className={`${tab === "interview_trainings" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Interview Trainings <i className="icon-feather-arrow-right"></i></a>
+                <a href="/" onClick={(e) => { e.preventDefault(); setTab('hr_advisory') }} className={`${tab === "hr_advisory" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Human Resources Advisory <i className="icon-feather-arrow-right"></i></a>
+                <a href="/" onClick={(e) => { e.preventDefault(); setTab('legal_advisor') }} className={`${tab === "legal_advisor" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Legal Advisory On HR Matters <i className="icon-feather-arrow-right"></i></a>
+                <a href="/" onClick={(e) => { e.preventDefault(); setTab('maintenance') }} className={`${tab === "maintenance" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Maintenance Of Personnel Files <i className="icon-feather-arrow-right"></i></a>
+
+              </div>
+              <div className="clearfix"></div>
             </div>
-            <div className="clearfix"></div>
-          </div>
-		  
-		  <div className="utf-sidebar-widget-item">
-			  <div className="utf-detail-banner-add-section">
-				 <Link to="/"><img src="assets/images/banner-add-2.jpg" alt="banner-add-2" /></Link>
-			  </div>
-          </div>
-        </div>
-      </div>
-	  
-      {tab === "adverts" && (<div className="col-xl-8 col-lg-7">
-        <div className="col-xl-12"> 
-          <div className="utf-section-headline-item margin-top-0 margin-bottom-40">
-            <h3>Adverts</h3>
-            <div className="utf-headline-display-inner-item">Service</div>
+
+            <div className="utf-sidebar-widget-item">
+              <div className="utf-detail-banner-add-section">
+                <Link to="/"><img src="assets/images/banner-add-2.jpg" alt="banner-add-2" /></Link>
+              </div>
+            </div>
           </div>
         </div>
-          <div className='col-xl-12 mt-70'>  
+
+        {tab === "adverts" && (<div className="col-xl-8 col-lg-7">
+          <div className="col-xl-12">
+            <div className="utf-section-headline-item margin-top-0 margin-bottom-40">
+              <h3>Adverts</h3>
+              <div className="utf-headline-display-inner-item">Service</div>
+            </div>
+          </div>
+          <div className='col-xl-12 mt-70'>
             <ul className="list-2">
               <li>We only post and charge per the advert </li>
               <li>Appears on the Featured list</li>
@@ -145,7 +145,7 @@ export const ServicesSection = () => {
             <p>We properly arrange as per contents of personnel file the Company Employee files in a very systematic way for easy retrieval of any employee documents.</p>
           </div>
         </div>)}
+      </div>
     </div>
-  </div>
   )
 }

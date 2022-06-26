@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-export const TopBar = () => {
-  return (
+export const TopBar: FC = () => {
+    return (
 
-           <div className="top-bar">
+        <div className="top-bar">
             <div className='container'>
                 <div className="header-top-container">
                     <div className='header-top-left'>
@@ -19,15 +19,15 @@ export const TopBar = () => {
                     </div>
                     <div className='header-top-right'>
                         <div className="top-email">
-                        <span><i className="top-left-icon icon-material-outline-email"></i> info@hirelabafrica.com</span>
+                            <span><i className="top-left-icon icon-material-outline-email"></i> info@hirelabafrica.com</span>
                         </div>
                         <div className="top-phone">
-                        <span><i className="top-left-icon icon-feather-phone"></i> <span>Call us: 0788309811</span></span>
+                            <span><i className="top-left-icon icon-feather-phone"></i> <span>Call us: 0788309811</span></span>
                         </div>
 
                     </div>
                 </div>
             </div>
-            </div>
-  )
+        </div>
+    )
 }

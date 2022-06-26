@@ -8322,6 +8322,7 @@ input:checked + .switch-button:before {
   overflow: hidden;
   line-height: 22px;
   margin-left: 10px;
+  margin-right: 10px;
   border-radius: 4px;
   box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.05);
 }
@@ -15040,9 +15041,13 @@ Dashboard Box
   height: 26px;
   line-height: 18px;
 }
-.badge-primary {
+.badge-success {
   color: #ffffff;
   background-color: #40b660;
+}
+.badge-warning {
+  color: #ffffff;
+  background-color: #f59110;
 }
 .badge-danger {
   color: #ffffff;
@@ -15513,7 +15518,7 @@ Dashboard Invoices List
   border: none;
 }
 .dashboard-list-box .table {
-  text-align: right;
+  text-align: left;
 }
 .dashboard-task-info {
   position: relative;
@@ -19168,19 +19173,68 @@ a.apply-now-button:hover {
   color: #ffffff !important;
 }
 
-.custom-tab-btn{
+.custom-tab-btn {
   background-color: #f2f2f2 !important;
   color: #888 !important;
   box-shadow: none !important;
 }
 
-.custom-tab-btn:hover{
+.custom-tab-btn:hover {
   background-color: #1e63cf !important;
   color: #fff !important;
   box-shadow: none !important;
 }
-.active-custom-tab-btn{
+.active-custom-tab-btn {
   background-color: #1e63cf !important;
   color: #fff !important;
   box-shadow: none !important;
+}
+
+.primary-tb-btn {
+  background: #1e63cf21;
+  color: #1e63cf !important;
+  border-radius: 50px;
+  padding: 12px 14px;
+  text-align: center;
+  margin-right: 6px;
+}
+
+.warning-tb-btn {
+  background: #ffac2324;
+  color: #ffac23 !important;
+  border-radius: 50px;
+  padding: 12px 14px;
+  text-align: center;
+  margin-right: 6px;
+}
+
+.success-tb-btn {
+  background: #40b6601f;
+  color: #40b660 !important;
+  border-radius: 50px;
+  padding: 12px 14px;
+  text-align: center;
+  margin-right: 6px;
+}
+
+.info-tb-btn {
+  background: #00c7f929;
+  color: #00c7f9 !important;
+  border-radius: 50px;
+  padding: 12px 14px;
+  text-align: center;
+  margin-right: 6px;
+}
+
+.danger-tb-btn {
+  background: #ff235b21;
+  color: #ff235b !important;
+  border-radius: 50px;
+  padding: 12px 14px;
+  text-align: center;
+  margin-right: 6px;
+}
+
+.tb-field{
+  margin: 0px !important;
 }

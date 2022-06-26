@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { logout } from '../api/auth';
 
-export const SidebarSection = () => {
+export const SidebarSection: FC = () => {
     const [userDetails, setUserDetails] = useState<any>(null);
-    useEffect(()=>{
-      // @ts-ignore
-      let user = JSON.parse(localStorage.getItem('user'));
-      if(user){
-        setUserDetails(user)
-      }
-      
-    },[])
+    useEffect(() => {
+        // @ts-ignore
+        let user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            setUserDetails(user)
+        }
+
+    }, [])
 
     const handleLogout = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         logout()
-      }
+    }
     return (
         <div className="utf-dashboard-sidebar-item">
             <div className="utf-dashboard-sidebar-item-inner" data-simplebar>
@@ -30,8 +30,8 @@ export const SidebarSection = () => {
                                     <img alt="" src="assets/images/user_small_1.jpg" className="photo" />
                                 </span>
                                 <div className="user-profile-text">
-                                    <span className="fullname">{`${userDetails && userDetails.hasOwnProperty('profile') ? userDetails.profile.first_name: 'Anonymous'}`}</span>
-                                    <span className="user-role">{`${userDetails && userDetails.hasOwnProperty('role') ? userDetails.role.name: 'Administrator'}`}</span>
+                                    <span className="fullname">{`${userDetails && userDetails.hasOwnProperty('profile') ? userDetails.profile.first_name : 'Anonymous'}`}</span>
+                                    <span className="user-role">{`${userDetails && userDetails.hasOwnProperty('role') ? userDetails.role.name : 'Administrator'}`}</span>
                                 </div>
                             </div>
                             <div className="clearfix"></div>
@@ -51,8 +51,8 @@ export const SidebarSection = () => {
                                 </li>
                                 <li><a href="/"><i className="icon-material-outline-reorder"></i>Manage Categories</a>
                                     <ul className="dropdown-nav">
-                                        <li><a href="/add-category"><i className="icon-feather-chevron-right"></i> Add category</a></li>
-                                        <li><a href="/view-categories"><i className="icon-feather-chevron-right"></i> View categories</a></li>
+                                        <li><a href="/add-job-category"><i className="icon-feather-chevron-right"></i> Add category</a></li>
+                                        <li><a href="/view-job-categories"><i className="icon-feather-chevron-right"></i> View categories</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="/view-cvs"><i className="icon-material-outline-supervisor-account"></i> Manage CVs</a></li>

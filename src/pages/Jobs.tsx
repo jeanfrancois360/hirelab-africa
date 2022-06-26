@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { AllJobsListSection } from '../components/AllJobsListSection'
 import { Footer } from '../components/Footer'
@@ -7,7 +7,7 @@ import { SearchJobsSection } from '../components/SearchJobsSection'
 import { Subscribe } from '../components/Subscribe'
 import { TitleBar } from '../components/TitleBar'
 
-export const Jobs = () => {
+export const Jobs: FC = () => {
   return (
     <>
       <Helmet prioritizeSeoTags>

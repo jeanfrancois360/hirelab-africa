@@ -9,14 +9,20 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 1000,
+    }
+  }
+});
 
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-    <App />
-    <ReactQueryDevtools/>
-   </QueryClientProvider>
+      <App />
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

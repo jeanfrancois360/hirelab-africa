@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { CallOut } from '../components/CallOut'
 import { CategoryBoxes } from '../components/CategoryBoxes'
 import { Footer } from '../components/Footer'
@@ -9,7 +9,7 @@ import { NeedHelp } from '../components/NeedHelp'
 import { Subscribe } from '../components/Subscribe'
 import { Helmet } from 'react-helmet-async'
 
-export const Home = () => {
+export const Home: FC = () => {
   return (
     <>
       <Helmet prioritizeSeoTags>

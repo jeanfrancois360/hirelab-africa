@@ -1,11 +1,10 @@
-import React from 'react'
-import { Link, } from 'react-router-dom'
+import React, { FC } from 'react'
 import { DashboardFooter } from './DashboardFooter'
 import { DashboardHeader } from './DashboardHeader'
 import { DashboardTitlebar } from './DashboardTitlebar'
 import { SidebarSection } from './SidebarSection'
 
-export const DashboardSection = () => {
+export const DashboardSection: FC = () => {
     return (
         <>
             {/* < !--Header Container-- > */}
@@ -23,10 +22,10 @@ export const DashboardSection = () => {
                     <DashboardTitlebar current={'Dashboard'} prev={'Home'} url={'/'} />
 
                     <div className="utf-dashboard-content-inner-aera">
-                        <div className="notification success closeable">
+                        {/* <div className="notification success closeable">
                             <p>You are Currently Signed in as <strong>John Williams</strong> Has Been Approved!</p>
                             <Link className="close" to="/"></Link>
-                        </div>
+                        </div> */}
                         <div className="utf-funfacts-container-aera">
                             <div className="fun-fact" data-fun-fact-color="#2a41e8">
                                 <div className="fun-fact-icon"><i className="icon-feather-home"></i></div>
@@ -306,7 +305,7 @@ export const DashboardSection = () => {
                                                     <td>Standard Plan</td>
                                                     <td>12 Dec 2021</td>
                                                     <td>Paypal</td>
-                                                    <td><span className="badge badge-pill badge-primary text-uppercase">Approved</span></td>
+                                                    <td><span className="badge badge-pill badge-success text-uppercase">Approved</span></td>
                                                     <td><a href="/" className="button gray"><i className="icon-feather-eye"></i> View Detail</a></td>
                                                 </tr>
                                                 <tr>
@@ -315,7 +314,7 @@ export const DashboardSection = () => {
                                                     <td>Extended Plan</td>
                                                     <td>12 Dec 2021</td>
                                                     <td>Credit Card</td>
-                                                    <td><span className="badge badge-pill badge-primary text-uppercase">Approved</span></td>
+                                                    <td><span className="badge badge-pill badge-success text-uppercase">Approved</span></td>
                                                     <td><a href="/" className="button gray"><i className="icon-feather-eye"></i> View Detail</a></td>
                                                 </tr>
                                                 <tr>

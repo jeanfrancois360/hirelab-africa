@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { BankCVSection } from '../components/BankCVSection'
 import { Footer } from '../components/Footer'
@@ -7,7 +7,7 @@ import Protected from '../components/Protected'
 import { Subscribe } from '../components/Subscribe'
 import { TitleBar } from '../components/TitleBar'
 
-export const BankCV = () => {
+export const BankCV: FC = () => {
   return (
     <Protected>
       <Helmet prioritizeSeoTags>
