@@ -19248,3 +19248,8 @@ a.apply-now-button:hover {
 .tb-field {
   margin: 0px !important;
 }
+
+.simple-select {
+  padding: 5px 18px !important;
+  cursor: pointer;
+}

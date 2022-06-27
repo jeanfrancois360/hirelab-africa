@@ -85,6 +85,7 @@ export const AddJobPostSection: FC = () => {
         workspace: Yup.string().trim().required().label('Workspace'),
         status: Yup.string().trim().required().label('Status'),
         job_category_id: Yup.number().required().label('Category'),
+        address: Yup.string().required().label('Address'),
     });
 
 
