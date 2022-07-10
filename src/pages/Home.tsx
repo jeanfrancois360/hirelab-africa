@@ -8,8 +8,23 @@ import { HomeJobListSection } from '../components/HomeJobListSection'
 import { NeedHelp } from '../components/NeedHelp'
 import { Subscribe } from '../components/Subscribe'
 import { Helmet } from 'react-helmet-async'
+import { useQuery, UseQueryResult } from 'react-query'
+import { ICompany, IJobApplication, IJobPost } from '../interfaces'
+import { GetJobPosts } from '../api/job-post'
+import { GetJobApplications } from '../api/job-application'
+import { GetCompanies } from '../api/company'
 
 export const Home: FC = () => {
+
+  // Fetch All Job Posts
+  const { data: job_posts }: UseQueryResult<IJobPost[], Error> = useQuery<IJobPost[], Error>('job-posts', GetJobPosts);
+
+  // Fetch All Application
+  const { data: job_applications }: UseQueryResult<IJobApplication[], Error> = useQuery<IJobApplication[], Error>('job-applications', GetJobApplications);
+
+  // Fetch All Companies
+  const { data: companies }: UseQueryResult<ICompany[], Error> = useQuery<ICompany[], Error>('companies', GetCompanies);
+
   return (
     <>
       <Helmet prioritizeSeoTags>
@@ -19,7 +34,7 @@ export const Home: FC = () => {
       </Helmet>
       <div id="wrapper">
         <Header current={'home'} />
-        <IntroBanner />
+        <IntroBanner dataset={{ job_posts, job_applications, companies }} />
         <CategoryBoxes />
         <HomeJobListSection />
         <CallOut />

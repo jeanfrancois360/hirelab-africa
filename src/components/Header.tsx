@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { logout } from '../api/auth';
+import { ApiUrl } from '../constants';
 import { TopBar } from './TopBar';
 
 export const Header = ({ current }: { current: string }) => {
@@ -47,23 +48,28 @@ export const Header = ({ current }: { current: string }) => {
                         </div>
 
                         <div className="utf-right-side">
-                            <div className="utf-header-widget-item"> <a href="/bank-cv" className="bank-cv-button"><i className="icon-feather-upload-cloud"></i> <span>Bank your CV</span></a> </div>
+                            <div className="utf-header-widget-item"> <a href="/bank-cv" onClick={() => localStorage.setItem('prev_page', 'bank_cv')} className="bank-cv-button"><i className="icon-feather-upload-cloud"></i> <span>Bank your CV</span></a> </div>
                             {!isAuth ? (<div className="utf-header-widget-item"> <a href="/login" className="log-in-button"><i className="icon-feather-log-in"></i> <span>Sign In</span></a> </div>) :
                                 (<div className="utf-header-widget-item">
                                     <div className={`utf-header-notifications user-menu ${headerDropdown === true ? 'active' : ''}`}>
                                         <div className="utf-header-notifications-trigger user-profile-title">
                                             <a href="/" onClick={(e) => { e.preventDefault(); setheaderDropdown(!headerDropdown) }}>
-                                                <div className="user-avatar status-online"><img src="assets/images/user_small_1.jpg" alt="" /> </div>
-                                                <div className="user-name">Hi, {`${userDetails && userDetails.hasOwnProperty('profile') ? userDetails.profile.first_name : 'Anonymous'}`}</div>
+                                                <div className="user-avatar status-online">
+                                                    {userDetails && userDetails.hasOwnProperty('profile') && userDetails.profile.avatar ? (<img src={`${ApiUrl}/api/file-upload/${userDetails.profile && userDetails.profile.avatar}`} alt="" />) : (<img src="assets/images/user-avatar-placeholder.png" alt="" />)}
+                                                </div>
+                                                {userDetails && userDetails.hasOwnProperty('role') && (userDetails.role.name === "Admin" || userDetails.role.name === 'Candidate') ? (<div className="user-name">Hi, {`${userDetails && userDetails.hasOwnProperty('profile') ? userDetails.profile.first_name : 'Anonymous'}`}</div>) : (
+                                                    <div className="user-name">Hi, {`${userDetails && userDetails.hasOwnProperty('profile') ? userDetails.profile.company_name : 'Anonymous'}`}</div>)}
                                             </a>
                                         </div>
                                         <div className="utf-header-notifications-dropdown-block">
                                             <ul className="utf-user-menu-dropdown-nav">
                                                 <li><a href="/dashboard"><i className="icon-material-outline-dashboard"></i> Dashboard</a></li>
-                                                <li><a href="dashboard-jobs-post.html"><i className="icon-line-awesome-user-secret"></i> Manage Jobs Post</a></li>
-                                                <li><a href="dashboard-manage-jobs.html"><i className="icon-material-outline-group"></i> Manage Jobs</a></li>
-                                                <li><a href="dashboard-bookmarks.html"><i className="icon-feather-heart"></i> Bookmarks Jobs</a></li>
-                                                <li><a href="dashboard-my-profile.html"><i className="icon-feather-user"></i> My Profile</a></li>
+                                                {userDetails && userDetails.hasOwnProperty('role') && userDetails.role.name === 'Admin' && (<li><a href="/view-job-posts"><i className="icon-line-awesome-user-secret"></i> Manage Jobs</a></li>)}
+                                                {userDetails && userDetails.hasOwnProperty('role') && userDetails.role.name === 'Admin' && (<li><a href="/view-companies"><i className="icon-material-outline-group"></i> Manage Companies</a></li>)}
+                                                {userDetails && userDetails.hasOwnProperty('role') && (userDetails.role.name === 'Admin' || userDetails.role.name === 'Employer') && (<li><a href="/view-job-posts"><i className="icon-material-outline-group"></i> Manage Jobs</a></li>)}
+                                                {userDetails && userDetails.hasOwnProperty('role') && (userDetails.role.name === 'Admin' || userDetails.role.name === 'Employer' || userDetails.role.name === 'Candidate') && (<li><a href="/view-applications"><i className="icon-material-outline-group"></i> Manage Applications</a></li>)}
+                                                {userDetails && userDetails.hasOwnProperty('role') && (userDetails.role.name === 'Admin' || userDetails.role.name === 'Employer' || userDetails.role.name === 'Candidate') && (<li><a href="/view-cvs"><i className="icon-material-outline-group"></i> Manage CVs</a></li>)}
+                                                {userDetails && userDetails.hasOwnProperty('role') && (userDetails.role.name === 'Employer' || userDetails.role.name === 'Candidate') && (<li><a href="/dashboard"><i className="icon-feather-user"></i> My Profile</a></li>)}
                                                 <li><a href="/dashboard" onClick={handleLogout}><i className="icon-material-outline-power-settings-new"></i> Logout</a></li>
                                             </ul>
                                         </div>

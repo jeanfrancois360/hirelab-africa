@@ -18,6 +18,17 @@ import { AddCompany } from './pages/AddCompany';
 import { AddJobCategory } from './pages/AddJobCategory';
 import { ViewJobCategories } from './pages/ViewJobCategories';
 import { FC } from 'react';
+import { Categories } from './pages/Categories';
+import { Job } from './pages/Job';
+import { ApplicationForm } from './pages/ApplicationForm';
+import { Bars } from 'react-loader-spinner';
+import { AddCv } from './pages/AddCv';
+import { ViewCompanies } from './pages/ViewCompanies';
+import { Companies } from './pages/Companies';
+import { AddBlogPost } from './pages/AddBlogPost';
+import { ViewBlogPosts } from './pages/ViewBlogPosts';
+import { ViewBlogCategories } from './pages/ViewBlogCategories';
+import { AddBlogCategory } from './pages/AddBlogCategory';
 
 
 export const App: FC = () => {
@@ -29,10 +40,12 @@ export const App: FC = () => {
       {/* Preloader Start */}
       <div className="preloader">
         <div className="utf-preloader">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+          <Bars
+            height="60"
+            width="60"
+            color='#1e63cf'
+            ariaLabel='loading'
+          />
         </div>
       </div>
       {/* Preloader End  */}
@@ -50,12 +63,21 @@ export const App: FC = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/add-job-post" element={<AddJobPost />} />
           <Route path="/view-job-posts" element={<ViewJobPosts />} />
+          <Route path="/add-blog-post" element={<AddBlogPost />} />
+          <Route path="/view-blog-posts" element={<ViewBlogPosts />} />
+          <Route path="/add-cv" element={<AddCv />} />
           <Route path="/view-cvs" element={<ViewCVs />} />
           <Route path="/view-applications" element={<ViewApplication />} />
           <Route path="/add-company" element={<AddCompany />} />
-          <Route path="/view-companies" element={<ViewApplication />} />
+          <Route path="/view-companies" element={<ViewCompanies />} />
           <Route path="/add-job-category" element={<AddJobCategory />} />
+          <Route path="/view-blog-categories" element={<ViewBlogCategories />} />
+          <Route path="/add-blog-category" element={<AddBlogCategory />} />
           <Route path="/view-job-categories" element={<ViewJobCategories />} />
+          <Route path="/application-form/:uuid" element={<ApplicationForm />} />
+          <Route path="/job-details/:uuid" element={<Job />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/companies" element={<Companies />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </Router>

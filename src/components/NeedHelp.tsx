@@ -18,11 +18,11 @@ export const NeedHelp: FC = () => {
 						<div className="col-xl-4">
 							<div className="info-box-1">
 								<div className="utf-icon-box-circle">
-									<div className="utf-icon-box-circle-inner"> <i className="icon-brand-rocketchat"></i></div>
+									<div style={{ marginTop: '-4px', fontSize: '50px' }} className="utf-icon-box-circle-inner"> <i className="icon-line-awesome-whatsapp"></i></div>
 								</div>
-								<h4>Chat to Us Online</h4>
-								<p>Chat to us online if you have any question.</p>
-								<a href="/" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Click Here to Chat <i className="icon-feather-chevrons-right"></i></a>
+								<h4>Whatsapp With Us Online</h4>
+								<p>Whatsapp with us online if you have any question.</p>
+								<a href="https://api.whatsapp.com/send?phone=+250788406153" rel="noreferrer" target="_blank" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Click Here to Chat <i className="icon-feather-chevrons-right"></i></a>
 							</div>
 						</div>
 						<div className="col-xl-4">
@@ -32,7 +32,7 @@ export const NeedHelp: FC = () => {
 								</div>
 								<h4>Our Support Agent</h4>
 								<p>Our support agent will work with you to meet your lending needs.</p>
-								<a href="contact.html" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Contact Us <i className="icon-feather-chevrons-right"></i></a>
+								<a href="/contact" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Contact Us <i className="icon-feather-chevrons-right"></i></a>
 							</div>
 						</div>
 						<div className="col-xl-4">
@@ -42,7 +42,7 @@ export const NeedHelp: FC = () => {
 								</div>
 								<h4>Read Latest Blog Post</h4>
 								<p>Visit our Blog page and know more about news and career tips</p>
-								<a href="blog-right-sidebar.html" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Read Blog Post <i className="icon-feather-chevrons-right"></i></a>
+								<a href="/blog" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Read Blog Post <i className="icon-feather-chevrons-right"></i></a>
 							</div>
 						</div>
 					</div>

@@ -1,5 +1,7 @@
-import React, { FC } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { FC, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { useNavigate } from 'react-router'
 import { BankCVSection } from '../components/BankCVSection'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
@@ -8,6 +10,15 @@ import { Subscribe } from '../components/Subscribe'
 import { TitleBar } from '../components/TitleBar'
 
 export const BankCV: FC = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    // @ts-ignore
+    let user = JSON.parse(localStorage.getItem('user'));
+    let role_arr = ['Admin', 'Candidate'];
+    if (user && user.hasOwnProperty('role') && !role_arr.includes(user.role.name)) {
+      navigate(-1)
+    }
+  }, [])
   return (
     <Protected>
       <Helmet prioritizeSeoTags>

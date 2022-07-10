@@ -1,7 +1,8 @@
-import React, { FC } from 'react'
+import React from 'react'
 import Typed from 'react-typed';
+import { SearchForm } from './SearchForm';
 
-export const IntroBanner: FC = () => {
+export const IntroBanner = ({ dataset }: { dataset: any }) => {
     return (
         <>
             {/* Intro Banner */}
@@ -30,25 +31,7 @@ export const IntroBanner: FC = () => {
 
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="utf-intro-banner-search-form-block margin-top-40">
-                                <div className="utf-intro-search-field-item">
-                                    <i className="icon-feather-search"></i>
-                                    <input id="intro-keywords" type="text" placeholder="Search Jobs Keywords..." />
-                                </div>
-                                <div className="utf-intro-search-field-item">
-                                    <select className="selectpicker default" data-live-search="true" data-selected-text-format="count" data-size="5" title="All Categories">
-                                        <option>Customer Service</option>
-                                        <option>Data Analytics</option>
-                                        <option>Web Designing</option>
-                                        <option>Software Developing</option>
-                                        <option>Networking</option>
-                                        <option>Sales & Marketing</option>
-                                    </select>
-                                </div>
-                                <div className="utf-intro-search-button">
-                                    <button className="button ripple-effect" onClick={() => window.location.href = 'jobs-list-layout-leftside.html'}><i className="icon-material-outline-search"></i> Search Jobs</button>
-                                </div>
-                            </div>
+                            <SearchForm page="primary" dataset={dataset.job_posts} />
                             <p className="utf-trending-silver-item"><span className="utf-trending-black-item">Trending Jobs Keywords:</span> <a href="/">Web Designer</a>  <a href="/">Web Developer</a>  <a href="/">Graphic Designer</a>  <a href="/">PHP Developer</a>  <a href="/">IOS Developer</a>  <a href="/">Android Developer</a></p>
                         </div>
                     </div>
@@ -56,9 +39,9 @@ export const IntroBanner: FC = () => {
                     <div className="row">
                         <div className="col-md-12">
                             <ul className="intro-stats margin-top-45 hide-under-992px">
-                                <li><i className="icon-material-outline-business-center"></i> <sub className="counter_item"><strong className="counter">18,955</strong> <span>Live Jobs Posted</span></sub> </li>
-                                <li><i className="icon-material-outline-assignment"></i> <sub className="counter_item"><strong className="counter">11,088</strong> <span>Jobs Candidate</span></sub> </li>
-                                <li><i className="icon-material-outline-library-books"></i> <sub className="counter_item"><strong className="counter">10,758</strong> <span>Companies Jobs</span></sub> </li>
+                                <li><i className="icon-material-outline-business-center"></i> <sub className="counter_item"><strong className="counter">{dataset.job_posts && dataset.job_posts.length > 0 ? dataset.job_posts.length : 0}</strong> <span>Live Jobs Posted</span></sub> </li>
+                                <li><i className="icon-material-outline-assignment"></i> <sub className="counter_item"><strong className="counter">{dataset.job_applications && dataset.job_applications.length > 0 ? dataset.job_applications.length : 0}</strong> <span>Jobs Candidate</span></sub> </li>
+                                <li><i className="icon-material-outline-library-books"></i> <sub className="counter_item"><strong className="counter">{dataset.companies && dataset.companies.length > 0 ? dataset.companies.length : 0}</strong> <span>Companies Jobs</span></sub> </li>
                             </ul>
                         </div>
                     </div>

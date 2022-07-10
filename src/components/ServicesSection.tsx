@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 
 export const ServicesSection: FC = () => {
   const [tab, setTab] = useState('adverts')
+  const handleTabChange = (e: any) => {
+    setTab(e.target.name)
+  }
   return (
     <div className="container">
       <div className="row">
@@ -10,17 +13,41 @@ export const ServicesSection: FC = () => {
           <div className="utf-sidebar-container-aera">
             <div className="utf-sidebar-widget-item">
               <h3>All services</h3>
-              <div className="utf-tags-container-item service-menu">
-                <a href="/" onClick={(e) => { e.preventDefault(); setTab('adverts') }} className={`${tab === "adverts" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Adverts <i className="icon-feather-arrow-right"></i></a>
-                <a href="/" onClick={(e) => { e.preventDefault(); setTab('employee_outsourcing') }} className={`${tab === "employee_outsourcing" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Employee Outsourcing <i className="icon-feather-arrow-right"></i></a>
-                <a href="/" onClick={(e) => { e.preventDefault(); setTab('cvs_on_request') }} className={`${tab === "cvs_on_request" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>CVs On Request <i className="icon-feather-arrow-right"></i></a>
-                <a href="/" onClick={(e) => { e.preventDefault(); setTab('interns_on_request') }} className={`${tab === "interns_on_request" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Interns On Request <i className="icon-feather-arrow-right"></i></a>
-                <a href="/" onClick={(e) => { e.preventDefault(); setTab('interview_trainings') }} className={`${tab === "interview_trainings" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Interview Trainings <i className="icon-feather-arrow-right"></i></a>
-                <a href="/" onClick={(e) => { e.preventDefault(); setTab('hr_advisory') }} className={`${tab === "hr_advisory" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Human Resources Advisory <i className="icon-feather-arrow-right"></i></a>
-                <a href="/" onClick={(e) => { e.preventDefault(); setTab('legal_advisor') }} className={`${tab === "legal_advisor" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Legal Advisory On HR Matters <i className="icon-feather-arrow-right"></i></a>
-                <a href="/" onClick={(e) => { e.preventDefault(); setTab('maintenance') }} className={`${tab === "maintenance" && 'tab_active'} button dark ripple-effect utf-button-sliding-icon`}>Maintenance Of Personnel Files <i className="icon-feather-arrow-right"></i></a>
-
+              <div className="utf-tags-container-item">
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "adverts" ? true : false} name={'adverts'} id="tag1" />
+                  <label htmlFor="tag1">Adverts</label>
+                </div>
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "employee_outsourcing" ? true : false} name={'employee_outsourcing'} id="tag2" />
+                  <label htmlFor="tag2">Employee Outsourcing</label>
+                </div>
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "cvs_on_request" ? true : false} name={'cvs_on_request'} id="tag3" />
+                  <label htmlFor="tag3">CVs On Request</label>
+                </div>
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "interns_on_request" ? true : false} name={'interns_on_request'} id="tag4" />
+                  <label htmlFor="tag4">Interns On Request</label>
+                </div>
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "interview_trainings" ? true : false} name={'interview_trainings'} id="tag5" />
+                  <label htmlFor="tag5">Interview Trainings</label>
+                </div>
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "hr_advisory" ? true : false} name={'hr_advisory'} id="tag6" />
+                  <label htmlFor="tag6">Human Resources Advisory</label>
+                </div>
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "legal_advisor" ? true : false} name={'legal_advisor'} id="tag7" />
+                  <label htmlFor="tag7">Legal Advisory On HR Matters</label>
+                </div>
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "maintenance" ? true : false} name={'maintenance'} id="tag8" />
+                  <label htmlFor="tag8">Maintenance Of Personnel Files</label>
+                </div>
               </div>
+
               <div className="clearfix"></div>
             </div>
 

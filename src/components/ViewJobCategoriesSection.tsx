@@ -62,7 +62,7 @@ export const ViewJobCategoriesSection: FC = () => {
 
 
     // Fetch All Job Categories
-    const { data: job_categories, isLoading: isFetchingCategories, refetch }: UseQueryResult<IJobCategory[], Error> = useQuery<IJobCategory[], Error>('job-categories', GetJobCategories);
+    const { data: job_categories, isLoading: isFetchingCategories, refetch: RefetchJobCategories }: UseQueryResult<IJobCategory[], Error> = useQuery<IJobCategory[], Error>('job-categories', GetJobCategories);
 
     // Mutation For Updating Job Category
     const updateMutation = useMutation(UpdateJobCategory);
@@ -77,10 +77,10 @@ export const ViewJobCategoriesSection: FC = () => {
             status: statusValue
         }
         const updatedCategory = await updateMutation.mutateAsync(payload)
-        if (updatedCategory.hasOwnProperty('id')) {
+        if (updatedCategory.hasOwnProperty('uuid')) {
             setEditMode(false)
             setSuccessMsg("Update Successfully!");
-            refetch();
+            RefetchJobCategories();
         }
         if (updateMutation.isError) {
             setErrorMsg("Something went wrong!");
@@ -89,12 +89,12 @@ export const ViewJobCategoriesSection: FC = () => {
 
     const handleDelete = async (id: number) => {
         const deletedCategory = await deleteMutation.mutateAsync(id)
-        if (deletedCategory.hasOwnProperty('name')) {
+        if (deletedCategory.hasOwnProperty('uuid')) {
             setEditMode(false)
             setSuccessMsg("Deleted Successfully!");
-            refetch();
+            RefetchJobCategories();
         }
-        if (updateMutation.isError) {
+        if (deleteMutation.isError) {
             setErrorMsg("Something went wrong!");
         }
     }
@@ -103,13 +103,13 @@ export const ViewJobCategoriesSection: FC = () => {
         <>
             <ToastContainer />
             {/* < !--Header Container-- > */}
-            <DashboardHeader current={'Manage Categories'} />
+            <DashboardHeader current={'Manage Job Categories'} />
             {/* <!--Header Container / End-- >  */}
 
             {/* < !--Dashboard Container-- > */}
             <div className="utf-dashboard-container-aera">
                 {/* <!-- Dashboard Sidebar --> */}
-                <SidebarSection />
+                <SidebarSection current={'manage_job_categories'} />
                 {/* <!-- Dashboard Sidebar / End --> */}
 
                 {/* <!-- Dashboard Content --> */}
@@ -120,13 +120,13 @@ export const ViewJobCategoriesSection: FC = () => {
                             <div className="col-xl-12">
                                 <div className="utf_dashboard_list_box table-responsive recent_booking dashboard-box">
                                     <div className="headline">
-                                        <h3>All Categories</h3>
+                                        <h3>All Job Categories</h3>
                                         <div className="sort-by">
                                             <a href="/add-job-category" className="button gray utf-ripple-effect-dark"><i className="icon-feather-plus"></i> Add category</a>
                                         </div>
                                     </div>
                                     <div className="dashboard-list-box table-responsive invoices with-icons">
-                                        <table className="table table-hover">
+                                        {job_categories && job_categories.length > 0 ? (<><table className="table table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -166,6 +166,23 @@ export const ViewJobCategoriesSection: FC = () => {
 
                                             </tbody>
                                         </table>
+                                            {/* <!-- Pagination --> */}
+                                            <div className="clearfix"></div>
+                                            <div className="utf-pagination-container-aera margin-top-20 margin-bottom-20">
+                                                <nav className="pagination">
+                                                    <ul>
+                                                        <li className="utf-pagination-arrow"><a href="/view-job-categories" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-left"></i></a></li>
+                                                        <li><a href="/view-job-categories" className="ripple-effect current-page">1</a></li>
+                                                        <li className="utf-pagination-arrow"><a href="/view-job-categories" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-right"></i></a></li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                            <div className="clearfix"></div>
+                                        </>) : (
+                                            <div className="no-data">
+                                                <i className="icon-material-outline-info"></i><p> No Data Found!</p>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>

@@ -1,10 +1,51 @@
-import React, { FC } from 'react'
+/* eslint-disable react-hooks/rules-of-hooks */
+import moment from 'moment'
+import React, { FC, useEffect, useState } from 'react'
+import { useQuery, UseQueryResult } from 'react-query'
+import { GetCompanies } from '../api/company'
+import { GetCandidateCvs, GetCvs } from '../api/cv'
+import { GetCandidateJobApplications, GetEmployerJobApplications, GetJobApplications } from '../api/job-application'
+import { GetEmployerJobPosts, GetJobPosts } from '../api/job-post'
+import { ICompany, ICv, IJobApplication, IJobPost } from '../interfaces'
 import { DashboardFooter } from './DashboardFooter'
 import { DashboardHeader } from './DashboardHeader'
 import { DashboardTitlebar } from './DashboardTitlebar'
 import { SidebarSection } from './SidebarSection'
 
 export const DashboardSection: FC = () => {
+    // @ts-ignore
+    let user = JSON.parse(localStorage.getItem('user'));
+    let role_arr = ['Employer'];
+    const [userDetails, setUserDetails] = useState<any>(null);
+
+    // Fetch All Job Posts
+    const { data: job_posts }: UseQueryResult<IJobPost[], Error> = useQuery<IJobPost[], Error>('job-posts', user && user.hasOwnProperty('role') && role_arr.includes(user.role.name) ? GetEmployerJobPosts : GetJobPosts);
+
+    // Fetch All Application
+    let job_applications: UseQueryResult<IJobApplication[], Error> | null;
+    if (user && user.hasOwnProperty('role') && user.role.name === 'Candidate') {
+        job_applications = useQuery<IJobApplication[], Error>('job-applications', GetCandidateJobApplications);
+    }
+    else if (user && user.hasOwnProperty('role') && user.role.name === 'Employer') {
+        job_applications = useQuery<IJobApplication[], Error>('job-applications', GetEmployerJobApplications);
+    }
+    else {
+        job_applications = useQuery<IJobApplication[], Error>('job-applications', GetJobApplications);
+    }
+
+    // Fetch All Companies
+    const { data: companies }: UseQueryResult<ICompany[], Error> = useQuery<ICompany[], Error>('companies', GetCompanies);
+
+    // Fetch All CV
+    const { data: cvs }: UseQueryResult<ICv[], Error> = useQuery<ICv[], Error>('cvs', user && user.hasOwnProperty('role') && role_arr.includes(user.role.name) ? GetCandidateCvs : GetCvs);
+
+    useEffect(() => {
+        // @ts-ignore
+        let user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            setUserDetails(user)
+        }
+    }, [])
     return (
         <>
             {/* < !--Header Container-- > */}
@@ -14,7 +55,7 @@ export const DashboardSection: FC = () => {
             {/* < !--Dashboard Container-- > */}
             <div className="utf-dashboard-container-aera">
                 {/* <!-- Dashboard Sidebar --> */}
-                <SidebarSection />
+                <SidebarSection current={'dashboard'} />
                 {/* <!-- Dashboard Sidebar / End --> */}
 
                 {/* <!-- Dashboard Content --> */}
@@ -26,339 +67,180 @@ export const DashboardSection: FC = () => {
                             <p>You are Currently Signed in as <strong>John Williams</strong> Has Been Approved!</p>
                             <Link className="close" to="/"></Link>
                         </div> */}
-                        <div className="utf-funfacts-container-aera">
-                            <div className="fun-fact" data-fun-fact-color="#2a41e8">
-                                <div className="fun-fact-icon"><i className="icon-feather-home"></i></div>
-                                <div className="fun-fact-text">
-                                    <h4>1502</h4>
-                                    <span>Companies View</span>
+
+                        {userDetails && userDetails.hasOwnProperty('role') && userDetails.role.name === 'Admin' && (
+                            <>
+                                <div className="utf-funfacts-container-aera">
+                                    <div className="fun-fact" data-fun-fact-color="#2a41e8">
+                                        <div className="fun-fact-icon"><i style={{ color: '#2a41e8' }} className="icon-feather-briefcase"></i></div>
+                                        <div className="fun-fact-text">
+                                            <h4>{job_posts && job_posts.length > 0 ? job_posts.length : 0}</h4>
+                                            <span>Jobs</span>
+                                        </div>
+                                    </div>
+                                    <div className="fun-fact" data-fun-fact-color="#efa80f">
+                                        <div className="fun-fact-icon"><i style={{ color: '#efa80f' }} className="icon-line-awesome-building"></i></div>
+                                        <div className="fun-fact-text">
+                                            <h4>{companies && companies.length > 0 ? companies.length : 0}</h4>
+                                            <span>Companies View</span>
+                                        </div>
+                                    </div>
+                                    <div className="fun-fact" data-fun-fact-color="#36bd78">
+                                        <div className="fun-fact-icon"><i style={{ color: '#36bd78' }} className="icon-material-outline-assignment"></i></div>
+                                        <div className="fun-fact-text">
+                                            <h4>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.length : 0}</h4>
+                                            <span>Applications View</span>
+                                        </div>
+                                    </div>
+                                    <div className="fun-fact" data-fun-fact-color="#0fc5bf">
+                                        <div className="fun-fact-icon"><i style={{ color: '#0fc5bf' }} className="icon-material-outline-assignment"></i></div>
+                                        <div className="fun-fact-text">
+                                            <h4>{cvs && cvs.length > 0 ? cvs.length : 0}</h4>
+                                            <span>Cvs</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="fun-fact" data-fun-fact-color="#36bd78">
-                                <div className="fun-fact-icon"><i className="icon-feather-briefcase"></i></div>
-                                <div className="fun-fact-text">
-                                    <h4>152</h4>
-                                    <span>Applied Jobs</span>
+                            </>
+                        )}
+
+                        {userDetails && userDetails.hasOwnProperty('role') && userDetails.role.name === 'Employer' && (
+                            <>
+                                <div className="utf-funfacts-container-aera">
+                                    <div className="fun-fact" data-fun-fact-color="#2a41e8">
+                                        <div className="fun-fact-icon"><i style={{ color: '#2a41e8' }} className="icon-feather-briefcase"></i></div>
+                                        <div className="fun-fact-text">
+                                            <h4>{job_posts && job_posts.length > 0 ? job_posts.length : 0}</h4>
+                                            <span>Jobs</span>
+                                        </div>
+                                    </div>
+                                    <div className="fun-fact" data-fun-fact-color="#36bd78">
+                                        <div className="fun-fact-icon"><i style={{ color: '#36bd78' }} className="icon-material-outline-assignment"></i></div>
+                                        <div className="fun-fact-text">
+                                            <h4>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Accept').length : 0}</h4>
+                                            <span>Accepted Applications</span>
+                                        </div>
+                                    </div>
+                                    <div className="fun-fact" data-fun-fact-color="#efa80f">
+                                        <div className="fun-fact-icon"><i style={{ color: '#efa80f' }} className="icon-material-outline-assignment"></i></div>
+                                        <div className="fun-fact-text">
+                                            <h4>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Pending').length : 0}</h4>
+                                            <span>Pending Applications</span>
+                                        </div>
+                                    </div>
+                                    <div className="fun-fact" data-fun-fact-color="#dc3139">
+                                        <div className="fun-fact-icon"><i style={{ color: '#dc3139' }} className="icon-material-outline-assignment"></i></div>
+                                        <div className="fun-fact-text">
+                                            <h4>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Reject').length : 0}</h4>
+                                            <span>Rejected Applications</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="fun-fact" data-fun-fact-color="#efa80f">
-                                <div className="fun-fact-icon"><i className="icon-feather-heart"></i></div>
-                                <div className="fun-fact-text">
-                                    <h4>549</h4>
-                                    <span>Favourite Jobs</span>
+                            </>
+                        )}
+
+                        {userDetails && userDetails.hasOwnProperty('role') && userDetails.role.name === 'Candidate' && (
+                            <>
+                                <div className="utf-funfacts-container-aera">
+                                    <div className="fun-fact" data-fun-fact-color="#2a41e8">
+                                        <div className="fun-fact-icon"><i style={{ color: '#2a41e8' }} className="icon-feather-briefcase"></i></div>
+                                        <div className="fun-fact-text">
+                                            <h4>{job_posts && job_posts.length > 0 ? job_posts.length : 0}</h4>
+                                            <span>Jobs</span>
+                                        </div>
+                                    </div>
+                                    <div className="fun-fact" data-fun-fact-color="#36bd78">
+                                        <div className="fun-fact-icon"><i style={{ color: '#36bd78' }} className="icon-material-outline-assignment"></i></div>
+                                        <div className="fun-fact-text">
+                                            {job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Accept').length : 0}
+                                            <span>Accepted Applications</span>
+                                        </div>
+                                    </div>
+                                    <div className="fun-fact" data-fun-fact-color="#efa80f">
+                                        <div className="fun-fact-icon"><i style={{ color: '#efa80f' }} className="icon-material-outline-assignment"></i></div>
+                                        <div className="fun-fact-text">
+                                            {job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Pending').length : 0}
+                                            <span>Pending Applications</span>
+                                        </div>
+                                    </div>
+                                    <div className="fun-fact" data-fun-fact-color="#dc3139">
+                                        <div className="fun-fact-icon"><i style={{ color: '#dc3139' }} className="icon-material-outline-assignment"></i></div>
+                                        <div className="fun-fact-text">
+                                            {job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Reject').length : 0}
+                                            <span>Rejected Applications</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="fun-fact" data-fun-fact-color="#0fc5bf">
-                                <div className="fun-fact-icon"><i className="icon-brand-telegram-plane"></i></div>
-                                <div className="fun-fact-text">
-                                    <h4>120</h4>
-                                    <span>Subscribe Plan</span>
-                                </div>
-                            </div>
-                            <div className="fun-fact" data-fun-fact-color="#f02727">
-                                <div className="fun-fact-icon"><i className="icon-feather-trending-up"></i></div>
-                                <div className="fun-fact-text">
-                                    <h4>2250</h4>
-                                    <span>Month Views</span>
-                                </div>
-                            </div>
-                        </div>
+                            </>
+                        )}
 
                         <div className="row">
                             <div className="col-xl-6 col-md-12 col-sm-12">
-                                <div className="dashboard-box main-box-in-row">
+                                <div className="dashboard-box">
                                     <div className="headline">
-                                        <h3>User Statistics</h3>
-                                        <div className="sort-by">
-                                            <select className="selectpicker hide-tick">
-                                                <option>This Week</option>
-                                                <option>This Month</option>
-                                                <option>Last 6 Months</option>
-                                                <option>This Year</option>
-                                            </select>
-                                        </div>
+                                        <h3>Recent Job Posts</h3>
                                     </div>
                                     <div className="content">
-                                        <div className="chart">
-                                            <canvas id="canvas" width="80" height="38"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-xl-6 col-md-12 col-sm-12">
-                                <div className="dashboard-box main-box-in-row">
-                                    <div className="headline">
-                                        <h3>User Notes Activities</h3>
-                                    </div>
-                                    <div className="content">
-                                        <div className="utf-header-notifications-content">
-                                            <div className="utf-header-notifications-scroll" data-simplebar>
-                                                <ul className="utf-dashboard-box-list">
-                                                    <li>
-                                                        <span className="notification-icon"><i className="icon-material-outline-group"></i></span> <span className="notification-text"><strong>Lorem Ipsum</strong> is simply dummy text of printing and type setting industry. Lorem Ipsum been industry standard dummy text.</span>
-                                                        <div className="utf-buttons-to-right">
-                                                            <a href="/" className="button green ripple-effect ico" title="Edit" data-tippy-placement="top"><i className="icon-feather-edit"></i></a>
-                                                            <a href="/" className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <span className="notification-icon"><i className="icon-feather-briefcase"></i></span> <span className="notification-text"><strong>Lorem Ipsum</strong> is simply dummy text of printing and type setting industry. Lorem Ipsum been industry standard dummy text.</span>
-                                                        <div className="utf-buttons-to-right">
-                                                            <a href="/" className="button green ripple-effect ico" title="Edit" data-tippy-placement="top"><i className="icon-feather-edit"></i></a>
-                                                            <a href="/" className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <span className="notification-icon"><i className="icon-feather-briefcase"></i></span> <span className="notification-text"><strong>Lorem Ipsum</strong> is simply dummy text of printing and type setting industry. Lorem Ipsum been industry standard dummy text.</span>
-                                                        <div className="utf-buttons-to-right">
-                                                            <a href="/" className="button green ripple-effect ico" title="Edit" data-tippy-placement="top"><i className="icon-feather-edit"></i></a>
-                                                            <a href="/" className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <span className="notification-icon"><i className="icon-material-outline-group"></i></span> <span className="notification-text"><strong>Lorem Ipsum</strong> is simply dummy text of printing and type setting industry. Lorem Ipsum been industry standard dummy text.</span>
-                                                        <div className="utf-buttons-to-right">
-                                                            <a href="/" className="button green ripple-effect ico" title="Edit" data-tippy-placement="top"><i className="icon-feather-edit"></i></a>
-                                                            <a href="/" className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                        {job_posts && job_posts.length > 0 ? (<ul className="utf-dashboard-box-list">
+                                            {job_posts && job_posts.slice(0, 4).map((post: any, index: number) =>
+                                            (
+                                                <li key={index}>
+                                                    <div className="utf-invoice-list-item">
+                                                        <strong>{post.title} <span className={`${post.status === 'Active' ? 'paid' : 'unpaid'}`}>{post.status}</span> </strong>
+                                                        <ul>
+                                                            <li><span>Type:</span> {post.type}</li>
+                                                            <li><span>Workspace:</span> {post.workspace}</li>
+                                                            <li><span>Date:</span> {moment(post.updated_at).format('MMM D, YYYY')}</li>
+                                                        </ul>
+                                                    </div>
+                                                    {/* <div className="utf-buttons-to-right"> <a href="invoice-template.html" className="button blue" title="View Details" data-tippy-placement="top"><i className="icon-feather-eye"></i> Details</a> </div> */}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        ) : (
+                                            <div className="no-data">
+                                                <i className="icon-material-outline-info"></i><p> No Data Found!</p>
                                             </div>
-                                        </div>
-                                        <a href="#small-dialog" className="popup-with-zoom-anim utf-header-notifications-button ripple-effect utf-button-sliding-icon">User Add Notes <i className="icon-feather-chevron-right"></i></a>
+                                        )}
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="row">
-                            <div className="col-xl-6 col-md-12 col-sm-12">
-                                <div className="dashboard-box">
-                                    <div className="headline">
-                                        <h3>Recent Jobs Activities</h3>
-                                    </div>
-                                    <div className="content">
-                                        <ul className="utf-dashboard-box-list">
-                                            <li>
-                                                <span className="notification-icon"><i className="icon-material-outline-group"></i></span> <span className="notification-text"> <strong>John Williams</strong> <a href="/">iOS Developers</a> Someone Downloaded Your Resume.</span>
-                                                <div className="utf-buttons-to-right">
-                                                    <a href="/" className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span className="notification-icon"><i className="icon-feather-briefcase"></i></span> <span className="notification-text"> <strong>John Williams</strong> <a href="/">iOS Developers</a> Someone Downloaded Your Resume.</span>
-                                                <div className="utf-buttons-to-right">
-                                                    <a href="/" className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span className="notification-icon"><i className="icon-feather-briefcase"></i></span> <span className="notification-text"> <strong>John Williams</strong> <a href="/">Software Engineer</a> Someone Downloaded Your Resume.</span>
-                                                <div className="utf-buttons-to-right">
-                                                    <a href="/" className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span className="notification-icon"><i className="icon-material-outline-group"></i></span> <span className="notification-text"> <strong>John Williams</strong> <a href="/">Logo Designer</a> Someone Downloaded Your Resume.</span>
-                                                <div className="utf-buttons-to-right">
-                                                    <a href="/" className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span className="notification-icon"><i className="icon-material-outline-group"></i></span> <span className="notification-text"> <strong>John Williams</strong> <a href="/">Logo Designer</a> Someone Downloaded Your Resume.</span>
-                                                <div className="utf-buttons-to-right">
-                                                    <a href="/" className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span className="notification-icon"><i className="icon-feather-briefcase"></i></span> <span className="notification-text"> <strong>John Williams</strong> <a href="/">Web Designer</a> Someone Downloaded Your Resume.</span>
-                                                <div className="utf-buttons-to-right">
-                                                    <a href="/" className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="utf-pagination-container-aera margin-top-10 margin-bottom-50">
-                                    <nav className="pagination">
-                                        <ul>
-                                            <li className="utf-pagination-arrow"><a href="/" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-left"></i></a></li>
-                                            <li><a href="/" className="current-page ripple-effect">1</a></li>
-                                            <li><a href="/" className="ripple-effect">2</a></li>
-                                            <li><a href="/" className="ripple-effect">3</a></li>
-                                            <li className="utf-pagination-arrow"><a href="/" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-right"></i></a></li>
-                                        </ul>
-                                    </nav>
                                 </div>
                             </div>
 
                             <div className="col-xl-6 col-md-12 col-sm-12">
                                 <div className="dashboard-box">
                                     <div className="headline">
-                                        <h3>All Order Invoices</h3>
-                                        <div className="sort-by">
-                                            <select className="selectpicker hide-tick">
-                                                <option>This Week</option>
-                                                <option>This Month</option>
-                                                <option>Last 6 Months</option>
-                                                <option>This Year</option>
-                                            </select>
-                                        </div>
+                                        <h3>Recent Applications</h3>
                                     </div>
                                     <div className="content">
-                                        <ul className="utf-dashboard-box-list">
-                                            <li>
-                                                <div className="utf-invoice-list-item">
-                                                    <div className="utf-invoice-user-city">Afghanistan <img className="flag" src="assets/images/flags/af.svg" alt="" data-tippy-placement="top" title="Afghanistan" data-tippy="" /></div>
-                                                    <strong>John Williams <span className="paid">Paid Plan</span> </strong>
-                                                    <ul>
-                                                        <li><span>Order ID:</span> 004312641</li>
-                                                        <li><span>Package:</span> Standard</li>
-                                                        <li><span>Date:</span> 12 Jan, 2021</li>
-                                                    </ul>
-                                                </div>
-                                                <div className="utf-buttons-to-right"> <a href="invoice-template.html" className="button gray" title="Invoice" data-tippy-placement="top"><i className="icon-feather-printer"></i> Invoice</a> </div>
-                                            </li>
-                                            <li>
-                                                <div className="utf-invoice-list-item">
-                                                    <div className="utf-invoice-user-city">United States <img className="flag" src="assets/images/flags/us.svg" alt="" data-tippy-placement="top" title="United States" data-tippy="" /></div>
-                                                    <strong>John Williams <span className="paid">Paid Plan</span></strong>
-                                                    <ul>
-                                                        <li><span>Order ID:</span> 004312641</li>
-                                                        <li><span>Package:</span> Extended</li>
-                                                        <li><span>Date:</span> 18 Jan, 2021</li>
-                                                    </ul>
-                                                </div>
-                                                <div className="utf-buttons-to-right"> <a href="invoice-template.html" className="button gray" title="Invoice" data-tippy-placement="top"><i className="icon-feather-printer"></i> Invoice</a> </div>
-                                            </li>
-                                            <li>
-                                                <div className="utf-invoice-list-item">
-                                                    <div className="utf-invoice-user-city">Australia <img className="flag" src="assets/images/flags/au.svg" alt="" data-tippy-placement="top" title="Australia" data-tippy="" /></div>
-                                                    <strong>John Williams <span className="unpaid">Unpaid Plan</span></strong>
-                                                    <ul>
-                                                        <li><span>Order ID:</span> 004312641</li>
-                                                        <li><span>Package:</span> Basic</li>
-                                                        <li><span>Date:</span> 06 Jan, 2021</li>
-                                                    </ul>
-                                                </div>
-                                                <div className="utf-buttons-to-right"> <a href="invoice-template.html" className="button red" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i> Remove</a> </div>
-                                            </li>
-                                            <li>
-                                                <div className="utf-invoice-list-item">
-                                                    <div className="utf-invoice-user-city">Brazil <img className="flag" src="assets/images/flags/br.svg" alt="" data-tippy-placement="top" title="Brazil" data-tippy="" /></div>
-                                                    <strong>John Williams <span className="paid">Paid Plan</span></strong>
-                                                    <ul>
-                                                        <li><span>Order ID:</span> 004312641</li>
-                                                        <li><span>Package:</span> Standard</li>
-                                                        <li><span>Date:</span> 25 Jan, 2021</li>
-                                                    </ul>
-                                                </div>
-                                                <div className="utf-buttons-to-right"> <a href="invoice-template.html" className="button gray" title="Invoice" data-tippy-placement="top"><i className="icon-feather-printer"></i> Invoice</a> </div>
-                                            </li>
+                                        {job_applications && job_applications.data && job_applications.data.length > 0 ? (<ul className="utf-dashboard-box-list">
+                                            {job_applications && job_applications.data && job_applications.data.slice(0, 4).map((application: any, index: number) =>
+                                            (
+                                                <li key={index}>
+                                                    <div className="utf-invoice-list-item">
+                                                        <div className="utf-invoice-user-city"><i style={{ color: '#0fc5bf' }} className="icon-feather-briefcase"></i> {application.job_post.title}</div>
+                                                        <strong>{application.first_name} {application.last_name} <span className={`${application.status === 'Accept' ? 'paid' : 'unpaid'}`}>{application.status === 'Accept' || application.status === 'Reject' ? application.status + 'ed' : application.status}</span> </strong>
+                                                        <ul>
+                                                            <li><span>Email:</span> {application.email}</li>
+                                                            <li><span>Phone:</span> {application.phone}</li>
+                                                            <li><span>Date:</span> {moment(application.created_at).format('MMM D, YYYY')}</li>
+                                                        </ul>
+                                                    </div>
+                                                    {/* <div className="utf-buttons-to-right"> <a href="invoice-template.html" className="button blue" title="View Details" data-tippy-placement="top"><i className="icon-feather-eye"></i> Details</a> </div> */}
+                                                </li>
+                                            ))}
                                         </ul>
+                                        ) : (
+                                            <div className="no-data">
+                                                <i className="icon-material-outline-info"></i><p> No Data Found!</p>
+                                            </div>
+                                        )}
                                     </div>
-                                </div>
-                                <div className="utf-pagination-container-aera margin-top-10 margin-bottom-50">
-                                    <nav className="pagination">
-                                        <ul>
-                                            <li className="utf-pagination-arrow"><a href="/" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-left"></i></a></li>
-                                            <li><a href="/" className="current-page ripple-effect">1</a></li>
-                                            <li><a href="/" className="ripple-effect">2</a></li>
-                                            <li><a href="/" className="ripple-effect">3</a></li>
-                                            <li className="utf-pagination-arrow"><a href="/" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-right"></i></a></li>
-                                        </ul>
-                                    </nav>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="row">
-                            <div className="col-xl-12">
-                                <div className="utf_dashboard_list_box table-responsive recent_booking dashboard-box">
-                                    <div className="headline">
-                                        <h3>Booking Packages</h3>
-                                        <div className="sort-by">
-                                            <select className="selectpicker hide-tick">
-                                                <option>This Week</option>
-                                                <option>This Month</option>
-                                                <option>Last 6 Months</option>
-                                                <option>This Year</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="dashboard-list-box table-responsive invoices with-icons">
-                                        <table className="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Order ID</th>
-                                                    <th>Profile</th>
-                                                    <th>Plan Package</th>
-                                                    <th>Expiry Plan</th>
-                                                    <th>Payment Type</th>
-                                                    <th>Status</th>
-                                                    <th>View Booking</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>0431261</td>
-                                                    <td><img alt="" className="img-fluid rounded-circle shadow-lg" src="assets/images/thumb-1.jpg" width="50" height="50" data-tippy-placement="top" title="John Williams" data-tippy="" /></td>
-                                                    <td>Standard Plan</td>
-                                                    <td>12 Dec 2021</td>
-                                                    <td>Paypal</td>
-                                                    <td><span className="badge badge-pill badge-success text-uppercase">Approved</span></td>
-                                                    <td><a href="/" className="button gray"><i className="icon-feather-eye"></i> View Detail</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>0431262</td>
-                                                    <td><img alt="" className="img-fluid rounded-circle shadow-lg" src="assets/images/thumb-1.jpg" width="50" height="50" data-tippy-placement="top" title="John Williams" data-tippy="" /></td>
-                                                    <td>Extended Plan</td>
-                                                    <td>12 Dec 2021</td>
-                                                    <td>Credit Card</td>
-                                                    <td><span className="badge badge-pill badge-success text-uppercase">Approved</span></td>
-                                                    <td><a href="/" className="button gray"><i className="icon-feather-eye"></i> View Detail</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>0431263</td>
-                                                    <td><img alt="" className="img-fluid rounded-circle shadow-lg" src="assets/images/thumb-1.jpg" width="50" height="50" data-tippy-placement="top" title="John Williams" data-tippy="" /></td>
-                                                    <td>Standard Plan</td>
-                                                    <td>12 Dec 2021</td>
-                                                    <td>Paypal</td>
-                                                    <td><span className="badge badge-pill badge-danger text-uppercase">Pending</span></td>
-                                                    <td><a href="/" className="button gray"><i className="icon-feather-eye"></i> View Detail</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>0431264</td>
-                                                    <td><img alt="" className="img-fluid rounded-circle shadow-lg" src="assets/images/thumb-1.jpg" width="50" height="50" data-tippy-placement="top" title="John Williams" data-tippy="" /></td>
-                                                    <td>Basic Plan</td>
-                                                    <td>12 Dec 2021</td>
-                                                    <td>Paypal</td>
-                                                    <td><span className="badge badge-pill badge-danger text-uppercase">Pending</span></td>
-                                                    <td><a href="/" className="button gray"><i className="icon-feather-eye"></i> View Detail</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>0431265</td>
-                                                    <td><img alt="" className="img-fluid rounded-circle shadow-lg" src="assets/images/thumb-1.jpg" width="50" height="50" data-tippy-placement="top" title="John Williams" data-tippy="" /></td>
-                                                    <td>Extended Plan</td>
-                                                    <td>12 Dec 2021</td>
-                                                    <td>Paywith Stripe</td>
-                                                    <td><span className="badge badge-pill badge-danger text-uppercase">Pending</span></td>
-                                                    <td><a href="/" className="button gray"><i className="icon-feather-eye"></i> View Detail</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>0431266</td>
-                                                    <td><img alt="" className="img-fluid rounded-circle shadow-lg" src="assets/images/thumb-1.jpg" width="50" height="50" data-tippy-placement="top" title="John Williams" data-tippy="" /></td>
-                                                    <td>Basic Plan</td>
-                                                    <td>12 Dec 2021</td>
-                                                    <td>Paypal</td>
-                                                    <td><span className="badge badge-pill badge-canceled text-uppercase">Canceled</span></td>
-                                                    <td><a href="/" className="button gray"><i className="icon-feather-eye"></i> View Detail</a></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+
+
                         {/* Footer Start */}
                         <DashboardFooter />
                         {/* Footer End */}

@@ -8,9 +8,10 @@ import axios from '../axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bars } from 'react-loader-spinner'
+import { useNavigate } from "react-router-dom";
 
 export const LoginSection: FC = () => {
-
+  const navigate = useNavigate();
   let initialValues = {
     email: '',
     password: '',
@@ -18,6 +19,7 @@ export const LoginSection: FC = () => {
 
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [open, setOpen] = useState(false);
   const notify = (msg_type: string) => {
     if (msg_type === 'error')
       toast.error(errorMsg, {
@@ -41,15 +43,14 @@ export const LoginSection: FC = () => {
 
 
   const FormValidationSchema = Yup.object().shape({
-    email: Yup.string().required().email().label('Email'),
-    password: Yup.string().required().label('Password'),
+    email: Yup.string().trim().required().email().label('Email'),
+    password: Yup.string().trim().required().label('Password'),
   });
 
   const handleLogin = async (payload: ILogin) => {
-
     const data = {
-      email: payload.email.trim(),
-      password: payload.password.trim(),
+      email: payload.email,
+      password: payload.password,
     }
 
     if (isLoading) {
@@ -59,17 +60,28 @@ export const LoginSection: FC = () => {
     setIsLoading(true);
     setErrorMsg("")
 
-    return await axios.post('/auth/signin/', data).then((res) => {
+    return await axios.post('/api/auth/signin/', data).then((res) => {
       setIsLoading(false)
       localStorage.setItem('user', JSON.stringify(res.data.user))
       localStorage.setItem('access_token', JSON.stringify(res.data.access_token))
-      window.location.replace("/dashboard");
+      const prev_page = localStorage.getItem('prev_page');
+      if (prev_page && prev_page !== undefined) {
+        goToPreviousPath()
+        localStorage.removeItem('prev_page')
+      }
+      else {
+        window.location.replace("/dashboard");
+      }
     }).catch((error) => {
-      setIsLoading(false)
-      console.error(error.response?.data?.message)
+      setIsLoading(false);
+      console.error(error.response?.data?.message);
       const errorMessage = error.response?.data?.message;
       setErrorMsg(errorMessage || error.message);
     })
+  }
+
+  const goToPreviousPath = () => {
+    navigate(-1)
   }
   return (
     <>
@@ -111,22 +123,28 @@ export const LoginSection: FC = () => {
                       )}
                     </div>
                     <div className="utf-no-border">
-                      <input type="password" className="utf-with-border" name="password" id="password" placeholder="Password" value={values.password}
-                        onChange={handleChange('password')}
-                        onBlur={handleBlur('password')}
-                        autoComplete={`${true}`} />
+                      <div className="utf-input-with-icon">
+                        <input className="utf-with-border" type={`${open ? 'text' : 'password'}`} name="password" id="password" placeholder="Password" value={values.password}
+                          onChange={handleChange('password')}
+                          onBlur={handleBlur('password')}
+                          autoComplete={`${true}`} />
+                        <i onClick={() => setOpen(!open)} className={`${open ? 'icon-feather-eye-off' : 'icon-feather-eye'}`}></i>
+                      </div>
                       {touched.password && errors.password && (
-                        <MsgText
-                          text={errors.password}
-                          textColor="danger"
-                        />
+                        <>
+                          <MsgText
+                            text={errors.password}
+                            textColor="danger"
+                          />
+                          <br />
+                        </>
                       )}
                     </div>
                     <div className="checkbox margin-top-10">
                       <input type="checkbox" id="two-step" />
                       <label htmlFor="two-step"><span className="checkbox-icon"></span> Remember Me</label>
                     </div>
-                    <a href="forgot-password.html" className="forgot-password">Forgot Password?</a>
+                    {/* <a href="/login" className="forgot-password">Forgot Password?</a> */}
                     <button className="button full-width utf-button-sliding-icon ripple-effect margin-top-10" type="submit">
                       {isLoading ? <div style={{ marginLeft: '225px' }}><Bars
                         height="25"

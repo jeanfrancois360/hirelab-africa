@@ -1,6 +1,17 @@
 import React, { FC } from 'react'
+import { useQuery, UseQueryResult } from 'react-query';
+import { GetJobCategories } from '../api/job-category';
+import { IJobCategory } from '../interfaces';
 
 export const Footer: FC = () => {
+
+  // Fetch All Job Categories
+  const { data: job_categories }: UseQueryResult<IJobCategory[], Error> = useQuery<IJobCategory[], Error>('job-categories', GetJobCategories);
+
+  const handleCategoryFocus = (category_id: number) => {
+    localStorage.setItem('cat_of_focus', JSON.stringify(category_id))
+  }
+
   return (
     <>
       {/* Footer */}
@@ -10,20 +21,18 @@ export const Footer: FC = () => {
             <div className="row">
               <div className="col-xl-4 col-md-12">
                 <div className="utf-footer-item-links">
-                  <a href="index-1.html"><img className="footer-logo" src="assets/images/footer_logo.png" alt="" /></a>
+                  <a href="/"><img className="footer-logo" src="assets/images/footer_logo.png" alt="" /></a>
                   <p>HireLab Africa Ltd is a leading private Human Resources Consulting firm that provides HR solutions to Companies all over Africa.</p>
                 </div>
               </div>
 
-              <div className="col-xl-2 col-md-3 col-sm-6">
+              <div className="col-xl-3 col-md-3 col-sm-6">
                 <div className="utf-footer-item-links">
                   <h3>Job Categories</h3>
                   <ul>
-                    <li><a href="jobs-list-layout-leftside.html"><i className="icon-feather-chevron-right"></i> <span>Developement</span></a></li>
-                    <li><a href="jobs-list-layout-leftside.html"><i className="icon-feather-chevron-right"></i> <span>Designing</span></a></li>
-                    <li><a href="jobs-list-layout-leftside.html"><i className="icon-feather-chevron-right"></i> <span>Marketing</span></a></li>
-                    <li><a href="jobs-list-layout-leftside.html"><i className="icon-feather-chevron-right"></i> <span>Data Analytics</span></a></li>
-                    <li><a href="/"><i className="icon-feather-chevron-right"></i> <span>Post New Job</span></a></li>
+                    {job_categories && job_categories.slice(0, 5).map((category: any, index: number) => (
+                      <li key={index}><a href="/jobs" onClick={() => handleCategoryFocus(category.id)}><i className="icon-feather-chevron-right"></i> <span>{category.name}</span></a></li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -32,16 +41,16 @@ export const Footer: FC = () => {
                 <div className="utf-footer-item-links">
                   <h3>Job Type</h3>
                   <ul>
-                    <li><a href="jobs-list-layout-leftside.html"><i className="icon-feather-chevron-right"></i> <span>Work from Home</span></a></li>
-                    <li><a href="jobs-list-layout-leftside.html"><i className="icon-feather-chevron-right"></i> <span>Internship Job</span></a></li>
-                    <li><a href="jobs-list-layout-leftside.html"><i className="icon-feather-chevron-right"></i> <span>Freelancer Job</span></a></li>
-                    <li><a href="jobs-list-layout-leftside.html"><i className="icon-feather-chevron-right"></i> <span>Part Time Job</span></a></li>
-                    <li><a href="jobs-list-layout-leftside.html"><i className="icon-feather-chevron-right"></i> <span>Full Time Job</span></a></li>
+                    <li><a href="/jobs"><i className="icon-feather-chevron-right"></i> <span>Full-time Job</span></a></li>
+                    <li><a href="/jobs"><i className="icon-feather-chevron-right"></i> <span>Part-time Job</span></a></li>
+                    <li><a href="/jobs"><i className="icon-feather-chevron-right"></i> <span>Contract Job </span></a></li>
+                    <li><a href="/jobs"><i className="icon-feather-chevron-right"></i> <span>Temporary Job</span></a></li>
+                    <li><a href="/jobs"><i className="icon-feather-chevron-right"></i> <span>Internship</span></a></li>
                   </ul>
                 </div>
               </div>
 
-              <div className="col-xl-2 col-md-3 col-sm-6">
+              {/* <div className="col-xl-2 col-md-3 col-sm-6">
                 <div className="utf-footer-item-links">
                   <h3>Resources</h3>
                   <ul>
@@ -52,17 +61,19 @@ export const Footer: FC = () => {
                     <li><a href="/"><i className="icon-feather-chevron-right"></i> <span>Employers</span></a></li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
 
               <div className="col-xl-2 col-md-3 col-sm-6">
                 <div className="utf-footer-item-links">
                   <h3>Quick Links</h3>
                   <ul>
-                    <li><a href="jobs-list-layout-leftside.html"><i className="icon-feather-chevron-right"></i> <span>Jobs Listing</span></a></li>
-                    <li><a href="about-us.html"><i className="icon-feather-chevron-right"></i> <span>About Us</span></a></li>
-                    <li><a href="contact.html"><i className="icon-feather-chevron-right"></i> <span>Contact Us</span></a></li>
-                    <li><a href="privacy-policy.html"><i className="icon-feather-chevron-right"></i> <span>Privacy Policy</span></a></li>
-                    <li><a href="terms-condition.html"><i className="icon-feather-chevron-right"></i> <span>Term & Condition</span></a></li>
+                    <li><a href="/jobs"><i className="icon-feather-chevron-right"></i> <span>Jobs Listing</span></a></li>
+                    <li><a href="/about"><i className="icon-feather-chevron-right"></i> <span>About Us</span></a></li>
+                    <li><a href="/services"><i className="icon-feather-chevron-right"></i> <span>Services</span></a></li>
+                    <li><a href="/companies"><i className="icon-feather-chevron-right"></i> <span>Companies</span></a></li>
+                    <li><a href="/contact"><i className="icon-feather-chevron-right"></i> <span>Contact Us</span></a></li>
+                    {/* <li><a href="/"><i className="icon-feather-chevron-right"></i> <span>Privacy Policy</span></a></li> */}
+                    {/* <li><a href="/"><i className="icon-feather-chevron-right"></i> <span>Term & Condition</span></a></li> */}
                   </ul>
                 </div>
               </div>

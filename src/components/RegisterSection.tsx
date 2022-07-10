@@ -18,13 +18,13 @@ export const RegisterSection: FC = () => {
     company_name: '',
     company_description: '',
     password: '',
-    password_confirmation: '',
   };
 
   const [currentForm, setCurrentForm] = useState('Candidate')
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [open, setOpen] = useState(false);
   const notify = (msg_type: string) => {
     if (msg_type === 'success')
       toast.success(successMsg, {
@@ -66,10 +66,10 @@ export const RegisterSection: FC = () => {
 
   // All Validations
   const CandidateFormValidationSchema = Yup.object().shape({
-    first_name: Yup.string().required().label('First name'),
-    last_name: Yup.string().required().label('Last name'),
-    email: Yup.string().required().email().label('Email'),
-    password: Yup.string()
+    first_name: Yup.string().trim().required().label('First name'),
+    last_name: Yup.string().trim().required().label('Last name'),
+    email: Yup.string().trim().required().email().label('Email'),
+    password: Yup.string().trim()
       .required()
       .min(8, 'Password is too short - should be 8 chars minimum.')
       .matches(
@@ -77,16 +77,12 @@ export const RegisterSection: FC = () => {
         'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
       )
       .label('Password'),
-    password_confirmation: Yup.string().oneOf(
-      [Yup.ref('password'), null],
-      'Passwords must match'
-    ),
   });
   const EmployerFormValidationSchema = Yup.object().shape({
-    company_name: Yup.string().required().label('Company name'),
-    company_description: Yup.string().required().label('Company description'),
-    email: Yup.string().required().email().label('Email'),
-    password: Yup.string()
+    company_name: Yup.string().trim().required().label('Company name'),
+    company_description: Yup.string().trim().required().label('Company description'),
+    email: Yup.string().trim().required().email().label('Email'),
+    password: Yup.string().trim()
       .required()
       .min(8, 'Password is too short - should be 8 chars minimum.')
       .matches(
@@ -94,23 +90,19 @@ export const RegisterSection: FC = () => {
         'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
       )
       .label('Password'),
-    password_confirmation: Yup.string().oneOf(
-      [Yup.ref('password'), null],
-      'Passwords must match'
-    ),
+
   });
 
 
   const handleSignUp = async (payload: IRegister) => {
 
     const data = {
-      first_name: payload.first_name.trim(),
-      last_name: payload.last_name.trim(),
-      email: payload.email.trim(),
-      company_name: payload.company_name.trim(),
-      company_description: payload.company_description.trim(),
-      password: payload.password.trim(),
-      password_confirmation: payload.password_confirmation.trim(),
+      first_name: payload.first_name,
+      last_name: payload.last_name,
+      email: payload.email,
+      company_name: payload.company_name,
+      company_description: payload.company_description,
+      password: payload.password,
     }
 
     if (isLoading) {
@@ -121,7 +113,7 @@ export const RegisterSection: FC = () => {
     setErrorMsg("")
     setSuccessMsg("")
 
-    return await axios.post('/auth/signup/', { ...data, role: currentForm }).then((res) => {
+    return await axios.post('/api/auth/signup/', { ...data, role: currentForm }).then((res) => {
       setIsLoading(false)
       if (res.data.hasOwnProperty('id')) {
         setSuccessMsg("Successfully registered!");
@@ -220,26 +212,16 @@ export const RegisterSection: FC = () => {
                         )}
                       </div>
                       <div className="utf-no-border">
-                        <input type="password" className="utf-with-border" name="password" id="password" placeholder="Password" value={values.password}
-                          onChange={handleChange('password')}
-                          onBlur={handleBlur('password')}
-                          autoComplete={`${true}`} />
+                        <div className="utf-input-with-icon">
+                          <input className="utf-with-border" type={`${open ? 'text' : 'password'}`} name="password" id="password" placeholder="Password" value={values.password}
+                            onChange={handleChange('password')}
+                            onBlur={handleBlur('password')}
+                            autoComplete={`${true}`} />
+                          <i onClick={() => setOpen(!open)} className={`${open ? 'icon-feather-eye-off' : 'icon-feather-eye'}`}></i>
+                        </div>
                         {touched.password && errors.password && (
                           <MsgText
                             text={errors.password}
-                            textColor="danger"
-                          />
-                        )}
-
-                      </div>
-                      <div className="utf-no-border">
-                        <input type="password" className="utf-with-border" name="password_confirmation" id="password_confirmation" placeholder="Repeat Password" value={values.password_confirmation}
-                          onChange={handleChange('password_confirmation')}
-                          onBlur={handleBlur('password_confirmation')}
-                          autoComplete={`${true}`} />
-                        {touched.password_confirmation && errors.password_confirmation && (
-                          <MsgText
-                            text={errors.password_confirmation}
                             textColor="danger"
                           />
                         )}
@@ -315,10 +297,13 @@ export const RegisterSection: FC = () => {
                         )}
                       </div>
                       <div className="utf-no-border">
-                        <input type="password" className="utf-with-border" name="password" id="password" placeholder="Password" value={values.password}
-                          onChange={handleChange('password')}
-                          onBlur={handleBlur('password')}
-                          autoComplete={`${true}`} />
+                        <div className="utf-input-with-icon">
+                          <input className="utf-with-border" type={`${open ? 'text' : 'password'}`} name="password" id="password" placeholder="Password" value={values.password}
+                            onChange={handleChange('password')}
+                            onBlur={handleBlur('password')}
+                            autoComplete={`${true}`} />
+                          <i onClick={() => setOpen(!open)} className={`${open ? 'icon-feather-eye-off' : 'icon-feather-eye'}`}></i>
+                        </div>
                         {touched.password && errors.password && (
                           <MsgText
                             text={errors.password}
@@ -326,18 +311,7 @@ export const RegisterSection: FC = () => {
                           />
                         )}
                       </div>
-                      <div className="utf-no-border">
-                        <input type="password" className="utf-with-border" name="password_confirmation" id="password_confirmation" placeholder="Repeat Password" value={values.password_confirmation}
-                          onChange={handleChange('password_confirmation')}
-                          onBlur={handleBlur('password_confirmation')}
-                          autoComplete={`${true}`} />
-                        {touched.password_confirmation && errors.password_confirmation && (
-                          <MsgText
-                            text={errors.password_confirmation}
-                            textColor="danger"
-                          />
-                        )}
-                      </div>
+
                       <div className="checkbox margin-top-10">
                         <input type="checkbox" id="two-step0" />
                         <label htmlFor="two-step0"><span className="checkbox-icon"></span> I Have Read and Agree to the <a href="/">Terms &amp; Conditions</a></label>

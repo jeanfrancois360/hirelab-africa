@@ -9,13 +9,14 @@ import { toast, ToastContainer } from 'react-toastify'
 import { Bars } from 'react-loader-spinner'
 import { useMutation } from 'react-query'
 import { IJobCategory, IJobPost } from '../interfaces'
-import { DeleteJobPost, GetJobPosts, UpdateJobPost } from '../api/job-post.ts'
+import { DeleteJobPost, GetEmployerJobPosts, GetJobPosts, UpdateJobPost } from '../api/job-post'
 import { Backdrop, Box, Fade, Modal } from '@mui/material'
 import { MsgText } from './MsgText'
 import JoditReact from 'jodit-react-ts'
 import { Formik } from 'formik'
 import * as Yup from 'yup';
 import { GetJobCategories } from '../api/job-category'
+import moment from 'moment'
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -34,6 +35,10 @@ const style = {
 
 
 export const ViewJobPostsSection: FC = () => {
+    // @ts-ignore
+    let user = JSON.parse(localStorage.getItem('user'));
+    let role_arr = ['Employer'];
+
     let initialValues = {
         title: '',
         description: '',
@@ -41,7 +46,7 @@ export const ViewJobPostsSection: FC = () => {
         type: 'Full-time',
         workspace: 'On-site',
         status: 'Active',
-        job_category_id: 0,
+        job_category_id: '',
         posted_by: 0,
         address: ''
     };
@@ -96,15 +101,15 @@ export const ViewJobPostsSection: FC = () => {
 
 
     // Fetch All Job Posts
-    const { data: job_posts, isLoading: isFetchingPosts, refetch }: UseQueryResult<IJobPost[], Error> = useQuery<IJobPost[], Error>('job-posts', GetJobPosts);
+    const { data: job_posts, isLoading: isFetchingPosts, refetch: RefetchJobPosts }: UseQueryResult<IJobPost[], Error> = useQuery<IJobPost[], Error>('job-posts', user && user.hasOwnProperty('role') && role_arr.includes(user.role.name) ? GetEmployerJobPosts : GetJobPosts);
 
     // Fetch All Job Categories
     const { data: job_categories }: UseQueryResult<IJobCategory[], Error> = useQuery<IJobCategory[], Error>('job-categories', GetJobCategories);
 
-    // Mutation For Updating Job Category
+    // Mutation For Updating Job Post
     const updateMutation = useMutation(UpdateJobPost);
 
-    // Mutation For Deleting Job Category
+    // Mutation For Deleting Job Post
     const deleteMutation = useMutation(DeleteJobPost);
 
 
@@ -126,11 +131,11 @@ export const ViewJobPostsSection: FC = () => {
     });
 
     const handleUpdate = async (payload: IJobPost) => {
-        const updatedCategory = await updateMutation.mutateAsync({ ...payload, id: currentRow })
-        if (updatedCategory.hasOwnProperty('id')) {
+        const updatedPost = await updateMutation.mutateAsync({ ...payload, id: currentRow, job_category_id: Number(payload.job_category_id) })
+        if (updatedPost.hasOwnProperty('uuid')) {
             handleClose()
             setSuccessMsg("Update Successfully!");
-            refetch();
+            RefetchJobPosts();
         }
         if (updateMutation.isError) {
             setErrorMsg("Something went wrong!");
@@ -138,13 +143,13 @@ export const ViewJobPostsSection: FC = () => {
     }
 
     const handleDelete = async (id: number) => {
-        const deletedCategory = await deleteMutation.mutateAsync(id)
-        if (deletedCategory.hasOwnProperty('title')) {
+        const deletedPost = await deleteMutation.mutateAsync(id)
+        if (deletedPost.hasOwnProperty('uuid')) {
             handleClose()
             setSuccessMsg("Deleted Successfully!");
-            refetch();
+            RefetchJobPosts();
         }
-        if (updateMutation.isError) {
+        if (deleteMutation.isError) {
             setErrorMsg("Something went wrong!");
         }
     }
@@ -158,7 +163,7 @@ export const ViewJobPostsSection: FC = () => {
             {/* < !--Dashboard Container-- > */}
             <div className="utf-dashboard-container-aera">
                 {/* <!-- Dashboard Sidebar --> */}
-                <SidebarSection />
+                <SidebarSection current={'manage_job_posts'} />
                 {/* <!-- Dashboard Sidebar / End --> */}
 
                 {/* <!-- Dashboard Content --> */}
@@ -172,25 +177,27 @@ export const ViewJobPostsSection: FC = () => {
                                         <h3>All Job Posts</h3>
                                     </div>
                                     <div className="content">
-                                        <ul className="utf-dashboard-box-list">
+                                        {job_posts && job_posts.length > 0 ? (<><ul className="utf-dashboard-box-list">
                                             {job_posts && job_posts.map((post: any, index: number) =>
                                             (
                                                 <li key={index}>
                                                     <div className="utf-job-listing">
                                                         <div className="utf-job-listing-details">
-                                                            <a href="dashboard-manage-resume.html" className="utf-job-listing-company-logo"><img src="assets/images/icons/new-job-2.png" alt="" /></a>
+                                                            <a href="/view-job-posts" className="utf-job-listing-company-logo"><img src="assets/images/icons/new-job-2.png" alt="" /></a>
                                                             <div className="utf-job-listing-description">
-                                                                <span className="dashboard-status-button utf-status-item green">{post.status}</span>
-                                                                <h3 className="utf-job-listing-title"><a href="dashboard-manage-resume.html">{post.title}</a><span className="dashboard-status-button green"><i className="icon-material-outline-business-center"></i> {post.type}</span><span className={`dashboard-status-button ${post.workspace === "Remote" ? 'blue' : 'yellow'}`}><i className="icon-material-outline-location-on"></i> {post.workspace}</span></h3>
+                                                                {post.status === "Active" && (<span className={`dashboard-status-button utf-status-item green`}>{post.status}</span>)}
+                                                                {post.status === "Inactive" && (<span className={`dashboard-status-button utf-status-item red`}>{post.status}</span>)}
+                                                                {post.status === "Publish" && (<span className={`dashboard-status-button utf-status-item blue`}>{post.status}ed</span>)}
+                                                                <h3 className="utf-job-listing-title"><a href="/view-job-posts">{post.title}</a><span className="dashboard-status-button green"><i className="icon-material-outline-business-center"></i> {post.type}</span><span className={`dashboard-status-button ${post.workspace === "Remote" ? 'blue' : 'yellow'}`}><i className="icon-material-outline-location-on"></i> {post.workspace}</span></h3>
                                                                 <div className="utf-job-listing-footer">
                                                                     <ul>
-                                                                        <li><i className="icon-feather-briefcase"></i> Software Developer</li>
-                                                                        <li><i className="icon-material-outline-date-range"></i> 10 Jan, 2021</li>
+                                                                        <li><i className="icon-feather-briefcase"></i>{post.job_category.name}</li>
+                                                                        <li><i className="icon-material-outline-date-range"></i>{moment(post.updated_at).format('MMM D, YYYY')}</li>
                                                                         <li><i className="icon-material-outline-account-balance-wallet"></i> {post.salary_range}</li>
                                                                         <li><i className="icon-material-outline-location-on"></i> {post.address}</li>
                                                                     </ul>
                                                                     <div className="utf-buttons-to-right">
-                                                                        <a href="/" onClick={(e) => {
+                                                                        <a href="/view-job-posts" onClick={(e) => {
                                                                             e.preventDefault(); handleOpen(); setCurrentRow(post.id); setFormValues(
                                                                                 {
                                                                                     title: post.title,
@@ -205,7 +212,7 @@ export const ViewJobPostsSection: FC = () => {
                                                                                 }
                                                                             )
                                                                         }} className="button green ripple-effect ico" title="Edit" data-tippy-placement="top"><i className="icon-feather-edit"></i></a>
-                                                                        <a href="/" onClick={(e) => { e.preventDefault(); handleDelete(post.id) }} className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
+                                                                        <a href="/view-job-posts" onClick={(e) => { e.preventDefault(); handleDelete(post.id) }} className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -213,22 +220,25 @@ export const ViewJobPostsSection: FC = () => {
                                                     </div>
                                                 </li>))}
                                         </ul>
+                                            {/* <!-- Pagination --> */}
+                                            <div className="clearfix"></div>
+                                            <div className="utf-pagination-container-aera margin-top-20 margin-bottom-20">
+                                                <nav className="pagination">
+                                                    <ul>
+                                                        <li className="utf-pagination-arrow"><a href="/view-job-posts" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-left"></i></a></li>
+                                                        <li><a href="/view-job-posts" className="ripple-effect current-page">1</a></li>
+                                                        <li className="utf-pagination-arrow"><a href="/view-job-posts" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-right"></i></a></li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                            <div className="clearfix"></div>
+                                        </>) : (
+                                            <div className="no-data">
+                                                <i className="icon-material-outline-info"></i><p> No Data Found!</p>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
-                                {/* <!-- Pagination --> */}
-                                <div className="clearfix"></div>
-                                <div className="utf-pagination-container-aera margin-top-20 margin-bottom-0">
-                                    <nav className="pagination">
-                                        <ul>
-                                            <li className="utf-pagination-arrow"><a href="/" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-left"></i></a></li>
-                                            <li><a href="/" className="ripple-effect current-page">1</a></li>
-                                            <li><a href="/" className="ripple-effect">2</a></li>
-                                            <li><a href="/" className="ripple-effect">3</a></li>
-                                            <li className="utf-pagination-arrow"><a href="/" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-right"></i></a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                                <div className="clearfix"></div>
                             </div>
                         </div>
                         {/* <!-- Row / End --> */}
@@ -303,7 +313,7 @@ export const ViewJobPostsSection: FC = () => {
                                                                         onChange={handleChange('job_category_id')}
                                                                         onBlur={handleBlur('job_category_id')}
                                                                         autoComplete={`${true}`}>
-                                                                        {job_categories && job_categories.map((category: any, index: number) => (
+                                                                        {job_categories && job_categories.filter((cat) => cat.status === 'Active').map((category: any, index: number) => (
                                                                             <option key={index + 1} value={category.id}>{category.name}</option>
                                                                         ))}
                                                                     </select>
@@ -393,6 +403,7 @@ export const ViewJobPostsSection: FC = () => {
                                                                         onBlur={handleBlur('status')}
                                                                         autoComplete={`${true}`}>
                                                                         <option defaultValue="true" value="Active">Active</option>
+                                                                        <option value="Publish">Publish</option>
                                                                         <option value="Inactive">Inactive</option>
                                                                     </select>
                                                                     {touched.status && errors.status && (
@@ -418,17 +429,16 @@ export const ViewJobPostsSection: FC = () => {
                                                             </div>
                                                         </div>
                                                         <div className="utf-centered-button">
-                                                            <button className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-0" type="submit">
-                                                                {updateMutation.isLoading ? <div style={{ marginLeft: '225px' }}><Bars
+                                                            {!updateMutation.isLoading ? (<button className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-0 margin-bottom-15" type="submit">
+                                                                Update Job Post
+                                                                <i className="icon-feather-plus"></i>
+                                                            </button>) :
+                                                                (<button className="button"><Bars
                                                                     height="25"
                                                                     width="25"
                                                                     color='white'
                                                                     ariaLabel='loading'
-                                                                /> </div> : <div>
-                                                                    Update Job Post
-                                                                    <i className="icon-feather-plus"></i>
-                                                                </div>}
-                                                            </button>
+                                                                /></button>)}
                                                         </div>
                                                     </div>
 

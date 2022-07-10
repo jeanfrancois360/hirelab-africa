@@ -1,6 +1,16 @@
 import React, { FC } from 'react'
+import { useQuery, UseQueryResult } from 'react-query';
+import { GetJobCategories } from '../api/job-category';
+import { IJobCategory } from '../interfaces';
 
 export const CategoryBoxes: FC = () => {
+
+	const handleCategoryFocus = (category_id: number) => {
+		localStorage.setItem('cat_of_focus', JSON.stringify(category_id))
+	}
+
+	// Fetch All Job Categories
+	const { data: job_categories }: UseQueryResult<IJobCategory[], Error> = useQuery<IJobCategory[], Error>('job-categories', GetJobCategories);
 	return (
 		<>
 			{/* Jobs Category Boxes */}
@@ -14,75 +24,25 @@ export const CategoryBoxes: FC = () => {
 								<div className="utf-headline-display-inner-item">Jobs Categories</div>
 								<p className="utf-slogan-text">Lorem Ipsum is simply dummy text printing and type setting industry Lorem Ipsum been industry standard dummy text ever since when unknown printer took a galley.</p>
 							</div>
-							<div className="utf-categories-container-block">
-								<a href="jobs-list-layout-leftside.html" className="utf-category-box">
-									<div className="utf-opening-position-counter-item">10 Openings</div>
+							{job_categories && job_categories.length > 0 ? (<><div className="utf-categories-container-block">
+								{job_categories && job_categories.filter((cat) => cat.name !== 'Other' && cat.status === 'Active').slice(0, 8).map((category: any, index: number) =>
+								(<a key={index} href="/jobs" onClick={() => handleCategoryFocus(category.id)} className="utf-category-box">
+									<div className="utf-opening-position-counter-item">0 Openings</div>
 									<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-bullhorn"></i> </div>
 									<div className="utf-category-box-content">
-										<h3>Design, Art & Multimedia</h3>
+										<h3>{category.name}</h3>
 									</div>
-									<div className="utf-category-box-counter-item">8,188 Jobs</div>
-								</a>
-								<a href="jobs-list-layout-leftside.html" className="utf-category-box">
-									<div className="utf-opening-position-counter-item">15 Openings</div>
-									<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-graduation-cap"></i> </div>
-									<div className="utf-category-box-content">
-										<h3>Education & Training</h3>
-									</div>
-									<div className="utf-category-box-counter-item">5,244 Jobs</div>
-								</a>
-								<a href="jobs-list-layout-leftside.html" className="utf-category-box">
-									<div className="utf-opening-position-counter-item">12 Openings</div>
-									<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-line-chart"></i> </div>
-									<div className="utf-category-box-content">
-										<h3>Accounting / Finance</h3>
-									</div>
-									<div className="utf-category-box-counter-item">6,258 Jobs</div>
-								</a>
-								<a href="jobs-list-layout-leftside.html" className="utf-category-box">
-									<div className="utf-opening-position-counter-item">20 Openings</div>
-									<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-users"></i> </div>
-									<div className="utf-category-box-content">
-										<h3>Human Resource</h3>
-									</div>
-									<div className="utf-category-box-counter-item">1,224 Jobs</div>
-								</a>
-								<a href="jobs-list-layout-leftside.html" className="utf-category-box">
-									<div className="utf-opening-position-counter-item">25 Openings</div>
-									<div className="utf-category-box-icon-item"> <i className="icon-feather-phone-call"></i> </div>
-									<div className="utf-category-box-content">
-										<h3>Telecommunications</h3>
-									</div>
-									<div className="utf-category-box-counter-item">3,258 Jobs</div>
-								</a>
-								<a href="jobs-list-layout-leftside.html" className="utf-category-box">
-									<div className="utf-opening-position-counter-item">18 Openings</div>
-									<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-cutlery"></i> </div>
-									<div className="utf-category-box-content">
-										<h3>Restaurant / Food Service</h3>
-									</div>
-									<div className="utf-category-box-counter-item">5,138 Jobs</div>
-								</a>
-								<a href="jobs-list-layout-leftside.html" className="utf-category-box">
-									<div className="utf-opening-position-counter-item">38 Openings</div>
-									<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-building"></i> </div>
-									<div className="utf-category-box-content">
-										<h3>Construction / Facilities</h3>
-									</div>
-									<div className="utf-category-box-counter-item">2,580 Jobs</div>
-								</a>
-								<a href="jobs-list-layout-leftside.html" className="utf-category-box">
-									<div className="utf-opening-position-counter-item">23 Openings</div>
-									<div className="utf-category-box-icon-item"> <i className="icon-line-awesome-user-md"></i> </div>
-									<div className="utf-category-box-content">
-										<h3>Health</h3>
-									</div>
-									<div className="utf-category-box-counter-item">2,360 Jobs</div>
-								</a>
+									<div className="utf-category-box-counter-item">{category.job_post.length} Jobs</div>
+								</a>))}
 							</div>
-							<div className="utf-centered-button margin-top-10">
-								<a href="jobs-categorie-one.html" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-20">View All Categories <i className="icon-feather-chevron-right"></i></a>
-							</div>
+								<div className="utf-centered-button margin-top-10">
+									<a href="/categories" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-20">View All Categories <i className="icon-feather-chevron-right"></i></a>
+								</div>
+							</>) : (
+								<div className="no-data">
+									<i className="icon-material-outline-info"></i><p> No Trending Categories Found!</p>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>

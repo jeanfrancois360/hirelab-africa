@@ -1,11 +1,11 @@
 import axios from '../../axios';
-import { IJobPost } from '../../interfaces';
+import { ICompany } from '../../interfaces';
 
-export const CreateJobPost = async ({
+export const AddCompany = async ({
   ...payload
-}): Promise<IJobPost | undefined> => {
+}): Promise<ICompany | undefined> => {
   return await axios
-    .post('/job-posts/add', payload, {
+    .post('/api/auth/signup', payload, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -20,25 +20,21 @@ export const CreateJobPost = async ({
     });
 };
 
-export const GetJobPosts = async (): Promise<IJobPost[]> => {
+export const GetCompanies = async () => {
   try {
-    const response = await axios.get('/job-posts', {
-      headers: {
-        Authorization:
-          'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
-      },
-    });
+    const response = await axios.get(`/api/users/search-role/${'Employer'}`);
     return response.data;
   } catch (error) {
     throw new Error('Something went wrong.');
   }
 };
 
-export const GetJobPost = async ({ ...payload }) => {};
+export const GetCompany = async ({ ...payload }) => {};
 
-export const UpdateJobPost = async ({ ...payload }): Promise<IJobPost> => {
+export const UpdateCompany = async ({ ...payload }): Promise<ICompany> => {
+  console.log(payload);
   return await axios
-    .patch(`job-posts/update/${payload.id}`, payload, {
+    .patch(`/api/profiles/update/${payload.id}`, payload, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -53,9 +49,9 @@ export const UpdateJobPost = async ({ ...payload }): Promise<IJobPost> => {
     });
 };
 
-export const DeleteJobPost = async (id: number): Promise<IJobPost> => {
+export const DeleteCompany = async (id: number): Promise<ICompany> => {
   return await axios
-    .delete(`job-posts/delete/${id}`, {
+    .delete(`/api/users/delete/${id}`, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),

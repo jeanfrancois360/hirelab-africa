@@ -92,7 +92,7 @@ export const AddJobCategorySection: FC = () => {
             {/* < !--Dashboard Container-- > */}
             <div className="utf-dashboard-container-aera">
                 {/* <!-- Dashboard Sidebar --> */}
-                <SidebarSection />
+                <SidebarSection current={'manage_job_categories'} />
                 {/* <!-- Dashboard Sidebar / End --> */}
 
                 {/* <!-- Dashboard Content --> */}
@@ -159,17 +159,16 @@ export const AddJobCategorySection: FC = () => {
                                                         </div>
                                                     </div>
                                                     <div className="utf-centered-button">
-                                                        <button className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-0 margin-bottom-15" type="submit">
-                                                            {createMutation.isLoading ? <div style={{ marginLeft: '225px' }}><Bars
+                                                        {!createMutation.isLoading ? (<button className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-0 margin-bottom-15" type="submit">
+                                                            Add Job Category
+                                                            <i className="icon-feather-plus"></i>
+                                                        </button>) :
+                                                            (<button className="button"><Bars
                                                                 height="25"
                                                                 width="25"
                                                                 color='white'
                                                                 ariaLabel='loading'
-                                                            /> </div> : <div>
-                                                                Add Category
-                                                                <i className="icon-feather-plus"></i>
-                                                            </div>}
-                                                        </button>
+                                                            /></button>)}
                                                     </div>
                                                 </div>
 

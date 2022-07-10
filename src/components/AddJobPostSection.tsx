@@ -14,7 +14,7 @@ import { Bars } from 'react-loader-spinner'
 import { useMutation, useQuery, UseQueryResult } from 'react-query'
 import JoditReact from "jodit-react-ts";
 import 'jodit/build/jodit.min.css';
-import { CreateJobPost } from '../api/job-post.ts'
+import { CreateJobPost } from '../api/job-post'
 import { GetJobCategories } from '../api/job-category'
 
 export const AddJobPostSection: FC = () => {
@@ -26,7 +26,7 @@ export const AddJobPostSection: FC = () => {
         workspace: 'On-site',
         status: 'Active',
         job_category_id: 0,
-        posted_by: JSON.parse(localStorage.getItem('user') || "").id,
+        posted_by: JSON.parse(localStorage.getItem('user') || '').id,
         address: JSON.parse(localStorage.getItem('user') || "").profile.address || ''
     };
 
@@ -75,7 +75,6 @@ export const AddJobPostSection: FC = () => {
     // Fetch All Job Categories
     const { data: job_categories }: UseQueryResult<IJobCategory[], Error> = useQuery<IJobCategory[], Error>('job-categories', GetJobCategories);
 
-
     // All Validations
     const FormValidationSchema = Yup.object().shape({
         title: Yup.string().trim().min(2, 'Job title is too short - should be 2 chars minimum.').required().label('Job title'),
@@ -93,8 +92,8 @@ export const AddJobPostSection: FC = () => {
     const createMutation = useMutation(CreateJobPost);
 
     const handleAddJobPost = async (payload: IJobPost) => {
-        const newJobCategory = await createMutation.mutateAsync({ ...payload, job_category_id: Number(payload.job_category_id) })
-        if (newJobCategory) {
+        const newJobPost = await createMutation.mutateAsync({ ...payload, job_category_id: Number(payload.job_category_id) })
+        if (newJobPost) {
             setSuccessMsg("Saved Successfully!");
         }
         if (createMutation.isError) {
@@ -112,7 +111,7 @@ export const AddJobPostSection: FC = () => {
             {/* < !--Dashboard Container-- > */}
             <div className="utf-dashboard-container-aera">
                 {/* <!-- Dashboard Sidebar --> */}
-                <SidebarSection />
+                <SidebarSection current={'manage_job_posts'} />
                 {/* <!-- Dashboard Sidebar / End --> */}
 
                 {/* <!-- Dashboard Content --> */}
@@ -165,17 +164,17 @@ export const AddJobPostSection: FC = () => {
                                                                     onChange={handleChange('job_category_id')}
                                                                     onBlur={handleBlur('job_category_id')}
                                                                     autoComplete={`${true}`}>
-                                                                    {job_categories && job_categories.map((category: any, index: number) => (
+                                                                    {job_categories && job_categories.filter((cat) => cat.status === 'Active').map((category: any, index: number) => (
                                                                         <option key={index + 1} value={category.id}>{category.name}</option>
                                                                     ))}
                                                                 </select>
-                                                                {touched.job_category_id && errors.job_category_id && (
-                                                                    <MsgText
-                                                                        text={errors.job_category_id}
-                                                                        textColor="danger"
-                                                                    />
-                                                                )}
                                                             </div>
+                                                            {touched.job_category_id && errors.job_category_id && (
+                                                                <MsgText
+                                                                    text={errors.job_category_id}
+                                                                    textColor="danger"
+                                                                />
+                                                            )}
                                                         </div>
                                                         <div className="col-xl-4 col-md-4 col-sm-4">
                                                             <div className="utf-submit-field">
@@ -191,13 +190,13 @@ export const AddJobPostSection: FC = () => {
                                                                     <option value="Volunteer">Volunteer</option>
                                                                     <option value="Internship">Internship</option>
                                                                 </select>
-                                                                {touched.type && errors.type && (
-                                                                    <MsgText
-                                                                        text={errors.type}
-                                                                        textColor="danger"
-                                                                    />
-                                                                )}
                                                             </div>
+                                                            {touched.type && errors.type && (
+                                                                <MsgText
+                                                                    text={errors.type}
+                                                                    textColor="danger"
+                                                                />
+                                                            )}
                                                         </div>
                                                         <div className="col-xl-4 col-md-4 col-sm-4">
                                                             <div className="utf-submit-field">
@@ -209,13 +208,13 @@ export const AddJobPostSection: FC = () => {
                                                                     <option defaultValue="true" value="On-site">On-site</option>
                                                                     <option value="Remote">Remote</option>
                                                                 </select>
-                                                                {touched.workspace && errors.workspace && (
-                                                                    <MsgText
-                                                                        text={errors.workspace}
-                                                                        textColor="danger"
-                                                                    />
-                                                                )}
                                                             </div>
+                                                            {touched.workspace && errors.workspace && (
+                                                                <MsgText
+                                                                    text={errors.workspace}
+                                                                    textColor="danger"
+                                                                />
+                                                            )}
                                                         </div>
                                                         <div className="col-xl-4 col-md-4 col-sm-4">
                                                             <div className="utf-submit-field">
@@ -258,13 +257,13 @@ export const AddJobPostSection: FC = () => {
                                                                     <option defaultValue="true" value="Active">Active</option>
                                                                     <option value="Inactive">Inactive</option>
                                                                 </select>
-                                                                {touched.status && errors.status && (
-                                                                    <MsgText
-                                                                        text={errors.status}
-                                                                        textColor="danger"
-                                                                    />
-                                                                )}
                                                             </div>
+                                                            {touched.status && errors.status && (
+                                                                <MsgText
+                                                                    text={errors.status}
+                                                                    textColor="danger"
+                                                                />
+                                                            )}
                                                         </div>
                                                         <div className="col-xl-12 col-md-12 col-sm-12">
                                                             <div className="utf-submit-field">
@@ -281,17 +280,16 @@ export const AddJobPostSection: FC = () => {
                                                         </div>
                                                     </div>
                                                     <div className="utf-centered-button">
-                                                        <button className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-0 margin-bottom-15" type="submit">
-                                                            {createMutation.isLoading ? <div style={{ marginLeft: '225px' }}><Bars
+                                                        {!createMutation.isLoading ? (<button className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-0 margin-bottom-15" type="submit">
+                                                            Add Job Post
+                                                            <i className="icon-feather-plus"></i>
+                                                        </button>) :
+                                                            (<button className="button"><Bars
                                                                 height="25"
                                                                 width="25"
                                                                 color='white'
                                                                 ariaLabel='loading'
-                                                            /> </div> : <div>
-                                                                Add Job Post
-                                                                <i className="icon-feather-plus"></i>
-                                                            </div>}
-                                                        </button>
+                                                            /></button>)}
                                                     </div>
                                                 </div>
 
