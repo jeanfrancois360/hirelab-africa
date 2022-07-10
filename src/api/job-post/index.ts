@@ -5,7 +5,7 @@ export const CreateJobPost = async ({
   ...payload
 }): Promise<IJobPost | undefined> => {
   return await axios
-    .post('/api/job-posts/add', payload, {
+    .post('/job-posts/add', payload, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -22,7 +22,7 @@ export const CreateJobPost = async ({
 
 export const GetJobPosts = async (): Promise<IJobPost[]> => {
   try {
-    const response = await axios.get('/api/job-posts');
+    const response = await axios.get('/job-posts');
     return response.data;
   } catch (error) {
     throw new Error('Something went wrong.');
@@ -31,7 +31,7 @@ export const GetJobPosts = async (): Promise<IJobPost[]> => {
 
 export const GetEmployerJobPosts = async (): Promise<IJobPost[]> => {
   try {
-    const response = await axios.get('/api/job-posts/employer');
+    const response = await axios.get('/job-posts/employer');
     return response.data;
   } catch (error) {
     throw new Error('Something went wrong.');
@@ -40,7 +40,7 @@ export const GetEmployerJobPosts = async (): Promise<IJobPost[]> => {
 
 export const GetJobPost = async (id: number): Promise<IJobPost> => {
   return await axios
-    .get(`/api/job-posts/by-uuid/${id}`)
+    .get(`/job-posts/by-uuid/${id}`)
     .then((res) => {
       return res.data;
     })
@@ -52,7 +52,7 @@ export const GetJobPost = async (id: number): Promise<IJobPost> => {
 
 export const UpdateJobPost = async ({ ...payload }): Promise<IJobPost> => {
   return await axios
-    .patch(`/api/job-posts/update/${payload.id}`, payload, {
+    .patch(`/job-posts/update/${payload.id}`, payload, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -69,7 +69,7 @@ export const UpdateJobPost = async ({ ...payload }): Promise<IJobPost> => {
 
 export const DeleteJobPost = async (id: number): Promise<IJobPost> => {
   return await axios
-    .delete(`/api/job-posts/delete/${id}`, {
+    .delete(`/job-posts/delete/${id}`, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),

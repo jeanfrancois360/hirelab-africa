@@ -20,7 +20,7 @@ export const Subscribe: FC = () => {
                                         <form method="post">
                                             <i className="icon-material-baseline-mail-outline"></i>
                                             <input className="form-control" type="email" placeholder="Enter your email" required />
-                                            <button className="utf_theme_btn" type="submit">Subscribe</button>
+                                            <button className="utf_theme_btn" type="button">Subscribe</button>
                                         </form>
                                     </div>
                                 </div>

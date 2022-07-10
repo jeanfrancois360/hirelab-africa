@@ -10,7 +10,7 @@ export const logout = async () => {
 
 export const checkAuthenticationStatus = async () => {
   return await axios
-    .get('/api/auth/status', {
+    .get('/auth/status', {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),

@@ -60,7 +60,7 @@ export const LoginSection: FC = () => {
     setIsLoading(true);
     setErrorMsg("")
 
-    return await axios.post('/api/auth/signin/', data).then((res) => {
+    return await axios.post('/auth/signin/', data).then((res) => {
       setIsLoading(false)
       localStorage.setItem('user', JSON.stringify(res.data.user))
       localStorage.setItem('access_token', JSON.stringify(res.data.access_token))

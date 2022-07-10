@@ -5,7 +5,7 @@ export const CreateJobCategory = async ({
   ...payload
 }): Promise<IJobCategory | undefined> => {
   return await axios
-    .post('/api/job-categories/add', payload, {
+    .post('/job-categories/add', payload, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -22,7 +22,7 @@ export const CreateJobCategory = async ({
 
 export const GetJobCategories = async (): Promise<IJobCategory[]> => {
   try {
-    const response = await axios.get('/api/job-categories');
+    const response = await axios.get('/job-categories');
     return response.data;
   } catch (error) {
     throw new Error('Something went wrong.');
@@ -35,7 +35,7 @@ export const UpdateJobCategory = async ({
   ...payload
 }): Promise<IJobCategory> => {
   return await axios
-    .patch(`/api/job-categories/update/${payload.id}`, payload, {
+    .patch(`/job-categories/update/${payload.id}`, payload, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -52,7 +52,7 @@ export const UpdateJobCategory = async ({
 
 export const DeleteJobCategory = async (id: number): Promise<IJobCategory> => {
   return await axios
-    .delete(`/api/job-categories/delete/${id}`, {
+    .delete(`/job-categories/delete/${id}`, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),

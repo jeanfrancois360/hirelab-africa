@@ -99,7 +99,7 @@ export const BankCVSection: FC = () => {
         };
         setIsUploading(true)
         return await axios
-            .post('/api/file-upload', formData, options)
+            .post('/file-upload', formData, options)
             .then((res) => {
                 if (res.data.hasOwnProperty('file')) {
                     setCvMissing(false);
@@ -149,7 +149,7 @@ export const BankCVSection: FC = () => {
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="utf-submit-field">
-                                            <h5>{hideFileUpload ? (<><span onClick={() => { window.open(`${ApiUrl}/api/file-upload/${oldFileName}`, '_blank'); }} className="view-cv-btn">View It</span> <span onClick={() => { setHideFileUpload(!hideFileUpload) }} className="update-cv-btn">Replace It</span></>) : ('Upload Your CV')}</h5>
+                                            <h5>{hideFileUpload ? (<><span onClick={() => { window.open(`${ApiUrl}/file-upload/${oldFileName}`, '_blank'); }} className="view-cv-btn">View It</span> <span onClick={() => { setHideFileUpload(!hideFileUpload) }} className="update-cv-btn">Replace It</span></>) : ('Upload Your CV')}</h5>
                                             <div className="uploadButton">
                                                 {hideFileUpload ? (<div className="cv-exist-container">
                                                     <h4><span className="icon-feather-check-circle"> </span> We already have your CV</h4>

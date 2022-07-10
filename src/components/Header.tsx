@@ -55,7 +55,7 @@ export const Header = ({ current }: { current: string }) => {
                                         <div className="utf-header-notifications-trigger user-profile-title">
                                             <a href="/" onClick={(e) => { e.preventDefault(); setheaderDropdown(!headerDropdown) }}>
                                                 <div className="user-avatar status-online">
-                                                    {userDetails && userDetails.hasOwnProperty('profile') && userDetails.profile.avatar ? (<img src={`${ApiUrl}/api/file-upload/${userDetails.profile && userDetails.profile.avatar}`} alt="" />) : (<img src="assets/images/user-avatar-placeholder.png" alt="" />)}
+                                                    {userDetails && userDetails.hasOwnProperty('profile') && userDetails.profile.avatar ? (<img src={`${ApiUrl}/file-upload/${userDetails.profile && userDetails.profile.avatar}`} alt="" />) : (<img src="assets/images/user-avatar-placeholder.png" alt="" />)}
                                                 </div>
                                                 {userDetails && userDetails.hasOwnProperty('role') && (userDetails.role.name === "Admin" || userDetails.role.name === 'Candidate') ? (<div className="user-name">Hi, {`${userDetails && userDetails.hasOwnProperty('profile') ? userDetails.profile.first_name : 'Anonymous'}`}</div>) : (
                                                     <div className="user-name">Hi, {`${userDetails && userDetails.hasOwnProperty('profile') ? userDetails.profile.company_name : 'Anonymous'}`}</div>)}

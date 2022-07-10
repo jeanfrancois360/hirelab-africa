@@ -179,7 +179,7 @@ export const ViewCompaniesSection: FC = () => {
         };
         setIsUploading(true)
         return await axios
-            .post('/api/file-upload', formData, options)
+            .post('/file-upload', formData, options)
             .then((res) => {
                 if (res.data.hasOwnProperty('file')) {
                     setFileName(res.data.file);
@@ -229,7 +229,7 @@ export const ViewCompaniesSection: FC = () => {
                                                 <li key={index}>
                                                     <div className="utf-job-listing">
                                                         <div className="utf-job-listing-details">
-                                                            <a href="/view-companies" onClick={(e) => { e.preventDefault(); handleOpen2(); setCurrentRow(company.profile.id) }} className="utf-job-listing-company-logo"><img src={company.profile && company.profile.avatar ? `${ApiUrl}/api/file-upload/${company.profile && company.profile.avatar}` : 'assets/images/company_logo_1.png'} alt="" /></a>
+                                                            <a href="/view-companies" onClick={(e) => { e.preventDefault(); handleOpen2(); setCurrentRow(company.profile.id) }} className="utf-job-listing-company-logo"><img src={company.profile && company.profile.avatar ? `${ApiUrl}/file-upload/${company.profile && company.profile.avatar}` : 'assets/images/company_logo_1.png'} alt="" /></a>
                                                             <div className="utf-job-listing-description">
 
                                                                 <h3 className="utf-job-listing-title"><a href="/view-companies" onClick={(e) => { e.preventDefault(); handleOpen2(); setCurrentRow(company.profile.id) }}>{company.profile && company.profile.company_name}</a></h3>

@@ -22,7 +22,7 @@ export const NeedHelp: FC = () => {
 								</div>
 								<h4>Whatsapp With Us Online</h4>
 								<p>Whatsapp with us online if you have any question.</p>
-								<a href="https://api.whatsapp.com/send?phone=+250788406153" rel="noreferrer" target="_blank" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Click Here to Chat <i className="icon-feather-chevrons-right"></i></a>
+								<a href="https:/.whatsapp.com/send?phone=+250788406153" rel="noreferrer" target="_blank" className="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Click Here to Chat <i className="icon-feather-chevrons-right"></i></a>
 							</div>
 						</div>
 						<div className="col-xl-4">

@@ -5,7 +5,7 @@ export const AddJobApplication = async ({
   ...payload
 }): Promise<IJobApplication | undefined> => {
   return await axios
-    .post('/api/job-applications/apply', payload, {
+    .post('/job-applications/apply', payload, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -22,7 +22,7 @@ export const AddJobApplication = async ({
 
 export const GetJobApplications = async (): Promise<IJobApplication[]> => {
   try {
-    const response = await axios.get('/api/job-applications');
+    const response = await axios.get('/job-applications');
     return response.data;
   } catch (error) {
     throw new Error('Something went wrong.');
@@ -33,7 +33,7 @@ export const GetEmployerJobApplications = async (): Promise<
   IJobApplication[]
 > => {
   try {
-    const response = await axios.get('/api/job-applications/employer', {
+    const response = await axios.get('/job-applications/employer', {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -49,7 +49,7 @@ export const GetCandidateJobApplications = async (): Promise<
   IJobApplication[]
 > => {
   try {
-    const response = await axios.get('/api/job-applications/candidate', {
+    const response = await axios.get('/job-applications/candidate', {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -65,7 +65,7 @@ export const GetJobApplication = async (
   id: number
 ): Promise<IJobApplication> => {
   return await axios
-    .get(`/api/job-applications/${id}`, {
+    .get(`/job-applications/${id}`, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -84,7 +84,7 @@ export const UpdateJobApplication = async ({
   ...payload
 }): Promise<IJobApplication> => {
   return await axios
-    .patch(`/api/job-applications/update/${payload.id}`, payload, {
+    .patch(`/job-applications/update/${payload.id}`, payload, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -103,7 +103,7 @@ export const DeleteJobApplication = async (
   id: number
 ): Promise<IJobApplication> => {
   return await axios
-    .delete(`/api/job-applications/delete/${id}`, {
+    .delete(`/job-applications/delete/${id}`, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),

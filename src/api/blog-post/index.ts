@@ -5,7 +5,7 @@ export const CreateBlogPost = async ({
   ...payload
 }): Promise<IBlogPost | undefined> => {
   return await axios
-    .post('/api/blog-posts/add', payload, {
+    .post('/blog-posts/add', payload, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -22,7 +22,7 @@ export const CreateBlogPost = async ({
 
 export const GetBlogPosts = async (): Promise<IBlogPost[]> => {
   try {
-    const response = await axios.get('/api/blog-posts');
+    const response = await axios.get('/blog-posts');
     return response.data;
   } catch (error) {
     throw new Error('Something went wrong.');
@@ -31,7 +31,7 @@ export const GetBlogPosts = async (): Promise<IBlogPost[]> => {
 
 export const GetBlogPost = async (id: number): Promise<IBlogPost> => {
   return await axios
-    .get(`/api/blog-posts/by-uuid/${id}`)
+    .get(`/blog-posts/by-uuid/${id}`)
     .then((res) => {
       return res.data;
     })
@@ -43,7 +43,7 @@ export const GetBlogPost = async (id: number): Promise<IBlogPost> => {
 
 export const UpdateBlogPost = async ({ ...payload }): Promise<IBlogPost> => {
   return await axios
-    .patch(`/api/blog-posts/update/${payload.id}`, payload, {
+    .patch(`/blog-posts/update/${payload.id}`, payload, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -60,7 +60,7 @@ export const UpdateBlogPost = async ({ ...payload }): Promise<IBlogPost> => {
 
 export const DeleteBlogPost = async (id: number): Promise<IBlogPost> => {
   return await axios
-    .delete(`/api/blog-posts/delete/${id}`, {
+    .delete(`/blog-posts/delete/${id}`, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),

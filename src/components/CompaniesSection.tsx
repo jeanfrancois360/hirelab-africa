@@ -24,7 +24,7 @@ export const CompaniesSection = () => {
                                     <div key={index} className="col-xl-4 col-md-6 col-sm-12">
                                         <div className="utf-company-inner-alignment">
                                             <a href="/companies" className="company">
-                                                <span className="company-logo"><img src={company.profile && company.profile.avatar ? `${ApiUrl}/api/file-upload/${company.profile && company.profile.avatar}` : 'assets/images/company_logo_1.png'} alt="" /></span>
+                                                <span className="company-logo"><img src={company.profile && company.profile.avatar ? `${ApiUrl}/file-upload/${company.profile && company.profile.avatar}` : 'assets/images/company_logo_1.png'} alt="" /></span>
                                                 <h4>{company.profile && company.profile.company_name}</h4>
                                                 <h5 className="utf-job-listing-company"><span><i className="icon-feather-briefcase"></i> {company.profile && company.profile.email}</span></h5>
                                                 <p className="text-muted"><i className="icon-material-outline-location-on"></i> {company.profile && company.profile.address}</p>

@@ -26,7 +26,7 @@ export const BlogSection: FC = () => {
 								<a key={index} href="/blog" className="blog-post">
 									<div className="utf-blog-post-thumbnail">
 										<div className="utf-blog-post-thumbnail-inner">
-											<img src={`${ApiUrl}/api/file-upload/${post.image}`} alt="" />
+											<img src={`${ApiUrl}/file-upload/${post.image}`} alt="" />
 										</div>
 									</div>
 									<div className="utf-blog-post-content">
@@ -82,7 +82,7 @@ export const BlogSection: FC = () => {
 										<li className="utf-sidebr-pro-widget">
 											<div className="utf-blog-thumb-info">
 												<div className="utf-blog-thumb-info-image">
-													<img src={`${ApiUrl}/api/file-upload/${post.image}`} alt="" />
+													<img src={`${ApiUrl}/file-upload/${post.image}`} alt="" />
 												</div>
 												<div className="utf-blog-thumb-info-content">
 													<h4><a href="/blog">{post.title}</a></h4>

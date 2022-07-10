@@ -113,7 +113,7 @@ export const RegisterSection: FC = () => {
     setErrorMsg("")
     setSuccessMsg("")
 
-    return await axios.post('/api/auth/signup/', { ...data, role: currentForm }).then((res) => {
+    return await axios.post('/auth/signup/', { ...data, role: currentForm }).then((res) => {
       setIsLoading(false)
       if (res.data.hasOwnProperty('id')) {
         setSuccessMsg("Successfully registered!");

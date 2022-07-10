@@ -3,7 +3,7 @@ import { ICv } from '../../interfaces';
 
 export const AddCv = async ({ ...payload }): Promise<ICv | undefined> => {
   return await axios
-    .post('/api/Cv/add', payload, {
+    .post('/Cv/add', payload, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -20,7 +20,7 @@ export const AddCv = async ({ ...payload }): Promise<ICv | undefined> => {
 
 export const GetCvs = async (): Promise<ICv[]> => {
   try {
-    const response = await axios.get('/api/Cv', {
+    const response = await axios.get('/Cv', {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -34,7 +34,7 @@ export const GetCvs = async (): Promise<ICv[]> => {
 
 export const GetCandidateCvs = async (): Promise<ICv[]> => {
   try {
-    const response = await axios.get('/api/Cv/candidate', {
+    const response = await axios.get('/Cv/candidate', {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -50,7 +50,7 @@ export const GetCv = async ({ ...payload }) => {};
 
 export const UpdateCv = async ({ ...payload }): Promise<ICv> => {
   return await axios
-    .patch(`/api/Cv/update/${payload.id}`, payload, {
+    .patch(`/Cv/update/${payload.id}`, payload, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),
@@ -67,7 +67,7 @@ export const UpdateCv = async ({ ...payload }): Promise<ICv> => {
 
 export const DeleteCv = async (id: number): Promise<ICv> => {
   return await axios
-    .delete(`/api/Cv/delete/${id}`, {
+    .delete(`/Cv/delete/${id}`, {
       headers: {
         Authorization:
           'Bearer ' + JSON.parse(localStorage.getItem('access_token') || ''),

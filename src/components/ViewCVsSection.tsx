@@ -116,7 +116,7 @@ export const ViewCVsSection: FC = () => {
                                 {cv.user.profile.address && (<span className="utf-manage-resume-detail-item"><a href="/dashboard"><i className="icon-material-outline-location-on"></i> {cv.user.profile.address}</a></span>)}
                                 <div className="utf-buttons-to-right">
                                   {/* <a href="#small-dialog" className="popup-with-zoom-anim button ripple-effect" title="Send Message" data-tippy-placement="top"><i className="icon-feather-mail"></i> Send</a> */}
-                                  <a href={`${ApiUrl}/api/file-upload/${cv.file}`} download target={'_blank'} className="button green ripple-effect ico" title="Download CV" data-tippy-placement="top" rel="noreferrer"><i className="icon-feather-download"></i></a>
+                                  <a href={`${ApiUrl}/file-upload/${cv.file}`} download target={'_blank'} className="button green ripple-effect ico" title="Download CV" data-tippy-placement="top" rel="noreferrer"><i className="icon-feather-download"></i></a>
                                   <a href="/dashboard" onClick={(e) => { e.preventDefault(); handleDelete(cv.id); }} className="button red ripple-effect ico" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
                                 </div>
                               </div>

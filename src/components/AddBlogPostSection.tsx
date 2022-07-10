@@ -134,7 +134,7 @@ export const AddBlogPostSection: FC = () => {
         };
         setIsUploading(true)
         return await axios
-            .post('/api/file-upload', formData, options)
+            .post('/file-upload', formData, options)
             .then((res) => {
                 if (res.data.hasOwnProperty('file')) {
                     setFileName(res.data.file);

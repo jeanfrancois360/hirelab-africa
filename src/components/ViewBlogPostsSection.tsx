@@ -175,7 +175,7 @@ export const ViewBlogPostsSection: FC = () => {
         };
         setIsUploading(true)
         return await axios
-            .post('/api/file-upload', formData, options)
+            .post('/file-upload', formData, options)
             .then((res) => {
                 if (res.data.hasOwnProperty('file')) {
                     setFileName(res.data.file);
@@ -407,7 +407,7 @@ export const ViewBlogPostsSection: FC = () => {
                                                                         {hideFileUpload ? (
                                                                             <>
                                                                                 <span onClick={() => { setHideFileUpload(!hideFileUpload) }} className="update-caption-btn">Replace caption image</span>
-                                                                                <img className="caption-image" src={`${ApiUrl}/api/file-upload/${post.image}`} alt="" />
+                                                                                <img className="caption-image" src={`${ApiUrl}/file-upload/${post.image}`} alt="" />
                                                                             </>
                                                                         ) : (
                                                                             <>
@@ -510,7 +510,7 @@ export const ViewBlogPostsSection: FC = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col-xl-12 col-md-12">
-                                        <img className="caption-image" src={`${ApiUrl}/api/file-upload/${post.image}`} alt="" />
+                                        <img className="caption-image" src={`${ApiUrl}/file-upload/${post.image}`} alt="" />
                                     </div>
                                     <div className="col-xl-12 col-md-12">
                                         {parse(post.description)}
