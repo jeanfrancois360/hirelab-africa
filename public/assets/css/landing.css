@@ -517,6 +517,7 @@ img.img-responsive {
   height: 15px;
   border-radius: 50%;
   background: #1e63cf;
+  margin: 4px;
   -webkit-animation: ball-pulse-sync 0.6s 0s infinite ease-in-out;
   animation: ball-pulse-sync 0.6s 0s infinite ease-in-out;
 }
