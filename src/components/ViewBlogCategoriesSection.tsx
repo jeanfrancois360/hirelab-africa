@@ -13,10 +13,10 @@ import { DeleteBlogCategory, GetBlogCategories, UpdateBlogCategory } from '../ap
 
 export const ViewBlogCategoriesSection: FC = () => {
 
-    const [editMode, setEditMode] = useState(false)
-    const [currentRow, setCurrentRow] = useState(0)
-    const [nameValue, setNameValue] = useState("")
-    const [statusValue, setStatusValue] = useState("")
+    const [editMode, setEditMode] = useState(false);
+    const [currentRow, setCurrentRow] = useState(0);
+    const [nameValue, setNameValue] = useState("");
+    const [statusValue, setStatusValue] = useState("");
     const [successMsg, setSuccessMsg] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
     const notify = (msg_type: string) => {

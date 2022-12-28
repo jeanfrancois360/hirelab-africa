@@ -112,7 +112,7 @@ export const SearchForm = ({ page, dataset }: { page: string, dataset: any }) =>
 
                             </div>
                             <div className="utf-intro-search-field-item">
-                                <select className="selectpicker default" data-live-search="true" data-selected-text-format="count" data-size="5" title="All Categories" name="category" id="category" value={values.category}
+                                <select className="simple-select2 default" data-live-search="true" data-selected-text-format="count" data-size="5" title="All Categories" name="category" id="category" value={values.category}
                                     onChange={handleChange('category')}
                                     onBlur={handleBlur('category')}
                                     autoComplete={`${true}`}>

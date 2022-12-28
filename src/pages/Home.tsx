@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { CallOut } from '../components/CallOut'
 import { CategoryBoxes } from '../components/CategoryBoxes'
 import { Footer } from '../components/Footer'
@@ -14,7 +14,7 @@ import { GetJobPosts } from '../api/job-post'
 import { GetJobApplications } from '../api/job-application'
 import { GetCompanies } from '../api/company'
 
-export const Home: FC = () => {
+export default function Home() {
 
   // Fetch All Job Posts
   const { data: job_posts }: UseQueryResult<IJobPost[], Error> = useQuery<IJobPost[], Error>('job-posts', GetJobPosts);

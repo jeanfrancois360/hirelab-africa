@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import Protected from '../components/Protected';
 import { ViewBlogPostsSection } from '../components/ViewBlogPostsSection';
 
-export const ViewBlogPosts = () => {
+export default function ViewBlogPosts() {
     const navigate = useNavigate();
     useEffect(() => {
         // @ts-ignore

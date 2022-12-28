@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { FC, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router';
 import { AddCompanySection } from '../components/AddCompanySection'
 import Protected from '../components/Protected'
 
-export const AddCompany: FC = () => {
+export default function AddCompany() {
     const navigate = useNavigate();
     useEffect(() => {
         // @ts-ignore

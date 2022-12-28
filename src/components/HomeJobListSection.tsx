@@ -31,7 +31,7 @@ export const HomeJobListSection: FC = () => {
 										(
 											<a key={index} href={`/job-details/${post.uuid}`} className="utf-job-listing utf-apply-button-item">
 												<div className="utf-job-listing-details">
-													<div className="utf-job-listing-company-logo"> <img src="assets/images/icons/new-job-2.png" alt="" /> </div>
+													<div className="utf-job-listing-company-logo"> <img src="/assets/images/icons/new-job-2.png" alt="" /> </div>
 													<div className="utf-job-listing-description">
 														<span className="dashboard-status-button utf-job-status-item green"><i className="icon-material-outline-business-center"></i> {post.type}</span>
 														<h3 className="utf-job-listing-title">{post.title}</h3>

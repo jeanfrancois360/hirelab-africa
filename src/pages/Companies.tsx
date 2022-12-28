@@ -6,7 +6,7 @@ import { Header } from '../components/Header'
 import { Subscribe } from '../components/Subscribe'
 import { TitleBar } from '../components/TitleBar'
 
-export const Companies = () => {
+export default function Companies() {
     return (
         <>
             <Helmet prioritizeSeoTags>

@@ -285,7 +285,7 @@ export const ApplicationFormSection = () => {
                                             <div className="col-xl-4 col-md-4 col-sm-4">
                                                 <div className="utf-submit-field">
                                                     <h5>Country</h5>
-                                                    <select className="selectpicker utf-with-border" data-size="7" title="Select category" name="country" id="country" value={values.country}
+                                                    <select className="simple-select utf-with-border" data-size="7" title="Select category" name="country" id="country" value={values.country}
                                                         onChange={handleChange('country')}
                                                         onBlur={handleBlur('country')}
                                                         autoComplete={`${true}`}>

@@ -107,7 +107,7 @@ export const ViewCVsSection: FC = () => {
                           <div className="utf-manage-resume-overview-aera utf-manage-candidate">
                             <div className="utf-manage-resume-overview-aera-inner">
                               <div className="utf-manage-resume-avatar">
-                                <a href="/dashboard"><img src="assets/images/icons/new-cv.png" alt="" /></a>
+                                <a href="/dashboard"><img src="/assets/images/icons/new-cv.png" alt="" /></a>
                               </div>
                               <div className="utf-manage-resume-item">
                                 <h4><a href="/dashboard">{`${cv.user.profile.first_name} ${cv.user.profile.last_name}`}</a><span className="dashboard-status-button file"><i className="icon-line-awesome-file-pdf-o"></i> PDF File</span></h4>

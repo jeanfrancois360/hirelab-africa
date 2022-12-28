@@ -21,7 +21,7 @@ export const Footer: FC = () => {
             <div className="row">
               <div className="col-xl-4 col-md-12">
                 <div className="utf-footer-item-links">
-                  <a href="/"><img className="footer-logo" src="assets/images/footer_logo.png" alt="" /></a>
+                  <a href="/"><img className="footer-logo" src="/assets/images/footer_logo.png" alt="" /></a>
                   <p>HireLab Africa Ltd is a leading private Human Resources Consulting firm that provides HR solutions to Companies all over Africa.</p>
                 </div>
               </div>
@@ -30,7 +30,7 @@ export const Footer: FC = () => {
                 <div className="utf-footer-item-links">
                   <h3>Job Categories</h3>
                   <ul>
-                    {job_categories && job_categories.slice(0, 5).map((category: any, index: number) => (
+                    {job_categories && job_categories.filter((cat) => cat.name !== 'Other').slice(0, 5).map((category: any, index: number) => (
                       <li key={index}><a href="/jobs" onClick={() => handleCategoryFocus(category.id)}><i className="icon-feather-chevron-right"></i> <span>{category.name}</span></a></li>
                     ))}
                   </ul>

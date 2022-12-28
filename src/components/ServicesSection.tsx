@@ -19,10 +19,6 @@ export const ServicesSection: FC = () => {
                   <label htmlFor="tag1">Adverts</label>
                 </div>
                 <div className="tag">
-                  <input type="checkbox" onChange={handleTabChange} checked={tab === "employee_outsourcing" ? true : false} name={'employee_outsourcing'} id="tag2" />
-                  <label htmlFor="tag2">Employee Outsourcing</label>
-                </div>
-                <div className="tag">
                   <input type="checkbox" onChange={handleTabChange} checked={tab === "cvs_on_request" ? true : false} name={'cvs_on_request'} id="tag3" />
                   <label htmlFor="tag3">CVs On Request</label>
                 </div>
@@ -31,20 +27,36 @@ export const ServicesSection: FC = () => {
                   <label htmlFor="tag4">Interns On Request</label>
                 </div>
                 <div className="tag">
-                  <input type="checkbox" onChange={handleTabChange} checked={tab === "interview_trainings" ? true : false} name={'interview_trainings'} id="tag5" />
-                  <label htmlFor="tag5">Interview Trainings</label>
-                </div>
-                <div className="tag">
-                  <input type="checkbox" onChange={handleTabChange} checked={tab === "hr_advisory" ? true : false} name={'hr_advisory'} id="tag6" />
-                  <label htmlFor="tag6">Human Resources Advisory</label>
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "maintenance" ? true : false} name={'maintenance'} id="tag8" />
+                  <label htmlFor="tag8">Maintenance Of Personnel Files</label>
                 </div>
                 <div className="tag">
                   <input type="checkbox" onChange={handleTabChange} checked={tab === "legal_advisor" ? true : false} name={'legal_advisor'} id="tag7" />
                   <label htmlFor="tag7">Legal Advisory On HR Matters</label>
                 </div>
                 <div className="tag">
-                  <input type="checkbox" onChange={handleTabChange} checked={tab === "maintenance" ? true : false} name={'maintenance'} id="tag8" />
-                  <label htmlFor="tag8">Maintenance Of Personnel Files</label>
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "employee_outsourcing" ? true : false} name={'employee_outsourcing'} id="tag2" />
+                  <label htmlFor="tag2">Employee Outsourcing</label>
+                </div>
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "head_hunting" ? true : false} name={'head_hunting'} id="tag9" />
+                  <label htmlFor="tag9">Head Hunting</label>
+                </div>
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "hr_consultancy" ? true : false} name={'hr_consultancy'} id="tag10" />
+                  <label htmlFor="tag10">Human Resources Consultancy</label>
+                </div>
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "payroll_administration" ? true : false} name={'payroll_administration'} id="tag11" />
+                  <label htmlFor="tag11">Payroll Administration</label>
+                </div>
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "hr_advisory" ? true : false} name={'hr_advisory'} id="tag6" />
+                  <label htmlFor="tag6">Human Resources Advisory</label>
+                </div>
+                <div className="tag">
+                  <input type="checkbox" onChange={handleTabChange} checked={tab === "trainings" ? true : false} name={'trainings'} id="tag5" />
+                  <label htmlFor="tag5">Trainings</label>
                 </div>
               </div>
 
@@ -53,7 +65,7 @@ export const ServicesSection: FC = () => {
 
             <div className="utf-sidebar-widget-item">
               <div className="utf-detail-banner-add-section">
-                <Link to="/"><img src="assets/images/banner-add-2.jpg" alt="banner-add-2" /></Link>
+                <Link to="/"><img src="/assets/images/banner-add-2.jpg" alt="banner-add-2" /></Link>
               </div>
             </div>
           </div>
@@ -126,14 +138,15 @@ export const ServicesSection: FC = () => {
             <p>We also offer a guarantee for replacement should the selected candidate leave within 3 months.</p>
           </div>
         </div>)}
-        {tab === "interview_trainings" && (<div className="col-xl-8 col-lg-7">
+        {tab === "trainings" && (<div className="col-xl-8 col-lg-7">
           <div className="col-xl-12">
             <div className="utf-section-headline-item margin-top-0 margin-bottom-40">
-              <h3>Interview Trainings</h3>
+              <h3>Trainings</h3>
               <div className="utf-headline-display-inner-item">Service</div>
             </div>
           </div>
           <div className='col-xl-12 mt-70'>
+            <h3 style={{ marginBottom: '10px' }}>Interview Trainings</h3>
             <p>Are you looking for Jobs? Hirelab Africa Offers you adequate preparations for the interview 2 days before you meet the panel.</p>
             <p>We customize our HRM system as per the clients’ needs to send out encrypted payslips to your employees, monitor their timesheets, their leaves, their individual development plans, etc.
               Having a system reduces the time and effort it takes the HR department to complete tasks and frees up their time for more strategic functions.</p>
@@ -158,7 +171,7 @@ export const ServicesSection: FC = () => {
             </div>
           </div>
           <div className='col-xl-12 mt-70'>
-            <img src="assets/images/infographics/infographic-1.svg" alt="About us" />
+            <img src="/assets/images/infographics/infographic-1.svg" alt="About us" />
           </div>
         </div>)}
         {tab === "maintenance" && (<div className="col-xl-8 col-lg-7">

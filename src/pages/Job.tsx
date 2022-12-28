@@ -5,7 +5,7 @@ import { Header } from '../components/Header'
 import { JobDetails } from '../components/JobDetails'
 import { Subscribe } from '../components/Subscribe'
 
-export const Job = () => {
+export default function Job() {
     return (
         <>
             <Helmet prioritizeSeoTags>

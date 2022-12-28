@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { FC, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useNavigate } from 'react-router'
 import { BankCVSection } from '../components/BankCVSection'
@@ -9,7 +9,7 @@ import Protected from '../components/Protected'
 import { Subscribe } from '../components/Subscribe'
 import { TitleBar } from '../components/TitleBar'
 
-export const BankCV: FC = () => {
+export default function BankCV() {
   const navigate = useNavigate();
   useEffect(() => {
     // @ts-ignore

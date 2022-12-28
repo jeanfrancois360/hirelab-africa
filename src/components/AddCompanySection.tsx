@@ -27,7 +27,8 @@ export const AddCompanySection: FC = () => {
         address: '',
         postcode: '',
         password: '',
-        avatar: '',
+        avatar: 'active',
+        status: '',
         role: 'Employer',
     };
 
@@ -94,6 +95,7 @@ export const AddCompanySection: FC = () => {
         city: Yup.string().trim().required().label('City'),
         country: Yup.string().trim().required().label('Country'),
         address: Yup.string().trim().required().label('Address'),
+        status: Yup.string().trim().required().label('Status'),
         postcode: Yup.string().trim().required().label('Postcode'),
         password: Yup.string().trim()
             .required()
@@ -215,7 +217,8 @@ export const AddCompanySection: FC = () => {
                                                         <div className="col-xl-6 col-md-6 col-sm-6">
                                                             <div className="utf-submit-field">
                                                                 <h5>Email Address</h5>
-                                                                <input type="email" className="utf-with-border" placeholder="Email Address" name="email" id="email" value={values.email}
+                                                                <input type="email" className="utf-with-border" placeholder="Email Address" name="email" id="email"
+                                                                    value={values.email}
                                                                     onChange={handleChange('email')}
                                                                     onBlur={handleBlur('email')}
                                                                     autoComplete={`${true}`} />
@@ -227,7 +230,7 @@ export const AddCompanySection: FC = () => {
                                                                 )}
                                                             </div>
                                                         </div>
-                                                        <div className="col-xl-6 col-md-6 col-sm-6">
+                                                        <div className="col-xl-4 col-md-4 col-sm-4">
                                                             <div className="utf-submit-field">
                                                                 <h5>Phone Number</h5>
                                                                 <input type="text" className="utf-with-border" placeholder="Enter Phone Number" name="phone" id="phone" value={values.phone}
@@ -242,7 +245,8 @@ export const AddCompanySection: FC = () => {
                                                                 )}
                                                             </div>
                                                         </div>
-                                                        <div className="col-xl-6 col-md-6 col-sm-6">
+
+                                                        <div className="col-xl-4 col-md-4 col-sm-4">
                                                             <div className="utf-submit-field">
                                                                 <h5>City</h5>
                                                                 <div className="utf-input-with-icon">
@@ -263,7 +267,7 @@ export const AddCompanySection: FC = () => {
                                                         <div className="col-xl-4 col-md-4 col-sm-4">
                                                             <div className="utf-submit-field">
                                                                 <h5>Country</h5>
-                                                                <select className="selectpicker utf-with-border" data-size="7" title="Select category" name="country" id="country" value={values.country}
+                                                                <select className="simple-select utf-with-border" data-size="7" title="Select country" name="country" id="country" value={values.country}
                                                                     onChange={handleChange('country')}
                                                                     onBlur={handleBlur('country')}
                                                                     autoComplete={`${true}`}>
@@ -310,6 +314,24 @@ export const AddCompanySection: FC = () => {
                                                                 {touched.postcode && errors.postcode && (
                                                                     <MsgText
                                                                         text={errors.postcode}
+                                                                        textColor="danger"
+                                                                    />
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-xl-4 col-md-4 col-sm-4">
+                                                            <div className="utf-submit-field">
+                                                                <h5>Status</h5>
+                                                                <select className="simple-select utf-with-border" data-size="7" name="status" id="status" value={values.status}
+                                                                    onChange={handleChange('status')}
+                                                                    onBlur={handleBlur('status')}
+                                                                    autoComplete={`${true}`}>
+                                                                    <option defaultValue="true" value="active">Active</option>
+                                                                    <option value="inactive">Inactive</option>
+                                                                </select>
+                                                                {touched.status && errors.status && (
+                                                                    <MsgText
+                                                                        text={errors.status}
                                                                         textColor="danger"
                                                                     />
                                                                 )}

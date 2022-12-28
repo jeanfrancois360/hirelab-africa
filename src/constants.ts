@@ -395,4 +395,8 @@ export const Countries = [
   { code: 'AX', code3: 'ALA', name: 'Åland Islands', number: '248' },
 ];
 
-export const ApiUrl = 'http://localhost:3001';
+// Development
+//export const ApiUrl = 'http://localhost:3001';
+
+//Production
+export const ApiUrl = 'https://api.hirelabafrica.com';

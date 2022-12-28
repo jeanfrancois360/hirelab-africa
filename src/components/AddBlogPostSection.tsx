@@ -210,7 +210,7 @@ export const AddBlogPostSection: FC = () => {
                                                         <div className="col-xl-6 col-md-6 col-sm-6">
                                                             <div className="utf-submit-field">
                                                                 <h5>Category</h5>
-                                                                <select className="selectpicker utf-with-border" data-size="7" title="Select category" name="blog_category_id" id="blog_category_id" value={values.blog_category_id}
+                                                                <select className="simple-select utf-with-border" data-size="7" title="Select category" name="blog_category_id" id="blog_category_id" value={values.blog_category_id}
                                                                     onChange={handleChange('blog_category_id')}
                                                                     onBlur={handleBlur('blog_category_id')}
                                                                     autoComplete={`${true}`}>

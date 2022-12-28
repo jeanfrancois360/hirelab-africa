@@ -154,7 +154,7 @@ export const ViewApplicationsSection: FC = () => {
                                                 <div className="utf-manage-resume-overview-aera utf-manage-candidate">
                                                     <div className="utf-manage-resume-overview-aera-inner">
                                                         <div className="utf-manage-resume-avatar">
-                                                            <a href="/dashboard" onClick={(e) => { e.preventDefault(); handleOpen(); setCurrentRow(application.id) }}><img src="assets/images/icons/new-cv.png" alt="" /></a>
+                                                            <a href="/dashboard" onClick={(e) => { e.preventDefault(); handleOpen(); setCurrentRow(application.id) }}><img src="/assets/images/icons/new-cv.png" alt="" /></a>
                                                         </div>
                                                         <div className="utf-manage-resume-item">
                                                             {application.status === 'Accept' && (<span className="dashboard-status-button utf-status-item green">{application.status}ed</span>)}

@@ -5,7 +5,7 @@ export const AboutSection: FC = () => {
     <div className="container about-section">
       <div className="row">
         <div className="col-xl-6">
-          <div className="about-image"><img src="assets/images/about/about-3.jpg" alt="About us" /></div>
+          <div className="about-image"><img src="/assets/images/about/about-3.jpg" alt="About us" /></div>
         </div>
         <div className="col-xl-6">
           <div className="col-xl-12">

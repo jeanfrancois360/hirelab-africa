@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { FC, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router';
 import Protected from '../components/Protected'
 import { ViewCVsSection } from '../components/ViewCVsSection'
 
-export const ViewCVs: FC = () => {
+export default function ViewCVs() {
     const navigate = useNavigate();
     useEffect(() => {
         // @ts-ignore

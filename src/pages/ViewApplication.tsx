@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { FC, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router';
 import Protected from '../components/Protected'
 import { ViewApplicationsSection } from '../components/ViewApplicationsSection'
 
-export const ViewApplication: FC = () => {
+export default function ViewApplication() {
     const navigate = useNavigate();
     useEffect(() => {
         // @ts-ignore

@@ -20,7 +20,7 @@ export const BlogSection: FC = () => {
 			<div className="container">
 				<div className="row">
 					<div className="col-xl-8 col-lg-8">
-						<div className="margin-top-0 margin-bottom-0">
+						{blog_posts && blog_posts.length > 0 ? (<><div className="margin-top-0 margin-bottom-0">
 							{blog_posts && blog_posts.filter((p) => p.status === 'Publish').map((post: any, index: number) =>
 							(
 								<a key={index} href="/blog" className="blog-post">
@@ -39,20 +39,24 @@ export const BlogSection: FC = () => {
 								</a>
 							))}
 						</div>
-						<div className="clearfix"></div>
-						<div className="row">
-							<div className="col-md-12">
-								<div className="utf-pagination-container-aera margin-top-10 margin-bottom-50">
-									<nav className="pagination">
-										<ul>
-											<li className="utf-pagination-arrow"><Link to="/blog" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-left"></i></Link></li>
-											<li><Link to="/blog" className="current-page ripple-effect">1</Link></li>
-											<li className="utf-pagination-arrow"><Link to="/blog" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-right"></i></Link></li>
-										</ul>
-									</nav>
+							<div className="clearfix"></div>
+							<div className="row">
+								<div className="col-md-12">
+									<div className="utf-pagination-container-aera margin-top-10 margin-bottom-50">
+										<nav className="pagination">
+											<ul>
+												<li className="utf-pagination-arrow"><Link to="/blog" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-left"></i></Link></li>
+												<li><Link to="/blog" className="current-page ripple-effect">1</Link></li>
+												<li className="utf-pagination-arrow"><Link to="/blog" className="ripple-effect"><i className="icon-material-outline-keyboard-arrow-right"></i></Link></li>
+											</ul>
+										</nav>
+									</div>
 								</div>
+							</div></>) : (
+							<div className="no-data">
+								<i className="icon-material-outline-info"></i><p> No Blog Posted Yet!</p>
 							</div>
-						</div>
+						)}
 					</div>
 					<div className="col-xl-4 col-lg-4">
 						<div className="utf-sidebar-container-aera">
@@ -108,6 +112,6 @@ export const BlogSection: FC = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</div >
 	)
 }

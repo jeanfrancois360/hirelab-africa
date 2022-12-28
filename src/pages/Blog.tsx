@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { BlogSection } from '../components/BlogSection'
 import { Footer } from '../components/Footer'
@@ -6,7 +6,7 @@ import { Header } from '../components/Header'
 import { Subscribe } from '../components/Subscribe'
 import { TitleBar } from '../components/TitleBar'
 
-export const Blog: FC = () => {
+export default function Blog() {
   return (
     <>
       <Helmet prioritizeSeoTags>

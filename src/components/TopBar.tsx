@@ -22,9 +22,8 @@ export const TopBar: FC = () => {
                             <span><i className="top-left-icon icon-material-outline-email"></i> info@hirelabafrica.com</span>
                         </div>
                         <div className="top-phone">
-                            <span><i className="top-left-icon icon-feather-phone"></i> <span>Call us: (+250) 788 309 811</span></span>
+                            <span><i className="top-left-icon icon-feather-phone"></i> <span>Call us: (+250) 791 593 298</span></span>
                         </div>
-
                     </div>
                 </div>
             </div>

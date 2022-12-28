@@ -23,7 +23,7 @@ export const DashboardHeader = ({ current }: { current: string }) => {
                 <div id="header">
                     <div className="container">
                         <div className="utf-left-side">
-                            <div id="logo"> <a href="/"><img src="assets/images/logo.png" alt="" /></a> </div>
+                            <div id="logo"> <a href="/"><img src="/assets/images/logo.png" alt="" /></a> </div>
                             <nav id="navigation">
                                 <ul id="responsive">
                                     <li><a href="/" className={current === 'home' ? 'current' : ''}>Home</a></li>
@@ -69,7 +69,7 @@ export const DashboardHeader = ({ current }: { current: string }) => {
                                     <div className="utf-header-notifications-trigger user-profile-title">
                                         <a href="/">
                                             <div className="user-avatar status-online">
-                                                {userDetails && userDetails.hasOwnProperty('profile') && userDetails.profile.avatar ? (<img src={`${ApiUrl}/file-upload/${userDetails.profile && userDetails.profile.avatar}`} alt="" />) : (<img src="assets/images/user-avatar-placeholder.png" alt="" />)}
+                                                {userDetails && userDetails.hasOwnProperty('profile') && userDetails.profile.avatar ? (<img src={`${ApiUrl}/file-upload/${userDetails.profile && userDetails.profile.avatar}`} alt="" />) : (<img src="/assets/images/user-avatar-placeholder.png" alt="" />)}
                                             </div>
                                             {userDetails && userDetails.hasOwnProperty('role') && (userDetails.role.name === "Admin" || userDetails.role.name === 'Candidate') ? (<div className="user-name">Hi, {`${userDetails && userDetails.hasOwnProperty('profile') ? userDetails.profile.first_name : 'Anonymous'}`}</div>) : (
                                                 <div className="user-name">Hi, {`${userDetails && userDetails.hasOwnProperty('profile') ? userDetails.profile.company_name : 'Anonymous'}`}</div>)}

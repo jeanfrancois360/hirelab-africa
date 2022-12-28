@@ -3,6 +3,9 @@ import Typed from 'react-typed';
 import { SearchForm } from './SearchForm';
 
 export const IntroBanner = ({ dataset }: { dataset: any }) => {
+
+
+    //console.log('data: ', dataset.job_posts.length);
     return (
         <>
             {/* Intro Banner */}
@@ -24,7 +27,7 @@ export const IntroBanner = ({ dataset }: { dataset: any }) => {
                                         loop
                                     />
                                 </span></h3>
-                                <span>It is a Long Established Fact That a Reader Will be Distracted by The Readable.</span>
+                                <span>Use our search engine to find your dream job!</span>
                             </div>
                         </div>
                     </div>
@@ -39,9 +42,9 @@ export const IntroBanner = ({ dataset }: { dataset: any }) => {
                     <div className="row">
                         <div className="col-md-12">
                             <ul className="intro-stats margin-top-45 hide-under-992px">
-                                <li><i className="icon-material-outline-business-center"></i> <sub className="counter_item"><strong className="counter">{dataset.job_posts && dataset.job_posts.length > 0 ? dataset.job_posts.length : 0}</strong> <span>Live Jobs Posted</span></sub> </li>
-                                <li><i className="icon-material-outline-assignment"></i> <sub className="counter_item"><strong className="counter">{dataset.job_applications && dataset.job_applications.length > 0 ? dataset.job_applications.length : 0}</strong> <span>Jobs Candidate</span></sub> </li>
-                                <li><i className="icon-material-outline-library-books"></i> <sub className="counter_item"><strong className="counter">{dataset.companies && dataset.companies.length > 0 ? dataset.companies.length : 0}</strong> <span>Companies Jobs</span></sub> </li>
+                                <li><i className="icon-material-outline-business-center"></i> <sub className="counter_item"><strong className="_counter">{dataset.job_posts && dataset.job_posts.length > 0 ? dataset.job_posts.length : 0}</strong> <span>Live Jobs Posted</span></sub> </li>
+                                <li><i className="icon-material-outline-assignment"></i> <sub className="counter_item"><strong className="_counter">{dataset.job_applications && dataset.job_applications.length > 0 ? dataset.job_applications.length : 0}</strong> <span>Jobs Candidate</span></sub> </li>
+                                <li><i className="icon-material-outline-library-books"></i> <sub className="counter_item"><strong className="_counter">{dataset.companies && dataset.companies.length > 0 ? dataset.companies.length : 0}</strong> <span>Companies Jobs</span></sub> </li>
                             </ul>
                         </div>
                     </div>

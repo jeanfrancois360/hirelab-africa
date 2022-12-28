@@ -22,7 +22,7 @@ export const Testimonials: FC = () => {
           <div className="utf-testimonial-carousel-block testimonials">
             <div className="utf-carousel-review-item">
               <div className="utf-testimonial-box">
-                <div className="utf-testimonial-avatar-photo"> <img src="assets/images/user_small_1.jpg" alt="" /> </div>
+                <div className="utf-testimonial-avatar-photo"> <img src="/assets/images/user_small_1.jpg" alt="" /> </div>
                 <div className="utf-testimonial-author-utf-detail-item">
                   <h4>John Williams</h4>
                   <span>Graphics Designer</span>
@@ -32,7 +32,7 @@ export const Testimonials: FC = () => {
             </div>
             <div className="utf-carousel-review-item">
               <div className="utf-testimonial-box">
-                <div className="utf-testimonial-avatar-photo"> <img src="assets/images/user_small_2.jpg" alt="" /> </div>
+                <div className="utf-testimonial-avatar-photo"> <img src="/assets/images/user_small_2.jpg" alt="" /> </div>
                 <div className="utf-testimonial-author-utf-detail-item">
                   <h4>John Williams</h4>
                   <span>IOS Developer</span>
@@ -42,7 +42,7 @@ export const Testimonials: FC = () => {
             </div>
             <div className="utf-carousel-review-item">
               <div className="utf-testimonial-box">
-                <div className="utf-testimonial-avatar-photo"> <img src="assets/images/user_small_3.jpg" alt="" /> </div>
+                <div className="utf-testimonial-avatar-photo"> <img src="/assets/images/user_small_3.jpg" alt="" /> </div>
                 <div className="utf-testimonial-author-utf-detail-item">
                   <h4>John Williams</h4>
                   <span>Android Developer</span>
@@ -52,7 +52,7 @@ export const Testimonials: FC = () => {
             </div>
             <div className="utf-carousel-review-item">
               <div className="utf-testimonial-box">
-                <div className="utf-testimonial-avatar-photo"> <img src="assets/images/user_small_1.jpg" alt="" /> </div>
+                <div className="utf-testimonial-avatar-photo"> <img src="/assets/images/user_small_1.jpg" alt="" /> </div>
                 <div className="utf-testimonial-author-utf-detail-item">
                   <h4>John Williams</h4>
                   <span>Web Developer</span>
@@ -62,7 +62,7 @@ export const Testimonials: FC = () => {
             </div>
             <div className="utf-carousel-review-item">
               <div className="utf-testimonial-box">
-                <div className="utf-testimonial-avatar-photo"> <img src="assets/images/user_small_2.jpg" alt="" /> </div>
+                <div className="utf-testimonial-avatar-photo"> <img src="/assets/images/user_small_2.jpg" alt="" /> </div>
                 <div className="utf-testimonial-author-utf-detail-item">
                   <h4>John Williams</h4>
                   <span>UI/UX Designer</span>

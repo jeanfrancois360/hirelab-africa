@@ -74,28 +74,28 @@ export const DashboardSection: FC = () => {
                                     <div className="fun-fact" data-fun-fact-color="#2a41e8">
                                         <div className="fun-fact-icon"><i style={{ color: '#2a41e8' }} className="icon-feather-briefcase"></i></div>
                                         <div className="fun-fact-text">
-                                            <h4>{job_posts && job_posts.length > 0 ? job_posts.length : 0}</h4>
+                                            <h3>{job_posts && job_posts.length > 0 ? job_posts.length : 0}</h3>
                                             <span>Jobs</span>
                                         </div>
                                     </div>
                                     <div className="fun-fact" data-fun-fact-color="#efa80f">
                                         <div className="fun-fact-icon"><i style={{ color: '#efa80f' }} className="icon-line-awesome-building"></i></div>
                                         <div className="fun-fact-text">
-                                            <h4>{companies && companies.length > 0 ? companies.length : 0}</h4>
+                                            <h3>{companies && companies.length > 0 ? companies.length : 0}</h3>
                                             <span>Companies View</span>
                                         </div>
                                     </div>
                                     <div className="fun-fact" data-fun-fact-color="#36bd78">
                                         <div className="fun-fact-icon"><i style={{ color: '#36bd78' }} className="icon-material-outline-assignment"></i></div>
                                         <div className="fun-fact-text">
-                                            <h4>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.length : 0}</h4>
+                                            <h3>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.length : 0}</h3>
                                             <span>Applications View</span>
                                         </div>
                                     </div>
                                     <div className="fun-fact" data-fun-fact-color="#0fc5bf">
                                         <div className="fun-fact-icon"><i style={{ color: '#0fc5bf' }} className="icon-material-outline-assignment"></i></div>
                                         <div className="fun-fact-text">
-                                            <h4>{cvs && cvs.length > 0 ? cvs.length : 0}</h4>
+                                            <h3>{cvs && cvs.length > 0 ? cvs.length : 0}</h3>
                                             <span>Cvs</span>
                                         </div>
                                     </div>
@@ -109,28 +109,28 @@ export const DashboardSection: FC = () => {
                                     <div className="fun-fact" data-fun-fact-color="#2a41e8">
                                         <div className="fun-fact-icon"><i style={{ color: '#2a41e8' }} className="icon-feather-briefcase"></i></div>
                                         <div className="fun-fact-text">
-                                            <h4>{job_posts && job_posts.length > 0 ? job_posts.length : 0}</h4>
+                                            <h3>{job_posts && job_posts.length > 0 ? job_posts.length : 0}</h3>
                                             <span>Jobs</span>
                                         </div>
                                     </div>
                                     <div className="fun-fact" data-fun-fact-color="#36bd78">
                                         <div className="fun-fact-icon"><i style={{ color: '#36bd78' }} className="icon-material-outline-assignment"></i></div>
                                         <div className="fun-fact-text">
-                                            <h4>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Accept').length : 0}</h4>
+                                            <h3>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Accept').length : 0}</h3>
                                             <span>Accepted Applications</span>
                                         </div>
                                     </div>
                                     <div className="fun-fact" data-fun-fact-color="#efa80f">
                                         <div className="fun-fact-icon"><i style={{ color: '#efa80f' }} className="icon-material-outline-assignment"></i></div>
                                         <div className="fun-fact-text">
-                                            <h4>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Pending').length : 0}</h4>
+                                            <h3>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Pending').length : 0}</h3>
                                             <span>Pending Applications</span>
                                         </div>
                                     </div>
                                     <div className="fun-fact" data-fun-fact-color="#dc3139">
                                         <div className="fun-fact-icon"><i style={{ color: '#dc3139' }} className="icon-material-outline-assignment"></i></div>
                                         <div className="fun-fact-text">
-                                            <h4>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Reject').length : 0}</h4>
+                                            <h3>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Reject').length : 0}</h3>
                                             <span>Rejected Applications</span>
                                         </div>
                                     </div>
@@ -144,28 +144,28 @@ export const DashboardSection: FC = () => {
                                     <div className="fun-fact" data-fun-fact-color="#2a41e8">
                                         <div className="fun-fact-icon"><i style={{ color: '#2a41e8' }} className="icon-feather-briefcase"></i></div>
                                         <div className="fun-fact-text">
-                                            <h4>{job_posts && job_posts.length > 0 ? job_posts.length : 0}</h4>
+                                            <h3>{job_posts && job_posts.length > 0 ? job_posts.length : 0}</h3>
                                             <span>Jobs</span>
                                         </div>
                                     </div>
                                     <div className="fun-fact" data-fun-fact-color="#36bd78">
                                         <div className="fun-fact-icon"><i style={{ color: '#36bd78' }} className="icon-material-outline-assignment"></i></div>
                                         <div className="fun-fact-text">
-                                            {job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Accept').length : 0}
+                                            <h3>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Accept').length : 0}</h3>
                                             <span>Accepted Applications</span>
                                         </div>
                                     </div>
                                     <div className="fun-fact" data-fun-fact-color="#efa80f">
                                         <div className="fun-fact-icon"><i style={{ color: '#efa80f' }} className="icon-material-outline-assignment"></i></div>
                                         <div className="fun-fact-text">
-                                            {job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Pending').length : 0}
+                                            <h3>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Pending').length : 0}</h3>
                                             <span>Pending Applications</span>
                                         </div>
                                     </div>
                                     <div className="fun-fact" data-fun-fact-color="#dc3139">
                                         <div className="fun-fact-icon"><i style={{ color: '#dc3139' }} className="icon-material-outline-assignment"></i></div>
                                         <div className="fun-fact-text">
-                                            {job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Reject').length : 0}
+                                            <h3>{job_applications && job_applications.data && job_applications.data.length > 0 ? job_applications.data.filter((i) => i.status === 'Reject').length : 0}</h3>
                                             <span>Rejected Applications</span>
                                         </div>
                                     </div>

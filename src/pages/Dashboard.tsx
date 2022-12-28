@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { DashboardSection } from '../components/DashboardSection'
 import Protected from '../components/Protected';
 
-export const Dashboard: FC = () => {
+export default function Dashboard() {
   return (
     <Protected>
       <div id="wrapper" style={{ paddingTop: "82px" }}>

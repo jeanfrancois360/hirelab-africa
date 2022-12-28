@@ -104,7 +104,7 @@ export const ContactSection: FC = () => {
 						<div className="utf-contact-location-info-aera margin-bottom-50">
 							<div className="contact-address">
 								<ul>
-									<li><strong>Phone:-</strong> (+250) 788 309 811</li>
+									<li><strong>Phone:-</strong> (+250) 791 593 298</li>
 									<li><strong>Website:-</strong> <Link to="/">www.hirelabafrica.com</Link></li>
 									<li><strong>E-Mail:-</strong> <Link to="/"> info@hirelabafrica.com</Link></li>
 									<li><strong>Address:-</strong> Ikaze House, Remera, KG 11 Ave, Kigali – Rwanda</li>

@@ -29,7 +29,7 @@ export const SidebarSection = ({ current }: { current: string }) => {
                         <div className="utf-dashboard-nav-inner">
                             <div className="dashboard-profile-box">
                                 <span className="avatar-img">
-                                    {userDetails && userDetails.hasOwnProperty('profile') && userDetails.profile.avatar ? (<img src={`${ApiUrl}/file-upload/${userDetails.profile && userDetails.profile.avatar}`} alt="" className="photo" />) : (<img src="assets/images/user-avatar-placeholder.png" alt="" className="photo" />)}
+                                    {userDetails && userDetails.hasOwnProperty('profile') && userDetails.profile.avatar ? (<img src={`${ApiUrl}/file-upload/${userDetails.profile && userDetails.profile.avatar}`} alt="" className="photo" />) : (<img src="/assets/images/user-avatar-placeholder.png" alt="" className="photo" />)}
                                 </span>
                                 <div className="user-profile-text">
                                     {userDetails && userDetails.hasOwnProperty('role') && (userDetails.role.name === "Admin" || userDetails.role.name === 'Candidate') ? (<span className="fullname">{`${userDetails && userDetails.hasOwnProperty('profile') ? userDetails.profile.first_name : 'Anonymous'}`}</span>) : (

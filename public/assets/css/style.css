@@ -14890,7 +14890,7 @@ Dashboard Headline
   color: #888;
   line-height: 22px;
 }
-.fun-fact h4 {
+.fun-fact h3 {
   font-size: 38px;
   color: #333;
   font-weight: 600;
@@ -19454,4 +19454,22 @@ a.apply-now-button:hover {
 .no-notifications {
   text-align: center !important;
   padding: 10px 0px 10px 0px !important;
+}
+.styles-module_whatsappChatBox__P75uz {
+  z-index: 1000 !important;
+}
+.styles-module_notificationIndicator__3JOtX {
+  background-color: #ff5454;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 9px !important;
+  font-weight: 700;
+  height: 14px;
+  line-height: 14px;
+  padding: 0px !important;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: -4px !important;
+  width: 14px;
 }

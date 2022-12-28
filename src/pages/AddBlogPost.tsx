@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { AddBlogPostSection } from '../components/AddBlogPostSection';
 import Protected from '../components/Protected';
 
-export const AddBlogPost = () => {
+export default function AddBlogPost() {
     const navigate = useNavigate();
     useEffect(() => {
         // @ts-ignore

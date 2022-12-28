@@ -56,6 +56,11 @@ export const ViewJobPostsSection: FC = () => {
     const [successMsg, setSuccessMsg] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
     const [open, setOpen] = React.useState(false);
+
+
+    const [jobPosts, setJobPosts] = useState([]);
+
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const notify = (msg_type: string) => {
@@ -183,7 +188,7 @@ export const ViewJobPostsSection: FC = () => {
                                                 <li key={index}>
                                                     <div className="utf-job-listing">
                                                         <div className="utf-job-listing-details">
-                                                            <a href="/view-job-posts" className="utf-job-listing-company-logo"><img src="assets/images/icons/new-job-2.png" alt="" /></a>
+                                                            <a href="/view-job-posts" className="utf-job-listing-company-logo"><img src="/assets/images/icons/new-job-2.png" alt="" /></a>
                                                             <div className="utf-job-listing-description">
                                                                 {post.status === "Active" && (<span className={`dashboard-status-button utf-status-item green`}>{post.status}</span>)}
                                                                 {post.status === "Inactive" && (<span className={`dashboard-status-button utf-status-item red`}>{post.status}</span>)}

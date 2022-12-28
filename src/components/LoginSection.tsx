@@ -83,6 +83,11 @@ export const LoginSection: FC = () => {
   const goToPreviousPath = () => {
     navigate(-1)
   }
+
+  const ClickMe = () => {
+    console.log("Hello world")
+  }
+
   return (
     <>
       <ToastContainer />
@@ -111,7 +116,8 @@ export const LoginSection: FC = () => {
                 }) => (
                   <form method="post" onSubmit={handleSubmit} id="login-form">
                     <div className="utf-no-border">
-                      <input type="text" className="utf-with-border" name="email" id="email" placeholder="Email Address" value={values.email}
+                      <input type="text" className="utf-with-border" name="email" id="email" placeholder="Email Address"
+                        value={values.email}
                         onChange={handleChange('email')}
                         onBlur={handleBlur('email')}
                         autoComplete={`${true}`} />
@@ -124,7 +130,8 @@ export const LoginSection: FC = () => {
                     </div>
                     <div className="utf-no-border">
                       <div className="utf-input-with-icon">
-                        <input className="utf-with-border" type={`${open ? 'text' : 'password'}`} name="password" id="password" placeholder="Password" value={values.password}
+                        <input className="utf-with-border" type={`${open ? 'text' : 'password'}`} name="password" id="password" placeholder="Password"
+                          value={values.password}
                           onChange={handleChange('password')}
                           onBlur={handleBlur('password')}
                           autoComplete={`${true}`} />
@@ -144,6 +151,7 @@ export const LoginSection: FC = () => {
                       <input type="checkbox" id="two-step" />
                       <label htmlFor="two-step"><span className="checkbox-icon"></span> Remember Me</label>
                     </div>
+                    <button onClick={() => ClickMe()}>Click me</button>
                     {/* <a href="/login" className="forgot-password">Forgot Password?</a> */}
                     <button className="button full-width utf-button-sliding-icon ripple-effect margin-top-10" type="submit">
                       {isLoading ? <div style={{ marginLeft: '225px' }}><Bars

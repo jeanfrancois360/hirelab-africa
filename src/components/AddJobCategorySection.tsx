@@ -141,7 +141,7 @@ export const AddJobCategorySection: FC = () => {
                                                         <div className="col-xl-6 col-md-6 col-sm-6">
                                                             <div className="utf-submit-field">
                                                                 <h5>Status</h5>
-                                                                <select className="selectpicker utf-with-border" data-size="7" title={values.status} name="status" id="status" value={values.status}
+                                                                <select className="simple-select utf-with-border" data-size="7" title={values.status} name="status" id="status" value={values.status}
                                                                     onChange={handleChange('status')}
                                                                     onBlur={handleBlur('status')}
                                                                     autoComplete={`${true}`}>

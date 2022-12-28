@@ -140,6 +140,7 @@ export interface ICompany {
   postcode: string;
   password: string;
   avatar: string;
+  status: string;
   role: string;
 }
 

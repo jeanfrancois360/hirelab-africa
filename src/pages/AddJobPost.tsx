@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { FC, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router';
 import { AddJobPostSection } from '../components/AddJobPostSection'
 import Protected from '../components/Protected'
 
-export const AddJobPost: FC = () => {
+export default function AddJobPost() {
     const navigate = useNavigate();
     useEffect(() => {
         // @ts-ignore

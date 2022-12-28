@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { FC, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router';
 import { AddBlogCategorySection } from '../components/AddBlogCategorySection';
 import Protected from '../components/Protected'
 
-export const AddBlogCategory: FC = () => {
+export default function AddBlogCategory() {
     const navigate = useNavigate();
     useEffect(() => {
         // @ts-ignore

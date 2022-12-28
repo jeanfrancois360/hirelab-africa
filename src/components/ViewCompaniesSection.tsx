@@ -42,6 +42,7 @@ export const ViewCompaniesSection: FC = () => {
         address: '',
         postcode: '',
         password: '',
+        status: 'active',
         avatar: '',
         role: 'Employer',
     };
@@ -128,6 +129,7 @@ export const ViewCompaniesSection: FC = () => {
         city: Yup.string().trim().required().label('City'),
         country: Yup.string().trim().required().label('Country'),
         address: Yup.string().trim().required().label('Address'),
+        status: Yup.string().trim().required().label('Status'),
         postcode: Yup.string().trim().required().label('Postcode'),
 
     });
@@ -253,9 +255,11 @@ export const ViewCompaniesSection: FC = () => {
                                                                                     postcode: company.profile.postcode ? company.profile.postcode : '',
                                                                                     password: company.profile.password ? company.profile.password : '',
                                                                                     avatar: company.profile.avatar ? company.profile.avatar : '',
+                                                                                    status: company.status ? company.status : '',
                                                                                     role: 'Employer',
                                                                                 }
-                                                                            ); setFileName(company.profile.avatar ? company.profile.avatar : ''); if (company.profile.avatar) { setAvatarMissing(false) }
+                                                                            );
+                                                                            setFileName(company.profile.avatar ? company.profile.avatar : ''); if (company.profile.avatar) { setAvatarMissing(false) }
                                                                         }} className="button green ripple-effect ico success-tb-btn-2" title="Edit" data-tippy-placement="top"><i className="icon-feather-edit"></i></a>
                                                                         <a href='/view-companies' onClick={(e) => { e.preventDefault(); handleOpen2(); setCurrentRow(company.profile.id) }} download target={'_blank'} className="button ripple-effect ico primary-tb-btn-2" title="Download CV" data-tippy-placement="top" rel="noreferrer"><i className="icon-feather-eye"></i></a>
                                                                         <a href="/view-companies" onClick={(e) => { e.preventDefault(); handleDelete(company.id) }} className="button red ripple-effect ico danger-tb-btn-2" title="Remove" data-tippy-placement="top"><i className="icon-feather-trash-2"></i></a>
@@ -369,7 +373,7 @@ export const ViewCompaniesSection: FC = () => {
                                                                         )}
                                                                     </div>
                                                                 </div>
-                                                                <div className="col-xl-6 col-md-6 col-sm-6">
+                                                                <div className="col-xl-4 col-md-4 col-sm-4">
                                                                     <div className="utf-submit-field">
                                                                         <h5>Phone Number</h5>
                                                                         <input type="text" className="utf-with-border" placeholder="Enter Phone Number" name="phone" id="phone" value={values.phone}
@@ -384,7 +388,7 @@ export const ViewCompaniesSection: FC = () => {
                                                                         )}
                                                                     </div>
                                                                 </div>
-                                                                <div className="col-xl-6 col-md-6 col-sm-6">
+                                                                <div className="col-xl-4 col-md-4 col-sm-4">
                                                                     <div className="utf-submit-field">
                                                                         <h5>City</h5>
                                                                         <div className="utf-input-with-icon">
@@ -402,10 +406,11 @@ export const ViewCompaniesSection: FC = () => {
                                                                         )}
                                                                     </div>
                                                                 </div>
+
                                                                 <div className="col-xl-4 col-md-4 col-sm-4">
                                                                     <div className="utf-submit-field">
                                                                         <h5>Country</h5>
-                                                                        <select className="simple-select utf-with-border" data-size="7" title="Select category" name="country" id="country" value={values.country}
+                                                                        <select className="simple-select utf-with-border" data-size="7" title="Select country" name="country" id="country" value={values.country}
                                                                             onChange={handleChange('country')}
                                                                             onBlur={handleBlur('country')}
                                                                             autoComplete={`${true}`}>
@@ -452,6 +457,24 @@ export const ViewCompaniesSection: FC = () => {
                                                                         {touched.postcode && errors.postcode && (
                                                                             <MsgText
                                                                                 text={errors.postcode}
+                                                                                textColor="danger"
+                                                                            />
+                                                                        )}
+                                                                    </div>
+                                                                </div>
+                                                                <div className="col-xl-4 col-md-4 col-sm-4">
+                                                                    <div className="utf-submit-field">
+                                                                        <h5>Status</h5>
+                                                                        <select className="simple-select utf-with-border" data-size="7" name="status" id="status" value={values.status}
+                                                                            onChange={handleChange('status')}
+                                                                            onBlur={handleBlur('status')}
+                                                                            autoComplete={`${true}`}>
+                                                                            <option defaultValue="true" value="active">Active</option>
+                                                                            <option value="inactive">Inactive</option>
+                                                                        </select>
+                                                                        {touched.status && errors.status && (
+                                                                            <MsgText
+                                                                                text={errors.status}
                                                                                 textColor="danger"
                                                                             />
                                                                         )}

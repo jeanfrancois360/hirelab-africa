@@ -9,7 +9,7 @@ import Protected from '../components/Protected'
 import { Subscribe } from '../components/Subscribe'
 import { TitleBar } from '../components/TitleBar'
 
-export const ApplicationForm = () => {
+export default function ApplicationForm() {
     const navigate = useNavigate();
     useEffect(() => {
         // @ts-ignore

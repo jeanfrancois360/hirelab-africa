@@ -115,7 +115,7 @@ export const AllJobsListSection: FC = () => {
 
 							<div className="utf-sidebar-widget-item">
 								<h3>Category</h3>
-								<select onChange={handleCategoryChange} className="selectpicker" data-live-search="true" data-size="7" title="All Categories">
+								<select onChange={handleCategoryChange} className="simple-select" data-live-search="true" data-size="7" title="All Categories">
 									<option value="All">All</option>
 									{job_categories && job_categories.map((category: any, index: number) =>
 										(<option key={index} value={category.id}>{category.name}</option>))}
@@ -160,7 +160,7 @@ export const AllJobsListSection: FC = () => {
 
 							<div className="utf-sidebar-widget-item">
 								<div className="utf-detail-banner-add-section">
-									<Link to="/"><img src="assets/images/banner-add-2.jpg" alt="banner-add-2" /></Link>
+									<Link to="/"><img src="/assets/images/banner-add-2.jpg" alt="banner-add-2" /></Link>
 								</div>
 							</div>
 						</div>
@@ -176,7 +176,7 @@ export const AllJobsListSection: FC = () => {
 							</div>
 							<div className="sort-by">
 								<span>Sort By:</span>
-								<select className="selectpicker hide-tick">
+								<select className="simple-select hide-tick">
 									<option>Newest</option>
 									<option>Oldest</option>
 									<option>Random</option>
@@ -190,7 +190,7 @@ export const AllJobsListSection: FC = () => {
 							(
 								<a key={index} href={`/job-details/${post.uuid}`} className="utf-job-listing">
 									<div className="utf-job-listing-details">
-										<div className="utf-job-listing-company-logo"> <img src="assets/images/icons/new-job-2.png" alt="" /> </div>
+										<div className="utf-job-listing-company-logo"> <img src="/assets/images/icons/new-job-2.png" alt="" /> </div>
 										<div className="utf-job-listing-description">
 											<span className="dashboard-status-button utf-job-status-item green"><i className="icon-material-outline-business-center"></i>{post.type}</span>
 											<h3 className="utf-job-listing-title">{post.title} <span className="utf-verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h3>

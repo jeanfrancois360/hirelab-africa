@@ -160,7 +160,7 @@ export const AddJobPostSection: FC = () => {
                                                         <div className="col-xl-6 col-md-6 col-sm-6">
                                                             <div className="utf-submit-field">
                                                                 <h5>Category</h5>
-                                                                <select className="selectpicker utf-with-border" data-size="7" title="Select category" name="job_category_id" id="job_category_id" value={values.job_category_id}
+                                                                <select className="simple-select utf-with-border" data-size="7" title="Select category" name="job_category_id" id="job_category_id" value={values.job_category_id}
                                                                     onChange={handleChange('job_category_id')}
                                                                     onBlur={handleBlur('job_category_id')}
                                                                     autoComplete={`${true}`}>
@@ -179,7 +179,7 @@ export const AddJobPostSection: FC = () => {
                                                         <div className="col-xl-4 col-md-4 col-sm-4">
                                                             <div className="utf-submit-field">
                                                                 <h5>Type</h5>
-                                                                <select className="selectpicker utf-with-border" data-size="7" title={values.type} name="type" id="type" value={values.type}
+                                                                <select className="simple-select utf-with-border" data-size="7" title={values.type} name="type" id="type" value={values.type}
                                                                     onChange={handleChange('type')}
                                                                     onBlur={handleBlur('type')}
                                                                     autoComplete={`${true}`}>
@@ -201,7 +201,7 @@ export const AddJobPostSection: FC = () => {
                                                         <div className="col-xl-4 col-md-4 col-sm-4">
                                                             <div className="utf-submit-field">
                                                                 <h5>Workspace</h5>
-                                                                <select className="selectpicker utf-with-border" data-size="7" title={values.workspace} name="workspace" id="workspace" value={values.workspace}
+                                                                <select className="simple-select utf-with-border" data-size="7" title={values.workspace} name="workspace" id="workspace" value={values.workspace}
                                                                     onChange={handleChange('workspace')}
                                                                     onBlur={handleBlur('workspace')}
                                                                     autoComplete={`${true}`}>
@@ -249,7 +249,7 @@ export const AddJobPostSection: FC = () => {
                                                         <div className="col-xl-6 col-md-6 col-sm-6">
                                                             <div className="utf-submit-field">
                                                                 <h5>Status</h5>
-                                                                <select className="selectpicker utf-with-border" data-size="7" title={values.status} name="status" id="status" value={values.status}
+                                                                <select className="simple-select utf-with-border" data-size="7" title={values.status} name="status" id="status" value={values.status}
                                                                     onChange={handleChange('status')}
                                                                     onBlur={handleBlur('status')}
                                                                     autoComplete={`${true}`}>
