@@ -3094,7 +3094,9 @@ body #backtotop a {
   color: #333;
 }
 .sort-by
-  .bootstrap-select:not([class*='col-']):not([class*='form-control']):not(.input-group-btn) {
+  .bootstrap-select:not([class*='col-']):not([class*='form-control']):not(
+    .input-group-btn
+  ) {
   width: auto;
 }
 .sort-by .bootstrap-select.btn-group .dropdown-toggle .caret {
@@ -4847,9 +4849,7 @@ ul.utf-job-deatails-content-item li i {
   );
   margin-bottom: 70px;
 }
-/* .intro-banner{
-  background-image: url('assets/images/home-background-01.jpg');
-} */
+
 .intro-banner .utf-trending-silver-item {
   text-align: center;
   color: #cecece;
@@ -8381,8 +8381,17 @@ input:checked + .switch-button:before {
   background: #0c1017;
 }
 .intro-banner:after {
-  z-index: 5;
-  background-color: #fafafa;
+  background-image: url('../images/home-background-01.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 100% 60%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  overflow: hidden;
 }
 .intro-banner .background-image-container {
   background-size: cover;
@@ -12470,7 +12479,9 @@ select.selectpicker {
 .bootstrap-select.fit-width {
   width: auto !important;
 }
-.bootstrap-select:not([class*='col-']):not([class*='form-control']):not(.input-group-btn) {
+.bootstrap-select:not([class*='col-']):not([class*='form-control']):not(
+    .input-group-btn
+  ) {
   width: 100%;
 }
 .bootstrap-select.form-control {
@@ -12484,7 +12495,9 @@ select.selectpicker {
 .bootstrap-select.form-control.input-group-btn {
   z-index: auto;
 }
-.bootstrap-select.form-control.input-group-btn:not(:first-child):not(:last-child)
+.bootstrap-select.form-control.input-group-btn:not(:first-child):not(
+    :last-child
+  )
   > .btn {
   border-radius: 0;
 }

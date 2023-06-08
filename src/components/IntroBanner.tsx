@@ -9,7 +9,7 @@ export const IntroBanner = ({ dataset }: { dataset: any }) => {
     return (
         <>
             {/* Intro Banner */}
-            <div className="intro-banner" data-background-image="assets/images/home-background-01.jpg">
+            <div className="intro-banner" data-background-image="/assets/images/home-background-01.jpg">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
