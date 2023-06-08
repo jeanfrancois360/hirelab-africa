@@ -92,7 +92,7 @@ export const JobDetails = () => {
                                 <div className="utf-sidebar-container-aera">
                                     <div className="utf-sidebar-widget-item">
                                         <div className="utf-detail-banner-add-section">
-                                            <a href="/"><img src="/assets/images/banner-add-2.jpg" alt="banner-add-2" /></a>
+                                            <a href="/"><img src="/assets/images/advertise-here.png" alt="advertise-here" /></a>
                                         </div>
                                     </div>
                                     <div className="utf-sidebar-widget-item">

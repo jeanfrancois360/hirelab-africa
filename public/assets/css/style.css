@@ -2975,7 +2975,7 @@ body #backtotop a {
   border-radius: 30px;
 }
 .utf-quote-box {
-  background-image: url(../images/quote_bg.jpg);
+  background-image: url(../images/sidebar-2.jpeg);
   background-size: cover;
   position: relative;
   border-radius: 4px;
@@ -3349,16 +3349,19 @@ body #backtotop a {
   left: 0;
   z-index: 15;
   opacity: 1;
-  background: linear-gradient(
-    to right,
-    rgba(48, 48, 48, 0.9) 50%,
-    rgba(48, 48, 48, 0.4) 100%,
-    rgba(48, 48, 48, 0) 95%
-  );
+ background: linear-gradient( to right, rgb(32 41 61 / 90%) 50%, rgb(11 14 27 / 40%) 100%, rgb(48 48 48 / 0%) 95% );
 }
 .single-page-header:after {
-  z-index: 5;
-  background-color: #f7f7f7;
+  background-image: url(../images/page-title.jpg) !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 100% 10%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
 }
 .single-page-header .background-image-container {
   background-image: url(../images/page-title.jpg) !important;
