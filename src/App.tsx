@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import FloatingWhatsApp from 'react-floating-whatsapp';
 import { HelmetProvider } from 'react-helmet-async';
 import { Bars } from 'react-loader-spinner';
+import 'react-toastify/dist/ReactToastify.css';
 const About = React.lazy(() => import("./pages/About"));
 const AddJobPost = React.lazy(() => import('./pages/AddJobPost'));
 const BankCV = React.lazy(() => import('./pages/BankCV'));
