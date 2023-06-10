@@ -7,6 +7,7 @@ export default function Protected(props: { children: ReactNode }) {
   let token = JSON.parse(localStorage.getItem('access_token'));
   if (!token) {
     window.location.replace("/login");
+    return null;
   }
   else {
     checkAuthenticationStatus()

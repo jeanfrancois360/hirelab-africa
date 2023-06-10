@@ -12,7 +12,7 @@ import { IJobCategory, IJobPost } from '../interfaces'
 import { DeleteJobPost, GetEmployerJobPosts, GetJobPosts, UpdateJobPost } from '../api/job-post'
 import { Backdrop, Box, Fade, Modal } from '@mui/material'
 import { MsgText } from './MsgText'
-import JoditReact from 'jodit-react-ts'
+import JoditEditor from 'jodit-react';
 import { Formik } from 'formik'
 import * as Yup from 'yup';
 import { GetJobCategories } from '../api/job-category'
@@ -422,7 +422,7 @@ export const ViewJobPostsSection: FC = () => {
                                                             <div className="col-xl-12 col-md-12 col-sm-12">
                                                                 <div className="utf-submit-field">
                                                                     <h5>Details</h5>
-                                                                    <JoditReact onChange={handleChange('description')} defaultValue={values.description} />
+                                                                    <JoditEditor onChange={handleChange('description')} value={values.description} />
                                                                     <br />
                                                                     {touched.description && errors.description && (
                                                                         <MsgText

@@ -95,7 +95,6 @@ export const RegisterSection: FC = () => {
 
 
   const handleSignUp = async (payload: IRegister) => {
-
     const data = {
       first_name: payload.first_name,
       last_name: payload.last_name,
@@ -104,14 +103,12 @@ export const RegisterSection: FC = () => {
       company_description: payload.company_description,
       password: payload.password,
     }
-
     if (isLoading) {
       return
     }
-
     setIsLoading(true);
-    setErrorMsg("")
-    setSuccessMsg("")
+    setErrorMsg("");
+    setSuccessMsg("");
 
     return await axios.post('/auth/signup/', { ...data, role: currentForm }).then((res) => {
       setIsLoading(false)

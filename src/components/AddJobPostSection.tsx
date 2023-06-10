@@ -12,7 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bars } from 'react-loader-spinner'
 import { useMutation, useQuery, UseQueryResult } from 'react-query'
-import JoditReact from "jodit-react-ts";
+import JoditEditor from 'jodit-react';
 import 'jodit/build/jodit.min.css';
 import { CreateJobPost } from '../api/job-post'
 import { GetJobCategories } from '../api/job-category'
@@ -268,7 +268,7 @@ export const AddJobPostSection: FC = () => {
                                                         <div className="col-xl-12 col-md-12 col-sm-12">
                                                             <div className="utf-submit-field">
                                                                 <h5>Details</h5>
-                                                                <JoditReact onChange={handleChange('description')} defaultValue={values.description} />
+                                                                <JoditEditor onChange={handleChange('description')} value={values.description} />
                                                                 <br />
                                                                 {touched.description && errors.description && (
                                                                     <MsgText

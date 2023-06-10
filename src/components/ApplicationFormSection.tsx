@@ -3,7 +3,7 @@ import { Formik } from 'formik'
 import axios from '../axios';
 import * as Yup from 'yup';
 import { MsgText } from './MsgText';
-import JoditReact from 'jodit-react-ts'
+import JoditEditor from 'jodit-react';
 import React, { useEffect, useState } from 'react'
 import { useMutation } from 'react-query';
 import { toast, ToastContainer } from 'react-toastify';
@@ -388,7 +388,7 @@ export const ApplicationFormSection = () => {
                                             <div className="col-xl-12 col-md-12 col-sm-12">
                                                 <div className="utf-submit-field">
                                                     <h5>Cover Letter</h5>
-                                                    <JoditReact onChange={handleChange('cover_letter')} defaultValue={values.cover_letter} />
+                                                    <JoditEditor onChange={handleChange('cover_letter')} value={values.cover_letter} />
                                                     <br />
                                                     {touched.cover_letter && errors.cover_letter && (
                                                         <MsgText

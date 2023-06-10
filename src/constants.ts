@@ -396,7 +396,7 @@ export const Countries = [
 ];
 
 // Development
-//export const ApiUrl = 'http://localhost:3001';
+export const ApiUrl = 'http://localhost:3001';
 
 //Production
-export const ApiUrl = 'https://api.hirelabafrica.com';
+// export const ApiUrl = 'https://api.hirelabafrica.com';

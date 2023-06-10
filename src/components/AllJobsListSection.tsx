@@ -160,7 +160,7 @@ export const AllJobsListSection: FC = () => {
 
 							<div className="utf-sidebar-widget-item">
 								<div className="utf-detail-banner-add-section">
-									<Link to="/"><img src="/assets/images/banner-add-2.jpg" alt="banner-add-2" /></Link>
+									<Link to="/"><img src="/assets/images/advertise-here.png" alt="advertise-here" /></Link>
 								</div>
 							</div>
 						</div>

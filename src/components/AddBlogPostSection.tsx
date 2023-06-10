@@ -13,7 +13,7 @@ import { MsgText } from './MsgText';
 import { IBlogCategory, IBlogPost } from '../interfaces';
 import { Box, CircularProgress, Typography } from '@mui/material';
 import { Bars } from 'react-loader-spinner'
-import JoditReact from 'jodit-react-ts';
+import JoditEditor from 'jodit-react';
 import { GetBlogCategories } from '../api/blog-category';
 import { CreateBlogPost } from '../api/blog-post';
 
@@ -270,7 +270,7 @@ export const AddBlogPostSection: FC = () => {
                                                         <div className="col-xl-12 col-md-12 col-sm-12">
                                                             <div className="utf-submit-field">
                                                                 <h5>Details</h5>
-                                                                <JoditReact onChange={handleChange('description')} defaultValue={values.description} />
+                                                                <JoditEditor onChange={handleChange('description')} value={values.description} />
                                                                 <br />
                                                                 {touched.description && errors.description && (
                                                                     <MsgText

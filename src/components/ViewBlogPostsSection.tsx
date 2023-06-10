@@ -15,7 +15,7 @@ import { Backdrop, Box, CircularProgress, Fade, Modal, Typography } from '@mui/m
 import { Formik } from 'formik'
 import * as Yup from 'yup';
 import { MsgText } from './MsgText'
-import JoditReact from 'jodit-react-ts'
+import JoditEditor from 'jodit-react';
 import { GetBlogCategories } from '../api/blog-category'
 import moment from 'moment'
 import { ApiUrl } from '../constants';
@@ -452,7 +452,7 @@ export const ViewBlogPostsSection: FC = () => {
                                                             <div className="col-xl-12 col-md-12 col-sm-12">
                                                                 <div className="utf-submit-field">
                                                                     <h5>Details</h5>
-                                                                    <JoditReact onChange={handleChange('description')} defaultValue={values.description} />
+                                                                    <JoditEditor onChange={handleChange('description')} value={values.description} />
                                                                     <br />
                                                                     {touched.description && errors.description && (
                                                                         <MsgText
